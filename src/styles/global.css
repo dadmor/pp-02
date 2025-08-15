@@ -1,0 +1,29 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+
+/* Minimalne style globalne */
+html { scroll-behavior: smooth; }
+.font-serif { font-family: "Crimson Text", serif; }
+
+/* Utility dla screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Transitions */
+header { transition: transform 0.3s, box-shadow 0.3s; }
+
+/* Animacja pulse */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }

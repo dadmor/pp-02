@@ -1,0 +1,459 @@
+---
+// src/pages/index.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Data - zminimalizowane
+const therapists = [
+  {
+    name: "Justyna Wrona",
+    slug: "justyna-wrona",
+    title: "Psychoterapeutka integracyjna",
+    exp: 15,
+    spec: ["Lęk i depresja", "Trauma", "Terapia par"],
+    loc: "Mokotów",
+    price: [200, 250],
+    img: "justyna-wrona",
+    avail: true,
+  },
+  {
+    name: "Anna Kowalska",
+    slug: "anna-kowalska",
+    title: "Terapeutka poznawczo-behawioralna",
+    exp: 8,
+    spec: ["Zaburzenia lękowe", "OCD", "Fobia społeczna"],
+    loc: "Śródmieście",
+    price: [180, 220],
+    img: "justyna-wrona",
+    avail: false,
+  },
+  {
+    name: "Piotr Wiśniewski",
+    slug: "piotr-wisniewski",
+    title: "Psychoterapeuta psychodynamiczny",
+    exp: 12,
+    spec: ["Kryzys egzystencjalny", "Relacje", "Rozwój osobisty"],
+    loc: "Żoliborz",
+    price: [220, 280],
+    img: "justyna-wrona",
+    avail: true,
+  },
+  {
+    name: "Katarzyna Dąbrowska",
+    slug: "katarzyna-dabrowska",
+    title: "Terapeutka systemowa",
+    exp: 10,
+    spec: ["Terapia rodzin", "Nastolatki", "Konflikty rodzinne"],
+    loc: "Ursynów",
+    price: [200, 300],
+    img: "justyna-wrona",
+    avail: true,
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    title: "Wypełnij ankietę",
+    desc: "Krótki formularz pomoże nam zrozumieć Twoje potrzeby i dopasować odpowiedniego terapeutę.",
+  },
+  {
+    num: "02",
+    title: "Otrzymaj rekomendacje",
+    desc: "Na podstawie Twoich odpowiedzi zaproponujemy 2-3 terapeutów najlepiej dopasowanych do Twoich potrzeb.",
+  },
+  {
+    num: "03",
+    title: "Umów konsultację",
+    desc: "Skontaktuj się z wybranym terapeutą. Pierwsza konsultacja jest często bezpłatna lub w obniżonej cenie.",
+  },
+  {
+    num: "04",
+    title: "Rozpocznij terapię",
+    desc: "Jeśli poczujesz, że to dobry wybór, rozpocznij regularną pracę terapeutyczną.",
+  },
+];
+
+const articles = [
+  {
+    cat: "PORADNIK",
+    title: "Jak wybrać dobrego psychoterapeutę?",
+    excerpt: "Na co zwrócić uwagę przy wyborze terapeuty i jakie pytania zadać podczas pierwszego spotkania.",
+    author: "dr Anna Kowalska",
+    time: 7,
+  },
+  {
+    cat: "EDUKACJA",
+    title: "Czym różni się psycholog od psychoterapeuty?",
+    excerpt: "Wyjaśniamy różnice między profesjami związanymi ze zdrowiem psychicznym.",
+    author: "Redakcja",
+    time: 5,
+  },
+  {
+    cat: "PIERWSZA POMOC",
+    title: "Kiedy warto pójść do terapeuty?",
+    excerpt: "Sygnały, które mogą wskazywać, że warto skorzystać z profesjonalnej pomocy.",
+    author: "Maria Nowak",
+    time: 6,
+  },
+];
+
+const faqs = [
+  {
+    q: "Ile kosztuje psychoterapia?",
+    a: "Ceny sesji wahają się od 150 do 350 PLN, w zależności od doświadczenia terapeuty i lokalizacji. Niektórzy terapeuci oferują zniżki dla studentów lub osób w trudnej sytuacji finansowej.",
+  },
+  {
+    q: "Jak długo trwa terapia?",
+    a: "Długość terapii zależy od indywidualnych potrzeb. Terapia krótkoterminowa może trwać 3-6 miesięcy, podczas gdy praca nad głębszymi wzorcami może wymagać roku lub więcej.",
+  },
+  {
+    q: "Czy mogę zmienić terapeutę?",
+    a: "Oczywiście. Relacja terapeutyczna jest kluczowa dla sukcesu terapii. Jeśli nie czujesz się komfortowo, warto porozmawiać o tym z terapeutą lub poszukać kogoś innego.",
+  },
+];
+
+// SEO
+const seo = {
+  title: "Profesjonalna Psychoterapia Warszawa - Znajdź Psychoterapeutę | 50+ Specjalistów",
+  description: "Znajdź psychoterapeutę w Warszawie. ✓ 50+ sprawdzonych specjalistów ✓ Terapia indywidualna, par, rodzin ✓ CBT, psychodynamiczna, systemowa ✓ Ceny 150-350 PLN",
+};
+
+// Schema
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "#org",
+      "name": "Profesjonalna Psychoterapia",
+      "url": "https://profesjonalna-psychoterapia.pl"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "#website",
+      "url": "https://profesjonalna-psychoterapia.pl",
+      "publisher": {"@id": "#org"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout {...seo} {structuredData}>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-orange-50 via-white to-white px-6 md:px-8 pt-32 pb-20 md:pt-40 md:pb-32">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-orange-50 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+        Dostępni terapeuci online i stacjonarnie
+      </p>
+      <h1 class="font-serif text-5xl md:text-7xl mb-6 text-gray-900">
+        Znajdź terapeutę,<br>który Cię zrozumie
+      </h1>
+      <p class="text-xl md:text-2xl mb-10 text-gray-600 max-w-3xl mx-auto">
+        Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. Każdy zasługuje na profesjonalną pomoc.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#find" class="bg-orange-500 text-white px-8 py-4 hover:bg-orange-600 transition-colors rounded-full font-medium">
+          Zacznij szukać
+        </a>
+        <a href="#how" class="bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200">
+          Jak to działa?
+        </a>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 max-w-3xl mx-auto">
+        {[
+          ['50+', 'sprawdzonych terapeutów'],
+          ['1000+', 'przeprowadzonych sesji'],
+          ['95%', 'zadowolonych klientów'],
+          ['24h', 'średni czas odpowiedzi']
+        ].map(([num, text]) => (
+          <div class="text-center">
+            <strong class="text-4xl font-light text-gray-900 mb-2 block">{num}</strong>
+            <span class="text-sm text-gray-500">{text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="py-24 px-6 md:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <header class="text-center mb-16">
+        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">Jak to działa</p>
+        <h2 class="font-serif text-4xl md:text-5xl mb-4">
+          Cztery proste kroki do<br>lepszego samopoczucia
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Proces doboru terapeuty jest prosty i przemyślany, aby zapewnić Ci najlepsze dopasowanie.
+        </p>
+      </header>
+      
+      <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {process.map((step) => (
+          <li>
+            <strong class="text-6xl font-light text-orange-100 mb-6 block">{step.num}</strong>
+            <h3 class="text-xl font-medium mb-3">{step.title}</h3>
+            <p class="text-sm text-gray-600">{step.desc}</p>
+          </li>
+        ))}
+      </ol>
+      
+      <div class="text-center mt-16">
+        <a href="#find" class="inline-flex items-center gap-2 text-orange-600 font-medium">
+          Rozpocznij teraz
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Therapists -->
+  <section id="find" class="py-24 px-6 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <header class="text-center mb-16">
+        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">Nasi terapeuci</p>
+        <h2 class="font-serif text-4xl md:text-5xl mb-4">
+          Wybrani specjaliści<br>gotowi Ci pomóc
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+          Wszyscy nasi terapeuci są certyfikowani i posiadają wieloletnie doświadczenie. Wybierz kogoś, kto najlepiej odpowiada Twoim potrzebom.
+        </p>
+        
+        <nav class="flex flex-wrap gap-3 justify-center">
+          {['Wszyscy', 'Terapia indywidualna', 'Terapia par', 'Online'].map((label, i) => (
+            <button class={`px-6 py-2.5 text-sm rounded-full ${
+              i === 0 
+                ? 'bg-gray-900 text-white' 
+                : 'bg-white border border-gray-200 hover:bg-gray-50'
+            }`}>
+              {label}
+            </button>
+          ))}
+        </nav>
+      </header>
+      
+      <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {therapists.map((t) => (
+          <li>
+            <article class="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group h-full">
+              <a href={`/terapeuta/${t.slug}`} class="block">
+                <div class="relative overflow-hidden h-64">
+                  <img
+                    src={`/images/therapists/${t.img}.webp`}
+                    alt=""
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    width="400"
+                    height="400"
+                  />
+                  <span class={`absolute top-4 right-4 text-xs px-3 py-1.5 rounded-full backdrop-blur-md ${
+                    t.avail ? 'bg-green-500/90 text-white' : 'bg-orange-500/90 text-white'
+                  }`}>
+                    {t.avail ? 'Wolne miejsca' : 'Lista oczekujących'}
+                  </span>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-semibold mb-1">{t.name}</h3>
+                  <p class="text-sm text-gray-600 mb-1">{t.title}</p>
+                  <p class="text-xs text-gray-500 mb-4">{t.exp} lat doświadczenia</p>
+                  
+                  <div class="space-y-4 text-sm">
+                    <div>
+                      <h4 class="text-xs text-gray-500 mb-2">Specjalizacje:</h4>
+                      <ul class="flex flex-wrap gap-1.5">
+                        {t.spec.map(s => (
+                          <li class="text-xs bg-gray-100 px-2.5 py-1 rounded-full">{s}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <dl class="space-y-2 text-xs">
+                      <div class="flex justify-between">
+                        <dt class="text-gray-500">Lokalizacja:</dt>
+                        <dd class="text-gray-700">Warszawa, {t.loc}</dd>
+                      </div>
+                      <div class="flex justify-between">
+                        <dt class="text-gray-500">Cena:</dt>
+                        <dd class="font-medium text-gray-900">{t.price[0]}-{t.price[1]} PLN</dd>
+                      </div>
+                    </dl>
+                  </div>
+                  
+                  <span class="block w-full mt-6 py-3 bg-gray-900 text-white text-center text-sm font-medium rounded-full group-hover:bg-gray-800 transition-colors">
+                    Zobacz profil
+                  </span>
+                </div>
+              </a>
+            </article>
+          </li>
+        ))}
+      </ul>
+      
+      <div class="text-center mt-16">
+        <a href="/terapeuci" class="text-orange-600 font-medium">
+          Zobacz wszystkich terapeutów (50+) →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24 px-6 md:px-8 bg-orange-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <header>
+            <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">O psychoterapii</p>
+            <h2 class="font-serif text-4xl md:text-5xl mb-6">
+              Czym jest psychoterapia i komu może pomóc?
+            </h2>
+          </header>
+          <div class="space-y-4 text-gray-600">
+            <p>
+              Psychoterapia to proces leczenia problemów emocjonalnych i psychicznych poprzez rozmowę z wykwalifikowanym specjalistą. To przestrzeń, gdzie możesz bezpiecznie eksplorować swoje myśli, uczucia i zachowania.
+            </p>
+            <p>
+              Wbrew powszechnym mitom, nie musisz mieć poważnych problemów, aby skorzystać z terapii. Może ona pomóc w radzeniu sobie ze stresem, poprawie relacji, rozwoju osobistym czy po prostu w lepszym zrozumieniu siebie.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-8 mt-10">
+            <div>
+              <h3 class="font-medium mb-4 text-gray-900">Kiedy warto rozważyć terapię?</h3>
+              <ul class="space-y-3 text-sm text-gray-600">
+                {[
+                  'Długotrwały smutek lub przygnębienie',
+                  'Problemy w relacjach',
+                  'Trudności z radzeniem sobie ze stresem',
+                  'Chęć rozwoju osobistego'
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <span class="w-1.5 h-1.5 bg-orange-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-medium mb-4 text-gray-900">Rodzaje terapii</h3>
+              <ul class="space-y-3 text-sm text-gray-600">
+                {[
+                  'Terapia poznawczo-behawioralna (CBT)',
+                  'Terapia psychodynamiczna',
+                  'Terapia systemowa',
+                  'Terapia humanistyczna'
+                ].map(item => (
+                  <li class="flex items-start gap-3">
+                    <span class="w-1.5 h-1.5 bg-orange-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <aside class="bg-white rounded-3xl p-8 md:p-12 shadow-sm">
+          <h3 class="font-serif text-3xl mb-8">Często zadawane pytania</h3>
+          <dl class="space-y-6">
+            {faqs.map((faq, i) => (
+              <div class={i < faqs.length - 1 ? "pb-6 border-b border-gray-100" : "pb-6"}>
+                <dt class="font-medium mb-3 text-gray-900">{faq.q}</dt>
+                <dd class="text-sm text-gray-600">{faq.a}</dd>
+              </div>
+            ))}
+          </dl>
+          <a href="/faq" class="inline-flex items-center gap-2 text-orange-600 font-medium mt-8">
+            Zobacz więcej pytań
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section id="articles" class="py-24 px-6 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <header class="text-center mb-16">
+        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">Wiedza</p>
+        <h2 class="font-serif text-4xl md:text-5xl mb-4">
+          Artykuły o zdrowiu<br>psychicznym
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Przygotowaliśmy dla Ciebie wartościowe treści, które pomogą lepiej zrozumieć psychoterapię i zadbać o swoje zdrowie psychiczne.
+        </p>
+      </header>
+      
+      <ul class="grid md:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <li>
+            <article class="group cursor-pointer">
+              <a
+                href={`/artykuly/${article.title.toLowerCase().replace(/\s+/g, '-').replace(/\?/g, '')}`}
+                class="bg-white rounded-2xl p-8 h-full border border-gray-100 hover:shadow-lg transition-shadow block"
+              >
+                <header>
+                  <p class="text-xs font-semibold text-orange-600 mb-4 tracking-wide">{article.cat}</p>
+                  <h3 class="font-serif text-2xl mb-3 group-hover:text-orange-600 transition-colors">
+                    {article.title}
+                  </h3>
+                  <p class="text-sm text-gray-600 mb-6">{article.excerpt}</p>
+                </header>
+                <footer class="flex justify-between items-center text-xs text-gray-500">
+                  <span>{article.author}</span>
+                  <time>{article.time} min czytania</time>
+                </footer>
+              </a>
+            </article>
+          </li>
+        ))}
+      </ul>
+      
+      <div class="text-center mt-16">
+        <a href="/blog" class="text-orange-600 font-medium">Przejdź do bloga →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 md:px-8 bg-gradient-to-br from-orange-50 to-orange-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-white px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+        Bezpłatna pierwsza konsultacja u wybranych terapeutów
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl mb-6">Gotowy na pierwszy krok?</h2>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+        Pamiętaj, że szukanie pomocy to oznaka siły, nie słabości. Jesteśmy tu, aby ułatwić Ci znalezienie odpowiedniego wsparcia.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#find" class="bg-gray-900 text-white px-8 py-4 hover:bg-gray-800 transition-colors rounded-full font-medium">
+          Znajdź swojego terapeutę
+        </a>
+        <a href="#contact" class="bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200">
+          Masz pytania? Napisz do nas
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

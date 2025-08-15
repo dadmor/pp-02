@@ -1,0 +1,579 @@
+---
+// src/pages/index.astro
+import '../styles/global.css';
+
+const navigation = [
+  { label: "Znajdź terapeutę", href: "#find" },
+  { label: "Jak to działa", href: "#how" },
+  { label: "O psychoterapii", href: "#about" },
+  { label: "Artykuły", href: "#articles" },
+  { label: "Kontakt", href: "#contact" }
+];
+
+const therapists = [
+  {
+    name: "Maria Nowak",
+    title: "Psychoterapeutka integracyjna",
+    experience: "15 lat doświadczenia",
+    specializations: ["Lęk i depresja", "Trauma", "Terapia par"],
+    location: "Warszawa, Mokotów",
+    price: "200-250 PLN",
+    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=300&h=400&fit=crop",
+    availability: "Wolne miejsca"
+  },
+  {
+    name: "Anna Kowalska", 
+    title: "Terapeutka poznawczo-behawioralna",
+    experience: "8 lat doświadczenia",
+    specializations: ["Zaburzenia lękowe", "OCD", "Fobia społeczna"],
+    location: "Warszawa, Śródmieście",
+    price: "180-220 PLN",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=400&fit=crop",
+    availability: "Lista oczekujących"
+  },
+  {
+    name: "Piotr Wiśniewski",
+    title: "Psychoterapeuta psychodynamiczny",
+    experience: "12 lat doświadczenia",
+    specializations: ["Kryzys egzystencjalny", "Relacje", "Rozwój osobisty"],
+    location: "Warszawa, Żoliborz",
+    price: "220-280 PLN",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&h=400&fit=crop",
+    availability: "Wolne miejsca"
+  },
+  {
+    name: "Katarzyna Dąbrowska",
+    title: "Terapeutka systemowa",
+    experience: "10 lat doświadczenia", 
+    specializations: ["Terapia rodzin", "Nastolatki", "Konflikty rodzinne"],
+    location: "Warszawa, Ursynów",
+    price: "200-300 PLN",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=400&fit=crop",
+    availability: "Wolne miejsca"
+  }
+];
+
+const process = [
+  {
+    number: "01",
+    title: "Wypełnij ankietę",
+    description: "Krótki formularz pomoże nam zrozumieć Twoje potrzeby i dopasować odpowiedniego terapeutę."
+  },
+  {
+    number: "02",
+    title: "Otrzymaj rekomendacje",
+    description: "Na podstawie Twoich odpowiedzi zaproponujemy 2-3 terapeutów najlepiej dopasowanych do Twoich potrzeb."
+  },
+  {
+    number: "03",
+    title: "Umów konsultację",
+    description: "Skontaktuj się z wybranym terapeutą. Pierwsza konsultacja jest często bezpłatna lub w obniżonej cenie."
+  },
+  {
+    number: "04",
+    title: "Rozpocznij terapię",
+    description: "Jeśli poczujesz, że to dobry wybór, rozpocznij regularną pracę terapeutyczną."
+  }
+];
+
+const articles = [
+  {
+    category: "PORADNIK",
+    title: "Jak wybrać dobrego psychoterapeutę?",
+    excerpt: "Na co zwrócić uwagę przy wyborze terapeuty i jakie pytania zadać podczas pierwszego spotkania.",
+    author: "dr Anna Kowalska",
+    readTime: "7 min"
+  },
+  {
+    category: "EDUKACJA",
+    title: "Czym różni się psycholog od psychoterapeuty?",
+    excerpt: "Wyjaśniamy różnice między profesjami związanymi ze zdrowiem psychicznym.",
+    author: "Redakcja",
+    readTime: "5 min"
+  },
+  {
+    category: "PIERWSZA POMOC",
+    title: "Kiedy warto pójść do terapeuty?",
+    excerpt: "Sygnały, które mogą wskazywać, że warto skorzystać z profesjonalnej pomocy.",
+    author: "Maria Nowak",
+    readTime: "6 min"
+  }
+];
+
+const faqs = [
+  {
+    question: "Ile kosztuje psychoterapia?",
+    answer: "Ceny sesji wahają się od 150 do 350 PLN, w zależności od doświadczenia terapeuty i lokalizacji. Niektórzy terapeuci oferują zniżki dla studentów lub osób w trudnej sytuacji finansowej."
+  },
+  {
+    question: "Jak długo trwa terapia?",
+    answer: "Długość terapii zależy od indywidualnych potrzeb. Terapia krótkoterminowa może trwać 3-6 miesięcy, podczas gdy praca nad głębszymi wzorcami może wymagać roku lub więcej."
+  },
+  {
+    question: "Czy mogę zmienić terapeutę?",
+    answer: "Oczywiście. Relacja terapeutyczna jest kluczowa dla sukcesu terapii. Jeśli nie czujesz się komfortowo, warto porozmawiać o tym z terapeutą lub poszukać kogoś innego."
+  }
+];
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Profesjonalna Psychoterapia - Znajdź swojego terapeutę</title>
+    <meta name="description" content="Platforma łącząca pacjentów z doświadczonymi psychoterapeutami. Znajdź wsparcie, którego potrzebujesz.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-sage-50 text-stone-900">
+    
+    <!-- Header -->
+    <header class="bg-beige-50 border-b border-stone-200">
+      <div class="max-w-7xl mx-auto px-6 md:px-8">
+        <nav class="flex justify-between items-center h-20">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-sage-600 rounded-full flex items-center justify-center">
+              <span class="text-white font-bold text-xl">P</span>
+            </div>
+            <span class="text-xl font-medium">Profesjonalna Psychoterapia</span>
+          </a>
+          
+          <div class="hidden md:flex items-center gap-8">
+            {navigation.map((item) => (
+              <a href={item.href} class="text-sm text-stone-600 hover:text-stone-900 transition-colors">
+                {item.label}
+              </a>
+            ))}
+            <a href="#find" class="bg-sage-600 text-white px-6 py-3 text-sm font-medium hover:bg-sage-700 transition-colors">
+              Znajdź terapeutę
+            </a>
+          </div>
+
+          <button class="md:hidden p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-16 6h16" />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-sage-100 px-6 md:px-8 py-20 md:py-32">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="font-serif text-4xl md:text-6xl mb-6 text-stone-900">
+          Znajdź terapeutę, który Cię zrozumie
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-stone-700">
+          Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. 
+          Każdy zasługuje na profesjonalną pomoc.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="#find" class="bg-sage-600 text-white px-8 py-4 hover:bg-sage-700 transition-colors">
+            Zacznij szukać
+          </a>
+          <a href="#how" class="bg-beige-50 text-stone-900 px-8 py-4 hover:bg-beige-100 transition-colors">
+            Jak to działa?
+          </a>
+        </div>
+
+        <!-- Trust indicators -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-3xl mx-auto">
+          <div>
+            <p class="text-3xl font-light text-stone-900">50+</p>
+            <p class="text-sm text-stone-600">sprawdzonych terapeutów</p>
+          </div>
+          <div>
+            <p class="text-3xl font-light text-stone-900">1000+</p>
+            <p class="text-sm text-stone-600">przeprowadzonych sesji</p>
+          </div>
+          <div>
+            <p class="text-3xl font-light text-stone-900">95%</p>
+            <p class="text-sm text-stone-600">zadowolonych klientów</p>
+          </div>
+          <div>
+            <p class="text-3xl font-light text-stone-900">24h</p>
+            <p class="text-sm text-stone-600">średni czas odpowiedzi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-20 px-6 md:px-8 bg-beige-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-sage-700 font-medium mb-4">JAK TO DZIAŁA</p>
+          <h2 class="font-serif text-3xl md:text-4xl mb-4">
+            Cztery proste kroki do lepszego samopoczucia
+          </h2>
+          <p class="text-lg text-stone-600 max-w-2xl mx-auto">
+            Proces doboru terapeuty jest prosty i przemyślany, aby zapewnić Ci najlepsze dopasowanie.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {process.map((step) => (
+            <div class="text-center">
+              <div class="text-5xl font-light text-sage-500 mb-4">{step.number}</div>
+              <h3 class="text-xl font-medium mb-3">{step.title}</h3>
+              <p class="text-sm text-stone-600">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#find" class="inline-flex items-center gap-2 text-sage-700 font-medium hover:gap-4 transition-all">
+            Rozpocznij teraz
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Therapists -->
+    <section id="find" class="py-20 px-6 md:px-8 bg-sage-50">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-sage-700 font-medium mb-4">NASI TERAPEUCI</p>
+          <h2 class="font-serif text-3xl md:text-4xl mb-4">
+            Wybrani specjaliści gotowi Ci pomóc
+          </h2>
+          <p class="text-lg text-stone-600 max-w-2xl mx-auto mb-8">
+            Wszyscy nasi terapeuci są certyfikowani i posiadają wieloletnie doświadczenie. 
+            Wybierz kogoś, kto najlepiej odpowiada Twoim potrzebom.
+          </p>
+
+          <!-- Filters -->
+          <div class="flex flex-wrap gap-4 justify-center">
+            <button class="px-6 py-2 bg-sage-600 text-white text-sm">Wszyscy</button>
+            <button class="px-6 py-2 bg-beige-50 border border-stone-300 text-sm hover:bg-beige-100">Terapia indywidualna</button>
+            <button class="px-6 py-2 bg-beige-50 border border-stone-300 text-sm hover:bg-beige-100">Terapia par</button>
+            <button class="px-6 py-2 bg-beige-50 border border-stone-300 text-sm hover:bg-beige-100">Online</button>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {therapists.map((therapist) => (
+            <div class="bg-beige-50 border border-stone-200 overflow-hidden hover:shadow-lg transition-shadow">
+              <img 
+                src={therapist.image}
+                alt={therapist.name}
+                class="w-full h-64 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-2">
+                  <h3 class="text-lg font-medium">{therapist.name}</h3>
+                  <span class={`text-xs px-2 py-1 ${
+                    therapist.availability === 'Wolne miejsca' 
+                      ? 'bg-emerald-100 text-emerald-700' 
+                      : 'bg-amber-100 text-amber-700'
+                  }`}>
+                    {therapist.availability}
+                  </span>
+                </div>
+                <p class="text-sm text-stone-600 mb-1">{therapist.title}</p>
+                <p class="text-xs text-stone-500 mb-4">{therapist.experience}</p>
+                
+                <div class="space-y-3 text-sm">
+                  <div>
+                    <p class="text-xs text-stone-500 mb-1">Specjalizacje:</p>
+                    <div class="flex flex-wrap gap-1">
+                      {therapist.specializations.map((spec) => (
+                        <span class="text-xs bg-sage-100 px-2 py-1">{spec}</span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div class="flex justify-between text-xs">
+                    <span class="text-stone-500">Lokalizacja:</span>
+                    <span>{therapist.location}</span>
+                  </div>
+                  
+                  <div class="flex justify-between text-xs">
+                    <span class="text-stone-500">Cena:</span>
+                    <span class="font-medium">{therapist.price}</span>
+                  </div>
+                </div>
+                
+                <a href="#" class="block w-full mt-6 py-2 bg-sage-600 text-white text-center text-sm font-medium hover:bg-sage-700 transition-colors">
+                  Zobacz profil
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#" class="text-sage-700 font-medium">
+            Zobacz wszystkich terapeutów (50+) →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Psychotherapy -->
+    <section id="about" class="py-20 px-6 md:px-8 bg-sage-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-sage-700 font-medium mb-4">O PSYCHOTERAPII</p>
+            <h2 class="font-serif text-3xl md:text-4xl mb-6">
+              Czym jest psychoterapia i komu może pomóc?
+            </h2>
+            <div class="prose prose-stone">
+              <p class="text-stone-600 mb-4">
+                Psychoterapia to proces leczenia problemów emocjonalnych i psychicznych 
+                poprzez rozmowę z wykwalifikowanym specjalistą. To przestrzeń, gdzie możesz 
+                bezpiecznie eksplorować swoje myśli, uczucia i zachowania.
+              </p>
+              <p class="text-stone-600 mb-6">
+                Wbrew powszechnym mitom, nie musisz mieć poważnych problemów, aby skorzystać 
+                z terapii. Może ona pomóc w radzeniu sobie ze stresem, poprawie relacji, 
+                rozwoju osobistym czy po prostu w lepszym zrozumieniu siebie.
+              </p>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-6 mt-8">
+              <div>
+                <h4 class="font-medium mb-3">Kiedy warto rozważyć terapię?</h4>
+                <ul class="space-y-2 text-sm text-stone-600">
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Długotrwały smutek lub przygnębienie
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Problemy w relacjach
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Trudności z radzeniem sobie ze stresem
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Chęć rozwoju osobistego
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-medium mb-3">Rodzaje terapii</h4>
+                <ul class="space-y-2 text-sm text-stone-600">
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Terapia poznawczo-behawioralna (CBT)
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Terapia psychodynamiczna
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Terapia systemowa
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-sage-600 mt-1">•</span>
+                    Terapia humanistyczna
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-beige-50 p-8 md:p-12 shadow-sm">
+            <h3 class="font-serif text-2xl mb-6">Często zadawane pytania</h3>
+            <div class="space-y-6">
+              {faqs.map((faq) => (
+                <div class="border-b border-stone-200 pb-6">
+                  <h4 class="font-medium mb-2">{faq.question}</h4>
+                  <p class="text-sm text-stone-600">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 text-sage-700 font-medium mt-6 hover:gap-4 transition-all">
+              Zobacz więcej pytań
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles -->
+    <section id="articles" class="py-20 px-6 md:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-sage-700 font-medium mb-4">WIEDZA</p>
+          <h2 class="font-serif text-3xl md:text-4xl mb-4">
+            Artykuły o zdrowiu psychicznym
+          </h2>
+          <p class="text-lg text-stone-600 max-w-2xl mx-auto">
+            Przygotowaliśmy dla Ciebie wartościowe treści, które pomogą lepiej zrozumieć 
+            psychoterapię i zadbać o swoje zdrowie psychiczne.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {articles.map((article) => (
+            <article class="bg-beige-50 border border-stone-200 p-8 hover:shadow-md transition-shadow">
+              <p class="text-xs font-medium text-sage-700 mb-3">{article.category}</p>
+              <h3 class="font-serif text-xl mb-3">{article.title}</h3>
+              <p class="text-sm text-stone-600 mb-4">{article.excerpt}</p>
+              <div class="flex justify-between items-center text-xs text-stone-500">
+                <span>{article.author}</span>
+                <span>{article.readTime} czytania</span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#" class="text-sage-700 font-medium">
+            Przejdź do bloga →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-6 md:px-8 bg-sage-100">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="font-serif text-3xl md:text-4xl mb-6">
+          Gotowy na pierwszy krok?
+        </h2>
+        <p class="text-lg text-stone-600 mb-8 max-w-2xl mx-auto">
+          Pamiętaj, że szukanie pomocy to oznaka siły, nie słabości. 
+          Jesteśmy tu, aby ułatwić Ci znalezienie odpowiedniego wsparcia.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#find" class="bg-sage-600 text-white px-8 py-4 hover:bg-sage-700 transition-colors">
+            Znajdź swojego terapeutę
+          </a>
+          <a href="#contact" class="bg-beige-50 text-stone-900 px-8 py-4 border border-stone-300 hover:bg-beige-100 transition-colors">
+            Masz pytania? Napisz do nas
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-beige-50 border-t border-stone-200 py-16 px-6 md:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+          <div class="md:col-span-2">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-8 h-8 bg-sage-600 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold">P</span>
+              </div>
+              <span class="font-medium">Profesjonalna Psychoterapia</span>
+            </div>
+            <p class="text-sm text-stone-600 mb-4 max-w-sm">
+              Platforma łącząca osoby potrzebujące wsparcia psychologicznego 
+              z certyfikowanymi psychoterapeutami.
+            </p>
+            <div class="flex gap-4">
+              <a href="#" class="text-stone-400 hover:text-stone-600">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-stone-400 hover:text-stone-600">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-stone-400 hover:text-stone-600">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 class="font-medium mb-4">Dla pacjentów</h4>
+            <ul class="space-y-2 text-sm text-stone-600">
+              <li><a href="#" class="hover:text-stone-900">Znajdź terapeutę</a></li>
+              <li><a href="#" class="hover:text-stone-900">Jak to działa</a></li>
+              <li><a href="#" class="hover:text-stone-900">Cennik</a></li>
+              <li><a href="#" class="hover:text-stone-900">FAQ</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-medium mb-4">Dla terapeutów</h4>
+            <ul class="space-y-2 text-sm text-stone-600">
+              <li><a href="#" class="hover:text-stone-900">Dołącz do nas</a></li>
+              <li><a href="#" class="hover:text-stone-900">Jak weryfikujemy</a></li>
+              <li><a href="#" class="hover:text-stone-900">Korzyści</a></li>
+              <li><a href="#" class="hover:text-stone-900">Panel terapeuty</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="pt-8 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-sm text-stone-600">
+            © 2024 Profesjonalna-psychoterapia.pl. Wszystkie prawa zastrzeżone.
+          </p>
+          <div class="flex gap-6 text-sm text-stone-600">
+            <a href="#" class="hover:text-stone-900">Polityka prywatności</a>
+            <a href="#" class="hover:text-stone-900">Regulamin</a>
+            <a href="#" class="hover:text-stone-900">Kontakt</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, sans-serif;
+      }
+      .font-serif {
+        font-family: 'Crimson Text', serif;
+      }
+      html { scroll-behavior: smooth; }
+
+      /* Cieplejsza paleta sage + beże */
+      .bg-sage-50 { background-color: #f7f5f2; }
+      .bg-sage-100 { background-color: #efece7; }
+      .bg-sage-500 { background-color: #8ea78e; }
+      .bg-sage-600 { background-color: #7a8f7a; }
+      .bg-sage-700 { background-color: #6a7f6a; }
+      .text-sage-500 { color: #8ea78e; }
+      .text-sage-600 { color: #7a8f7a; }
+      .text-sage-700 { color: #6a7f6a; }
+      .hover\:bg-sage-700:hover { background-color: #6a7f6a; }
+
+      .bg-beige-50 { background-color: #faf5ef; }
+      .bg-beige-100 { background-color: #f3ece4; }
+      .hover\:bg-beige-100:hover { background-color: #f3ece4; }
+    </style>
+
+    <script>
+      // Mobile menu toggle (placeholder)
+      const mobileMenuButton = document.querySelector('button[class*="md:hidden"]');
+      const nav = document.querySelector('nav');
+      mobileMenuButton?.addEventListener('click', () => {
+        // Toggle mobile menu
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

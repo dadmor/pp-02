@@ -1,0 +1,234 @@
+---
+// src/pages/jak-to-dziala.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const steps = [
+  {
+    num: "01",
+    title: "Wypełnij krótką ankietę",
+    desc: "Odpowiedz na kilka pytań o swoich potrzebach, preferencjach i dostępności. To zajmie tylko 3-5 minut.",
+    icon: "clipboard-list"
+  },
+  {
+    num: "02",
+    title: "Otrzymaj dopasowane propozycje",
+    desc: "Na podstawie Twoich odpowiedzi zaproponujemy 2-3 terapeutów idealnie dopasowanych do Twoich potrzeb.",
+    icon: "users"
+  },
+  {
+    num: "03",
+    title: "Umów pierwszą konsultację",
+    desc: "Skontaktuj się z wybranym terapeutą. Pierwsza rozmowa często jest bezpłatna lub w obniżonej cenie.",
+    icon: "calendar"
+  },
+  {
+    num: "04",
+    title: "Rozpocznij terapię",
+    desc: "Jeśli czujesz, że to dobry wybór, rozpocznij regularną współpracę. Pamiętaj - możesz zmienić terapeutę.",
+    icon: "heart"
+  }
+];
+
+const benefits = [
+  {
+    title: "Weryfikacja każdego terapeuty",
+    points: [
+      "Sprawdzamy certyfikaty i uprawnienia",
+      "Weryfikujemy doświadczenie zawodowe",
+      "Przeprowadzamy rozmowy kwalifikacyjne",
+      "Monitorujemy jakość świadczonych usług"
+    ]
+  },
+  {
+    title: "Dopasowanie do Twoich potrzeb",
+    points: [
+      "Algorytm analizuje Twoje odpowiedzi",
+      "Bierzemy pod uwagę lokalizację i dostępność",
+      "Dopasowujemy specjalizację do problemu",
+      "Uwzględniamy preferencje (płeć, wiek terapeuty)"
+    ]
+  },
+  {
+    title: "Wsparcie na każdym etapie",
+    points: [
+      "Pomoc w wyborze odpowiedniego terapeuty",
+      "Możliwość zmiany specjalisty",
+      "Odpowiadamy na wszystkie pytania",
+      "Dbamy o Twój komfort i bezpieczeństwo"
+    ]
+  }
+];
+
+const faqs = [
+  {
+    q: "Czy muszę od razu decydować się na długoterminową terapię?",
+    a: "Nie, absolutnie nie. Pierwsza konsultacja służy właśnie temu, aby się poznać i ocenić, czy czujesz się komfortowo. Możesz też umówić się na kilka sesji próbnych."
+  },
+  {
+    q: "Co jeśli terapeuta nie będzie odpowiedni?",
+    a: "To zupełnie normalne - nie każdy terapeuta pasuje do każdego pacjenta. Pomożemy Ci znaleźć innego specjalistę. Ważne jest, abyś czuł się komfortowo."
+  },
+  {
+    q: "Czy moje dane są bezpieczne?",
+    a: "Tak, stosujemy najwyższe standardy bezpieczeństwa. Wszystkie informacje są szyfrowane, a terapeuci zobowiązani są do zachowania tajemnicy zawodowej."
+  },
+  {
+    q: "Jak szybko mogę rozpocząć terapię?",
+    a: "Zazwyczaj w ciągu 2-3 dni od wypełnienia ankiety. W pilnych przypadkach staramy się przyspieszyć proces."
+  }
+];
+
+const seo = {
+  title: "Jak to działa - Znajdź Psychoterapeutę | Profesjonalna Psychoterapia",
+  description: "Poznaj prosty proces znalezienia idealnego psychoterapeuty. ✓ Krótka ankieta ✓ Dopasowani specjaliści ✓ Bezpłatna konsultacja ✓ Wsparcie na każdym etapie",
+};
+---
+
+<BaseLayout {...seo}>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-orange-50 to-white px-6 md:px-8 pt-32 pb-20 md:pt-40 md:pb-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-orange-50 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+        Prosty i bezpieczny proces
+      </p>
+      <h1 class="font-serif text-5xl md:text-6xl mb-6 text-gray-900">
+        Jak znajdziesz swojego<br>psychoterapeutę?
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+        W 4 prostych krokach połączymy Cię z terapeutą, który najlepiej odpowiada Twoim potrzebom. 
+        Cały proces jest przemyślany, aby był dla Ciebie jak najprostszy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <section class="py-20 px-6 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {steps.map((step) => (
+          <div class="relative group">
+            <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow h-full">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-5xl font-light text-orange-100">{step.num}</span>
+                <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {step.icon === "clipboard-list" && (
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                    )}
+                    {step.icon === "users" && (
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    )}
+                    {step.icon === "calendar" && (
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    )}
+                    {step.icon === "heart" && (
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    )}
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold mb-3">{step.title}</h3>
+              <p class="text-sm text-gray-600">{step.desc}</p>
+            </div>
+            {/* Arrow between steps */}
+            <div class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-gray-300">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 px-6 md:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <header class="text-center mb-16">
+        <h2 class="font-serif text-4xl md:text-5xl mb-4">
+          Dlaczego możesz nam zaufać?
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Tworzymy bezpieczną przestrzeń, gdzie znajdziesz profesjonalną pomoc
+        </p>
+      </header>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-white rounded-2xl p-8">
+            <h3 class="text-xl font-semibold mb-6">{benefit.title}</h3>
+            <ul class="space-y-3">
+              {benefit.points.map(point => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span class="text-sm text-gray-600">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-20 px-6 md:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 md:p-12 text-center">
+        <blockquote>
+          <p class="font-serif text-2xl md:text-3xl mb-6 text-gray-800">
+            "Byłam przerażona pierwszą wizytą u psychologa. Ankieta pomogła mi 
+            nazwać to, czego szukam, a zaproponowani terapeuci byli dokładnie 
+            tacy, jakich potrzebowałam. Dziś, po roku terapii, jestem 
+            zupełnie inną osobą."
+          </p>
+          <footer class="text-gray-600">
+            <cite class="not-italic">— Anna, 32 lata</cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6 md:px-8 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="font-serif text-3xl md:text-4xl mb-12 text-center">
+        Najczęściej zadawane pytania
+      </h2>
+      <dl class="space-y-8">
+        {faqs.map((faq) => (
+          <div class="bg-white rounded-xl p-6">
+            <dt class="font-medium text-lg mb-3">{faq.q}</dt>
+            <dd class="text-gray-600">{faq.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 md:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-serif text-3xl md:text-4xl mb-6">
+        Gotowy, aby zacząć?
+      </h2>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+        Wypełnienie ankiety zajmie tylko kilka minut. To pierwszy krok 
+        do lepszego samopoczucia.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#find" class="bg-orange-500 text-white px-8 py-4 hover:bg-orange-600 transition-colors rounded-full font-medium">
+          Wypełnij ankietę
+        </a>
+        <a href="/#contact" class="bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200">
+          Masz pytania? Napisz
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

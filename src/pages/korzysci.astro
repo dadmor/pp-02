@@ -1,0 +1,307 @@
+---
+// src/pages/korzysci.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const mainBenefits = [
+  {
+    title: "Unikalna strona domowa",
+    desc: "Każdy terapeuta otrzymuje spersonalizowaną stronę z unikalną treścią, co gwarantuje wysokie pozycje w Google.",
+    features: [
+      "100% unikalna treść SEO",
+      "Osobisty URL: imie-nazwisko.pl", 
+      "TOP 3 w wynikach lokalnych",
+      "Automatyczna optymalizacja"
+    ]
+  },
+  {
+    title: "Integracja social media",
+    desc: "Zintegrowane narzędzia do budowania zasięgu na wszystkich platformach społecznościowych.",
+    features: [
+      "Auto-publikacja na Facebook",
+      "Synchronizacja z LinkedIn",
+      "Instagram Stories z wizytówką",
+      "Analityka zasięgu"
+    ]
+  },
+  {
+    title: "Społeczność i wsparcie",
+    desc: "Dołącz do ekskluzywnej społeczności praktyków z dostępem do superwizji i wymiany doświadczeń.",
+    features: [
+      "Regularne superwizje grupowe",
+      "Forum wymiany doświadczeń",
+      "Mentoring od ekspertów",
+      "Webinary rozwojowe"
+    ]
+  }
+];
+
+const seoFeatures = [
+  { metric: "Pozycja w Google", value: "TOP 3" },
+  { metric: "Unikalna treść", value: "100%" },
+  { metric: "Wzrost ruchu", value: "+500%" },
+  { metric: "Konwersja", value: "35%" }
+];
+
+const tools = [
+  {
+    name: "Facebook",
+    desc: "Automatyczne posty, targetowane kampanie, analiza zasięgu"
+  },
+  {
+    name: "LinkedIn", 
+    desc: "Profesjonalny profil, artykuły eksperckie, networking"
+  },
+  {
+    name: "Instagram",
+    desc: "Stories, posty edukacyjne, budowanie społeczności"
+  },
+  {
+    name: "Google My Business",
+    desc: "Wizytówka lokalna, opinie, statystyki"
+  }
+];
+
+const testimonials = [
+  {
+    quote: "Dzięki unikalnej stronie jestem na 1. miejscu w Google dla 'psychoterapeuta Mokotów'. Otrzymuję 10-15 zapytań miesięcznie tylko z wyszukiwarki.",
+    author: "Justyna Wrona",
+    role: "Psychoterapeutka integracyjna"
+  },
+  {
+    quote: "Społeczność terapeutów to nieocenione wsparcie. Regularne superwizje i wymiana doświadczeń podniosły jakość mojej pracy.",
+    author: "Piotr Nowak",
+    role: "Terapeuta psychodynamiczny"
+  }
+];
+
+const seo = {
+  title: "Korzyści dla Psychoterapeutów - Unikalna Strona + Narzędzia | Profesjonalna Psychoterapia",
+  description: "Otrzymaj unikalną stronę TOP 3 w Google + integracje social media. ✓ 100% personalizacja SEO ✓ Facebook, LinkedIn, Instagram ✓ Społeczność terapeutów ✓ Superwizje",
+};
+---
+
+<BaseLayout {...seo}>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-orange-50 to-white px-6 md:px-8 pt-32 pb-20 md:pt-40 md:pb-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-orange-50 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+        Dla profesjonalnych psychoterapeutów
+      </p>
+      <h1 class="font-serif text-5xl md:text-6xl mb-6 text-gray-900">
+        Twoja praktyka<br>na najwyższym poziomie
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
+        Unikalna strona domowa z gwarancją TOP 3 w Google, 
+        zintegrowane narzędzia social media i wsparcie społeczności ekspertów.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Benefits -->
+  <section class="py-24 px-6 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8">
+        {mainBenefits.map((benefit) => (
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold mb-3">{benefit.title}</h3>
+            <p class="text-gray-600 mb-6">{benefit.desc}</p>
+            <ul class="space-y-3">
+              {benefit.features.map(feature => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span class="text-sm text-gray-600">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Excellence -->
+  <section class="py-24 px-6 md:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">
+            Gwarancja widoczności
+          </p>
+          <h2 class="font-serif text-4xl md:text-5xl mb-6">
+            100% unikalna strona =<br>TOP 3 w Google
+          </h2>
+          <p class="text-lg text-gray-600 mb-8">
+            Każdy terapeuta otrzymuje w pełni spersonalizowaną stronę z unikalną 
+            treścią. To nie szablon - to Twoja indywidualna prezentacja online, 
+            która dominuje w wynikach wyszukiwania.
+          </p>
+          <div class="grid grid-cols-2 gap-6">
+            {seoFeatures.map(feature => (
+              <div>
+                <div class="text-3xl font-light text-orange-600">{feature.value}</div>
+                <div class="text-sm text-gray-500">{feature.metric}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-sm">
+          <h3 class="font-medium mb-6">Co otrzymujesz:</h3>
+          <ul class="space-y-4">
+            {[
+              "Osobista domena imie-nazwisko.pl",
+              "Unikalne teksty o Twoich specjalizacjach",
+              "Artykuły eksperckie budujące autorytet",
+              "Lokalne pozycjonowanie (miasto, dzielnica)",
+              "Optymalizacja pod głosowe wyszukiwania",
+              "Miesięczne raporty pozycji i ruchu"
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                <span class="text-gray-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Media Integration -->
+  <section class="py-24 px-6 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <header class="text-center mb-16">
+        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">
+          Zintegrowane narzędzia
+        </p>
+        <h2 class="font-serif text-4xl md:text-5xl mb-4">
+          Buduj zasięg na wszystkich<br>platformach jednocześnie
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Jeden panel do zarządzania całą obecnością online. 
+          Publikuj, analizuj i rozwijaj swoją markę osobistą.
+        </p>
+      </header>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {tools.map((tool) => (
+          <div class="bg-white rounded-xl p-6 border border-gray-100 hover:border-orange-200 transition-colors">
+            <h3 class="font-semibold mb-2">{tool.name}</h3>
+            <p class="text-sm text-gray-600">{tool.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 bg-orange-50 rounded-2xl p-8 text-center">
+        <p class="text-lg text-gray-700">
+          <strong>Średni wzrost zasięgu:</strong> +350% w pierwszych 3 miesiącach
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section class="py-24 px-6 md:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <h3 class="font-serif text-2xl mb-6">Co oferuje społeczność:</h3>
+            <div class="space-y-6">
+              {[
+                {
+                  title: "Superwizje grupowe",
+                  desc: "Co 2 tygodnie, online, prowadzone przez ekspertów"
+                },
+                {
+                  title: "Forum praktyków",
+                  desc: "Bezpieczna przestrzeń do wymiany doświadczeń"
+                },
+                {
+                  title: "Mentoring 1:1",
+                  desc: "Wsparcie doświadczonych terapeutów"
+                },
+                {
+                  title: "Webinary rozwojowe",
+                  desc: "Comiesięczne szkolenia z najnowszych metod"
+                }
+              ].map(item => (
+                <div>
+                  <h4 class="font-medium mb-1">{item.title}</h4>
+                  <p class="text-sm text-gray-600">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">
+            Społeczność ekspertów
+          </p>
+          <h2 class="font-serif text-4xl md:text-5xl mb-6">
+            Nigdy nie jesteś<br>sam w swojej praktyce
+          </h2>
+          <p class="text-lg text-gray-600">
+            Dołączając do Profesjonalnej Psychoterapii, stajesz się częścią 
+            ekskluzywnej społeczności najlepszych terapeutów w Polsce. 
+            To miejsce wymiany doświadczeń, wsparcia i ciągłego rozwoju.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-24 px-6 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="font-serif text-3xl md:text-4xl mb-16 text-center">
+        Opinie naszych terapeutów
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        {testimonials.map((testimonial) => (
+          <blockquote class="bg-white rounded-2xl p-8 border border-gray-100">
+            <p class="text-lg mb-6 text-gray-700">"{testimonial.quote}"</p>
+            <footer>
+              <cite class="not-italic">
+                <div class="font-semibold">{testimonial.author}</div>
+                <div class="text-sm text-gray-500">{testimonial.role}</div>
+              </cite>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 px-6 md:px-8 bg-gradient-to-br from-orange-50 to-orange-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-white px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+        Aplikacja zajmuje tylko 10 minut
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl mb-6">
+        Dołącz do najlepszych
+      </h2>
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+        Rozwijaj swoją praktykę z unikalną stroną, narzędziami marketingowymi 
+        i wsparciem społeczności ekspertów.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/dolacz" class="bg-gray-900 text-white px-8 py-4 hover:bg-gray-800 transition-colors rounded-full font-medium">
+          Złóż aplikację
+        </a>
+        <a href="/#contact" class="bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200">
+          Najpierw porozmawiajmy
+        </a>
+      </div>
+      <p class="text-sm text-gray-500 mt-8">
+        Odpowiedź w ciągu 48h • Tylko 2-3 nowych terapeutów miesięcznie
+      </p>
+    </div>
+  </section>
+</BaseLayout>
