@@ -25,8 +25,8 @@ const seo = {
   <!-- Hero -->
   <section class="bg-gradient-to-b from-orange-50 via-white to-white px-6 md:px-8 pt-32 pb-20 md:pt-40 md:pb-32">
     <div class="max-w-4xl mx-auto text-center">
-      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-orange-50 px-4 py-2 rounded-full">
-        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+      <p class="inline-flex items-center gap-2 text-sm text-orange-700 mb-6 bg-orange-100 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></span>
         Dostępni terapeuci online i stacjonarnie
       </p>
       <h1 class="font-serif text-5xl md:text-7xl mb-6 text-gray-900" style="font-size: clamp(2.5rem, 5vw, 4.375rem);">
@@ -36,7 +36,7 @@ const seo = {
         Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. Każdy zasługuje na profesjonalną pomoc.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="#find" class="bg-orange-500 text-white px-8 py-4 hover:bg-orange-600 transition-colors rounded-full font-medium">
+        <a href="#find" class="bg-orange-600 text-white px-8 py-4 hover:bg-orange-700 transition-colors rounded-full font-medium">
           Zacznij szukać
         </a>
         <a href="#how" class="bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200">
@@ -64,7 +64,7 @@ const seo = {
   <section id="how" class="py-24 px-6 md:px-8 bg-gray-50">
     <div class="max-w-6xl mx-auto">
       <header class="text-center mb-16">
-        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">Jak to działa</p>
+        <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">Jak to działa</p>
         <h2 class="font-serif text-4xl md:text-5xl mb-4">
           Cztery proste kroki do<br>lepszego samopoczucia
         </h2>
@@ -76,7 +76,7 @@ const seo = {
       <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {processData.map((step) => (
           <li>
-            <strong class="text-6xl font-light text-orange-100 mb-6 block">{step.num}</strong>
+            <strong class="text-6xl font-light text-orange-200 mb-6 block">{step.num}</strong>
             <h3 class="text-xl font-medium mb-3">{step.title}</h3>
             <p class="text-sm text-gray-600">{step.desc}</p>
           </li>
@@ -84,7 +84,7 @@ const seo = {
       </ol>
       
       <div class="text-center mt-16">
-        <a href="#find" class="inline-flex items-center gap-2 text-orange-600 font-medium">
+        <a href="#find" class="inline-flex items-center gap-2 text-orange-700 font-medium">
           Rozpocznij teraz
           <svg class="w-5 h-5"><use href="/icons.svg#arrow-right"></use></svg>
         </a>
@@ -96,7 +96,7 @@ const seo = {
   <section id="find" class="py-24 px-6 md:px-8">
     <div class="max-w-7xl mx-auto">
       <header class="text-center mb-16">
-        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">Nasi terapeuci</p>
+        <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">Nasi terapeuci</p>
         <h2 class="font-serif text-4xl md:text-5xl mb-4">
           Wybrani specjaliści<br>gotowi Ci pomóc
         </h2>
@@ -126,7 +126,7 @@ const seo = {
       </ul>
       
       <div class="text-center mt-16">
-        <a href="/terapeuci" class="text-orange-600 font-medium">
+        <a href="/terapeuci" class="text-orange-700 font-medium">
           Zobacz wszystkich terapeutów (50+) →
         </a>
       </div>
@@ -139,7 +139,7 @@ const seo = {
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
           <header>
-            <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">O psychoterapii</p>
+            <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">O psychoterapii</p>
             <h2 class="font-serif text-4xl md:text-5xl mb-6">
               Czym jest psychoterapia i komu może pomóc?
             </h2>
@@ -164,7 +164,7 @@ const seo = {
                   'Chęć rozwoju osobistego'
                 ].map(item => (
                   <li class="flex items-start gap-3">
-                    <span class="w-1.5 h-1.5 bg-orange-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span class="w-1.5 h-1.5 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -181,7 +181,7 @@ const seo = {
                   'Terapia humanistyczna'
                 ].map(item => (
                   <li class="flex items-start gap-3">
-                    <span class="w-1.5 h-1.5 bg-orange-500 rounded-full mt-1.5 flex-shrink-0"></span>
+                    <span class="w-1.5 h-1.5 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -200,7 +200,7 @@ const seo = {
               </div>
             ))}
           </dl>
-          <a href="/faq" class="inline-flex items-center gap-2 text-orange-600 font-medium mt-8">
+          <a href="/faq" class="inline-flex items-center gap-2 text-orange-700 font-medium mt-8">
             Zobacz więcej pytań
             <svg class="w-4 h-4"><use href="/icons.svg#arrow-right"></use></svg>
           </a>
@@ -213,7 +213,7 @@ const seo = {
   <section id="articles" class="py-24 px-6 md:px-8">
     <div class="max-w-6xl mx-auto">
       <header class="text-center mb-16">
-        <p class="text-orange-600 font-medium mb-4 text-sm tracking-wide uppercase">Wiedza</p>
+        <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">Wiedza</p>
         <h2 class="font-serif text-4xl md:text-5xl mb-4">
           Artykuły o zdrowiu<br>psychicznym
         </h2>
@@ -231,8 +231,8 @@ const seo = {
                 class="bg-white rounded-2xl p-8 h-full border border-gray-100 hover:shadow-lg transition-shadow block"
               >
                 <header>
-                  <p class="text-xs font-semibold text-orange-600 mb-4 tracking-wide">{article.cat}</p>
-                  <h3 class="font-serif text-2xl mb-3 group-hover:text-orange-600 transition-colors">
+                  <p class="text-xs font-semibold text-orange-700 mb-4 tracking-wide">{article.cat}</p>
+                  <h3 class="font-serif text-2xl mb-3 group-hover:text-orange-700 transition-colors">
                     {article.title}
                   </h3>
                   <p class="text-sm text-gray-600 mb-6">{article.excerpt}</p>
@@ -248,7 +248,7 @@ const seo = {
       </ul>
       
       <div class="text-center mt-16">
-        <a href="/blog" class="text-orange-600 font-medium">Przejdź do bloga →</a>
+        <a href="/blog" class="text-orange-700 font-medium">Przejdź do bloga →</a>
       </div>
     </div>
   </section>
@@ -256,8 +256,8 @@ const seo = {
   <!-- CTA -->
   <section class="py-24 px-6 md:px-8 bg-gradient-to-br from-orange-50 to-orange-100">
     <div class="max-w-4xl mx-auto text-center">
-      <p class="inline-flex items-center gap-2 text-sm text-orange-600 mb-6 bg-white px-4 py-2 rounded-full">
-        <span class="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+      <p class="inline-flex items-center gap-2 text-sm text-orange-700 mb-6 bg-white px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></span>
         Bezpłatna pierwsza konsultacja u wybranych terapeutów
       </p>
       <h2 class="font-serif text-4xl md:text-5xl mb-6">Gotowy na pierwszy krok?</h2>
