@@ -22,25 +22,25 @@
       "avail": false
     },
     {
-      "name": "Piotr Wiśniewski",
-      "slug": "piotr-wisniewski",
+      "name": "Olga Puczyńska",
+      "slug": "olga-puczynska",
       "title": "Psychoterapeuta psychodynamiczny",
       "exp": 12,
       "spec": ["Kryzys egzystencjalny", "Relacje", "Rozwój osobisty"],
       "loc": "Żoliborz",
       "price": [220, 280],
-      "img": "justyna-wrona",
+      "img": "olga-puczynska",
       "avail": true
     },
     {
-      "name": "Katarzyna Dąbrowska",
-      "slug": "katarzyna-dabrowska",
+      "name": "Anna Grabińska",
+      "slug": "anna-grabinska",
       "title": "Terapeutka systemowa",
       "exp": 10,
       "spec": ["Terapia rodzin", "Nastolatki", "Konflikty rodzinne"],
       "loc": "Ursynów",
       "price": [200, 300],
-      "img": "justyna-wrona",
+      "img": "anna-grabinska",
       "avail": true
     }
   ]
