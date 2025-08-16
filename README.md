@@ -1,5 +1,4 @@
 # Astro Starter Kit: Basics
-
 https://www.theschooloflife.com/
 https://brittanychiang.com/
 https://processing.compress-or-die.com/webp-process
