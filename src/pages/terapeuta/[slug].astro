@@ -1,0 +1,31 @@
+---
+import therapistsData from '../../data/therapists.json';
+import MinimalTemplate from '../../components/therapist-templates/MinimalTemplate.astro';
+import WarmTemplate from '../../components/therapist-templates/WarmTemplate.astro';
+import IntegrativeTemplate from '../../components/therapist-templates/IntegrativeTemplate.astro';
+import MuseumTemplate from '../../components/therapist-templates/MuseumTemplate.astro';
+
+export async function getStaticPaths() {
+  return therapistsData.map((therapist) => ({
+    params: { slug: therapist.slug },
+    props: { therapist },
+  }));
+}
+
+const { therapist } = Astro.props;
+
+// Definiuj typ dla kluczy template
+type TemplateKey = 'minimal' | 'warm' | 'integrative' | 'museum';
+
+// Wybierz odpowiedni template na podstawie danych terapeuty
+const templates: Record<TemplateKey, any> = {
+  minimal: MinimalTemplate,
+  warm: WarmTemplate,
+  integrative: IntegrativeTemplate,
+  museum: MuseumTemplate
+};
+
+const SelectedTemplate = templates[therapist.template as TemplateKey] || templates.minimal;
+---
+
+<SelectedTemplate therapist={therapist} />

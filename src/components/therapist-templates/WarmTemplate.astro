@@ -1,0 +1,571 @@
+---
+import '../../styles/global.css';
+import Logo from '../Logo.astro';
+import SEO from '../SEO.astro';
+
+export interface Props {
+  therapist: any;
+}
+
+const { therapist } = Astro.props;
+const sections = therapist.sections;
+
+// SEO props
+const seoProps = {
+  title: `${therapist.name} - Psychoterapeuta Warszawa | Profesjonalna Psychoterapia`,
+  description: sections.hero?.intro || `${therapist.name} - ${therapist.title}. Doświadczenie: ${therapist.exp} lat. Specjalizacje: ${therapist.spec.join(', ')}. Lokalizacja: ${therapist.loc}.`,
+  canonical: `https://profesjonalna-psychoterapia.pl/terapeuta/${therapist.slug}`,
+  image: `/images/therapists/${therapist.img}.webp`
+};
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <SEO {...seoProps} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-stone-50 text-stone-900">
+    
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200">
+      <div class="max-w-screen-xl mx-auto px-8">
+        <div class="grid grid-cols-12 gap-6 h-20 items-center">
+          <div class="col-span-3">
+            <a href="/" class="text-lg tracking-wider">{therapist.name.toUpperCase()}</a>
+          </div>
+          <nav class="col-span-9 flex justify-end gap-10">
+            {sections.philosophy && (
+              <a href="#philosophy" class="group">
+                <span class="text-sm tracking-wide text-stone-600 group-hover:text-stone-900 transition-colors">
+                  Filozofia
+                </span>
+                <span class="block text-xs text-stone-400 tracking-wider">
+                  Philosophy
+                </span>
+              </a>
+            )}
+            {sections.services && (
+              <a href="#services" class="group">
+                <span class="text-sm tracking-wide text-stone-600 group-hover:text-stone-900 transition-colors">
+                  Praktyka
+                </span>
+                <span class="block text-xs text-stone-400 tracking-wider">
+                  Practice
+                </span>
+              </a>
+            )}
+            {sections.about && (
+              <a href="#about" class="group">
+                <span class="text-sm tracking-wide text-stone-600 group-hover:text-stone-900 transition-colors">
+                  O mnie
+                </span>
+                <span class="block text-xs text-stone-400 tracking-wider">
+                  About
+                </span>
+              </a>
+            )}
+            {sections.contact && (
+              <a href="#contact" class="group">
+                <span class="text-sm tracking-wide text-stone-600 group-hover:text-stone-900 transition-colors">
+                  Kontakt
+                </span>
+                <span class="block text-xs text-stone-400 tracking-wider">
+                  Contact
+                </span>
+              </a>
+            )}
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    {sections.hero && (
+      <section class="min-h-screen flex items-center px-8 pt-20">
+        <div class="max-w-screen-xl mx-auto w-full">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 lg:col-span-10">
+              {sections.hero.tagline && (
+                <p class="text-emerald-700 mb-4 tracking-wider text-sm">
+                  {sections.hero.tagline}
+                </p>
+              )}
+              
+              <h1 class="font-serif text-6xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight mb-8" 
+                  set:html={sections.hero.headline} />
+              
+              <p class="text-2xl md:text-3xl font-light text-stone-700 mb-12 max-w-3xl leading-relaxed">
+                {sections.hero.intro}
+              </p>
+              
+              <div class="flex flex-wrap gap-4 mb-16">
+                <a href="#contact" class="bg-amber-400 text-stone-900 px-8 py-4 font-medium hover:bg-amber-500 transition-all">
+                  Umów bezpłatną konsultację
+                </a>
+                <a href="#philosophy" class="border border-stone-400 px-8 py-4 hover:bg-stone-900 hover:text-stone-50 transition-all">
+                  Moje podejście
+                </a>
+              </div>
+              
+              {sections.hero.stats && (
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-stone-200">
+                  {sections.hero.stats.map((stat: any) => (
+                    <div>
+                      <p class="text-3xl font-light">{stat.value}</p>
+                      <p class="text-sm text-stone-600 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              <!-- Link powrotny -->
+              <div class="mt-24">
+                <a href="/#find" class="text-sm text-stone-400 hover:text-stone-600 transition-colors inline-flex items-center gap-2">
+                  ← Zobacz innych terapeutów
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Philosophy -->
+    {sections.philosophy && (
+      <section id="philosophy" class="py-32 px-8 bg-white">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6 mb-20">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-xs tracking-[0.3em] text-amber-600">FILOZOFIA</p>
+            </div>
+            <div class="col-span-12 md:col-span-8">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
+                {sections.philosophy.title}
+              </h2>
+              <p class="text-xl text-stone-700 leading-relaxed">
+                {sections.philosophy.intro}
+              </p>
+            </div>
+          </div>
+
+          {sections.philosophy.pillars && (
+            <div class="grid grid-cols-12 gap-6">
+              {sections.philosophy.pillars.map((pillar: any) => (
+                <div class="col-span-12 md:col-span-4 text-center">
+                  <div class="inline-block mb-6">
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-br from-amber-50 to-emerald-50 flex items-center justify-center">
+                      <span class="text-3xl font-serif">{pillar.number}</span>
+                    </div>
+                  </div>
+                  <h3 class="text-2xl font-serif mb-2">{pillar.title}</h3>
+                  <p class="text-xs text-stone-500 tracking-wider mb-4">{pillar.titleEn}</p>
+                  <p class="text-stone-600 leading-relaxed">{pillar.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {sections.philosophy.quote && (
+            <div class="grid grid-cols-12 gap-6 mt-32">
+              <div class="col-span-12 md:col-span-10 md:col-start-2">
+                <blockquote class="text-center py-16 border-t border-b border-stone-300">
+                  <p class="font-serif text-3xl md:text-4xl text-stone-700 mb-6 italic">
+                    „{sections.philosophy.quote.text}"
+                  </p>
+                  <cite class="text-stone-500 text-sm tracking-wider">
+                    — {sections.philosophy.quote.author}
+                  </cite>
+                </blockquote>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Services -->
+    {sections.services && (
+      <section id="services" class="py-32 px-8">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6 mb-20">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-xs tracking-[0.3em] text-amber-600">PRAKTYKA</p>
+            </div>
+            <div class="col-span-12 md:col-span-6">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight">
+                Różne ścieżki prowadzące do tego samego celu — wewnętrznego spokoju
+              </h2>
+            </div>
+          </div>
+
+          {sections.services.map((service: any, index: number) => (
+            <div class="mb-24">
+              <div class="grid grid-cols-12 gap-6 py-16 border-t border-stone-300">
+                <div class="col-span-12 md:col-span-1 text-4xl text-stone-300 font-light">
+                  {service.id}
+                </div>
+                <div class="col-span-12 md:col-span-11">
+                  <p class="text-xs tracking-[0.3em] text-amber-600 mb-4">{service.category}</p>
+                  <h3 class="font-serif text-3xl md:text-4xl mb-4">{service.title}</h3>
+                  <p class="text-xl text-stone-600 mb-8">{service.description}</p>
+                  
+                  {service.quote && (
+                    <div class="bg-amber-50 px-8 py-6 mb-8">
+                      <p class="font-serif text-lg italic text-stone-700">{service.quote}</p>
+                      <p class="text-sm text-stone-500 mt-2">{service.author}</p>
+                    </div>
+                  )}
+                  
+                  <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12 md:col-span-6">
+                      <h4 class="font-medium mb-4">Obszary pracy:</h4>
+                      <ul class="space-y-2">
+                        {service.features.map((feature: string) => (
+                          <li class="flex items-center gap-3 text-stone-600">
+                            <span class="w-1 h-1 bg-amber-400 rounded-full"></span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div class="col-span-12 md:col-span-6">
+                      <div class="bg-stone-100 p-6">
+                        <h4 class="font-medium mb-4">Informacje praktyczne:</h4>
+                        <dl class="space-y-2 text-sm">
+                          <div class="flex justify-between">
+                            <dt class="text-stone-500">Czas trwania:</dt>
+                            <dd class="font-medium">{service.practical.duration}</dd>
+                          </div>
+                          <div class="flex justify-between">
+                            <dt class="text-stone-500">Częstotliwość:</dt>
+                            <dd class="font-medium">{service.practical.frequency}</dd>
+                          </div>
+                          <div class="flex justify-between">
+                            <dt class="text-stone-500">Inwestycja:</dt>
+                            <dd class="font-medium">{service.practical.price}</dd>
+                          </div>
+                          <div class="flex justify-between">
+                            <dt class="text-stone-500">Format:</dt>
+                            <dd class="font-medium">{service.practical.location}</dd>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div class="text-center py-16 bg-gradient-to-br from-amber-50 to-emerald-50">
+            <p class="text-xl text-stone-700 mb-6">
+              Pierwsza konsultacja jest bezpłatna i niezobowiązująca
+            </p>
+            <a href="#contact" class="inline-block bg-stone-900 text-white px-10 py-4 hover:bg-stone-800 transition-colors">
+              Zarezerwuj termin
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- About -->
+    {sections.about && (
+      <section id="about" class="py-32 px-8 bg-white">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-8">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-xs tracking-[0.3em] text-amber-600">O MNIE</p>
+            </div>
+            <div class="col-span-12 md:col-span-5">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
+                {sections.about.title || therapist.name}
+              </h2>
+              <div class="prose prose-lg text-stone-600">
+                {sections.about.bio.map((paragraph: string) => (
+                  <p class="mb-6">{paragraph}</p>
+                ))}
+              </div>
+              
+              <!-- Specjalizacje -->
+              {therapist.spec && (
+                <div class="mt-8">
+                  <p class="text-xs tracking-[0.3em] text-stone-500 mb-4">SPECJALIZACJE</p>
+                  <div class="flex flex-wrap gap-2">
+                    {therapist.spec.map((spec: string) => (
+                      <span class="text-xs bg-amber-50 px-3 py-1 rounded-full text-stone-600">
+                        {spec}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div class="col-span-12 md:col-span-4 md:col-start-9">
+              <img 
+                src={`/images/therapists/${therapist.img}.webp`}
+                alt={therapist.name}
+                class="w-full mb-4"
+                loading="lazy"
+              />
+              <div class="bg-stone-100 p-6">
+                {sections.about.quote && (
+                  <p class="text-sm text-stone-600 mb-4">
+                    <em>„{sections.about.quote}"</em>
+                  </p>
+                )}
+                <div class="space-y-2 text-sm">
+                  <p><strong>Wykształcenie:</strong> {sections.about.credentials.education}</p>
+                  <p><strong>Certyfikat:</strong> {sections.about.credentials.certificate}</p>
+                  <p><strong>Superwizja:</strong> {sections.about.credentials.supervision}</p>
+                  <p><strong>Języki:</strong> {sections.about.credentials.languages}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Insights -->
+    {sections.insights && (
+      <section id="insights" class="py-32 px-8">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6 mb-16">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-xs tracking-[0.3em] text-amber-600">REFLEKSJE</p>
+            </div>
+            <div class="col-span-12 md:col-span-8">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-6">
+                Przemyślenia o życiu, umyśle i relacjach
+              </h2>
+              <p class="text-xl text-stone-600">
+                Czasem dzielę się obserwacjami z gabinetu i życia. To próba uchwycenia 
+                ulotnych prawd o ludzkiej kondycji.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12 gap-8">
+            {sections.insights.map((insight: any) => (
+              <div class="col-span-12 md:col-span-4">
+                <article class="border border-stone-300 p-8 hover:border-amber-400 transition-all">
+                  <p class="text-xs tracking-[0.3em] text-amber-600 mb-4">
+                    {insight.category}
+                  </p>
+                  <h3 class="font-serif text-2xl mb-4 leading-tight">
+                    {insight.title}
+                  </h3>
+                  <p class="text-stone-600 mb-6 leading-relaxed">
+                    {insight.excerpt}
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <a href="#" class="text-sm font-medium hover:text-amber-600 transition-colors">
+                      Czytaj dalej →
+                    </a>
+                    <time class="text-sm text-stone-400">{insight.date}</time>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Space -->
+    {sections.space && (
+      <section class="py-32 px-8 bg-stone-100">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6 mb-16">
+            <div class="col-span-12 text-center">
+              <p class="text-xs tracking-[0.3em] text-amber-600 mb-4">PRZESTRZEŃ</p>
+              <h2 class="font-serif text-4xl md:text-5xl">
+                {sections.space.title}
+              </h2>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-8">
+              <img 
+                src="/images/office/przykladowy-gabinet-1.webp"
+                alt="Gabinet terapeutyczny"
+                class="w-full"
+                loading="lazy"
+              />
+            </div>
+            <div class="col-span-12 md:col-span-4">
+              <div class="h-full flex flex-col justify-center">
+                <p class="text-lg text-stone-600 leading-relaxed">
+                  {sections.space.description}
+                </p>
+                <address class="mt-8 not-italic text-sm text-stone-500">
+                  {therapist.loc}<br />
+                  Warszawa<br />
+                  {sections.space.address?.metro || "Metro: Centrum"}
+                </address>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Contact -->
+    {sections.contact && (
+      <section id="contact" class="py-32 px-8 bg-gradient-to-br from-amber-400 to-amber-300">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-10 md:col-start-2 text-center">
+              <h2 class="font-serif text-4xl md:text-5xl mb-8">
+                {sections.contact.title}
+              </h2>
+              <p class="text-xl mb-12 max-w-2xl mx-auto">
+                {sections.contact.subtitle}
+              </p>
+              
+              <div class="bg-white p-12 max-w-3xl mx-auto">
+                <div class="grid grid-cols-12 gap-8">
+                  <div class="col-span-12 md:col-span-6 text-left">
+                    <h3 class="font-medium mb-6">Kontakt bezpośredni</h3>
+                    <div class="space-y-4">
+                      <div>
+                        <p class="text-sm text-stone-500 mb-1">Telefon</p>
+                        <a href={`tel:${sections.contact.phone}`} class="text-2xl hover:text-amber-600 transition-colors">
+                          {sections.contact.phone}
+                        </a>
+                      </div>
+                      <div>
+                        <p class="text-sm text-stone-500 mb-1">Email</p>
+                        <a href={`mailto:${sections.contact.email}`} class="text-lg hover:text-amber-600 transition-colors">
+                          {sections.contact.email}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-span-12 md:col-span-6 text-left">
+                    <h3 class="font-medium mb-6">Godziny przyjęć</h3>
+                    <div class="space-y-2 text-stone-600">
+                      <p>{sections.contact.hours.weekdays}</p>
+                      <p>{sections.contact.hours.saturday}</p>
+                      <p class="text-sm pt-4 text-stone-500">
+                        * {sections.contact.hours.note}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mt-12 pt-12 border-t border-stone-200">
+                  <p class="text-stone-600 mb-6">
+                    {sections.contact.responseTime}
+                  </p>
+                  <a href={`mailto:${sections.contact.email}`} class="inline-block bg-stone-900 text-white px-10 py-4 hover:bg-stone-800 transition-colors">
+                    Napisz do mnie
+                  </a>
+                </div>
+                
+                <!-- Status dostępności -->
+                <div class="mt-8 p-4 bg-stone-50 rounded">
+                  <p class="text-sm">
+                    {therapist.avail ? (
+                      <span class="flex items-center justify-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        Obecnie przyjmuję nowych pacjentów
+                      </span>
+                    ) : (
+                      <span class="flex items-center justify-center gap-2">
+                        <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                        Lista oczekujących
+                      </span>
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Footer - spójny z głównym serwisem -->
+    <footer class="bg-gray-50 border-t border-gray-100 px-8 py-16">
+      <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 md:col-span-6">
+            <Logo size="s" class="mb-4" />
+            <p class="text-sm text-gray-600 mb-4">
+              Platforma łącząca osoby potrzebujące wsparcia psychologicznego z certyfikowanymi psychoterapeutami.
+            </p>
+            <p class="text-sm text-gray-500">
+              © 2024 Profesjonalna-psychoterapia.pl
+            </p>
+          </div>
+          
+          <div class="col-span-12 md:col-span-3">
+            <h3 class="font-medium mb-4">Zobacz także</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="/#find" class="hover:text-gray-900">Inni terapeuci</a></li>
+              <li><a href="/jak-to-dziala" class="hover:text-gray-900">Jak to działa</a></li>
+              <li><a href="/faq" class="hover:text-gray-900">FAQ</a></li>
+              <li><a href="/#articles" class="hover:text-gray-900">Artykuły</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-span-12 md:col-span-3">
+            <h3 class="font-medium mb-4">Informacje</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="/polityka-prywatnosci" class="hover:text-gray-900">Polityka prywatności</a></li>
+              <li><a href="/regulamin" class="hover:text-gray-900">Regulamin</a></li>
+              <li><a href="/kontakt" class="hover:text-gray-900">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 400;
+      }
+      
+      .font-serif {
+        font-family: 'Crimson Pro', Georgia, serif;
+        font-weight: 400;
+      }
+
+      p { line-height: 1.618; }
+      h1, h2, h3 { letter-spacing: -0.02em; }
+      a { transition: all 0.3s ease; }
+      img { image-rendering: -webkit-optimize-contrast; }
+
+      ::selection {
+        background: #fbbf24;
+        color: #1c1917;
+      }
+
+      html { scroll-behavior: smooth; }
+    </style>
+
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            const offset = 100;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

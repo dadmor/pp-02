@@ -1,0 +1,447 @@
+---
+import '../../styles/global.css';
+import Logo from '../Logo.astro';
+import SEO from '../SEO.astro';
+
+export interface Props {
+  therapist: any;
+}
+
+const { therapist } = Astro.props;
+const sections = therapist.sections;
+
+// SEO props
+const seoProps = {
+  title: `${therapist.name} - Psychoterapeuta Warszawa | Profesjonalna Psychoterapia`,
+  description: sections.hero?.intro || `${therapist.name} - ${therapist.title}. Doświadczenie: ${therapist.exp} lat. Specjalizacje: ${therapist.spec.join(', ')}. Lokalizacja: ${therapist.loc}.`,
+  canonical: `https://profesjonalna-psychoterapia.pl/terapeuta/${therapist.slug}`,
+  image: `/images/therapists/${therapist.img}.webp`
+};
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <SEO {...seoProps} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-white text-neutral-900 antialiased">
+    
+    <!-- Nagłówek - czysty swiss design -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md">
+      <div class="max-w-screen-xl mx-auto px-6 py-6">
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-3">
+            <a href="/" class="text-sm tracking-[0.2em] text-neutral-900 hover:text-neutral-600 transition-colors font-light">{therapist.name.toUpperCase()}</a>
+          </div>
+          <nav class="col-span-9 flex justify-end items-center gap-12">
+            {sections.philosophy && (
+              <a href="#philosophy" class="text-sm tracking-[0.05em] hover:text-neutral-600 transition-colors font-light">
+                Filozofia
+              </a>
+            )}
+            {sections.services && (
+              <a href="#practice" class="text-sm tracking-[0.05em] hover:text-neutral-600 transition-colors font-light">
+                Praktyka
+              </a>
+            )}
+            {sections.about && (
+              <a href="#about" class="text-sm tracking-[0.05em] hover:text-neutral-600 transition-colors font-light">
+                O mnie
+              </a>
+            )}
+            {sections.contact && (
+              <a href="#contact" class="text-sm tracking-[0.05em] hover:text-neutral-600 transition-colors font-light">
+                Kontakt
+              </a>
+            )}
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero - czysty swiss design -->
+    {sections.hero && (
+      <section class="min-h-screen flex items-center px-6 pt-24 relative overflow-hidden">
+        <!-- Subtelne zdjęcie po prawej -->
+        <div class="hidden lg:block absolute right-0 top-0 w-96 h-screen">
+          <img 
+            src={`/images/therapists/${therapist.img}.webp`}
+            alt={therapist.name}
+            class="w-full h-full object-cover grayscale opacity-10"
+            style="mask-image: linear-gradient(to right, transparent, black 50%);"
+          />
+        </div>
+        
+        <div class="max-w-screen-xl mx-auto w-full relative z-10">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-10 md:col-start-2">
+              <h1 class="font-serif text-6xl md:text-7xl lg:text-8xl leading-[0.9] mb-16" set:html={sections.hero.headline} />
+              
+              <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 md:col-span-6">
+                  <p class="text-lg leading-[1.75] text-neutral-700 font-light">
+                    {sections.hero.intro}
+                  </p>
+                </div>
+                
+                <!-- Minimalne info -->
+                <div class="col-span-12 md:col-span-4 md:col-start-9">
+                  <dl class="space-y-6 text-sm">
+                    <div>
+                      <dt class="text-neutral-400 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
+                      <dd class="text-neutral-900">{therapist.exp} lat praktyki</dd>
+                    </div>
+                    <div>
+                      <dt class="text-neutral-400 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
+                      <dd class="text-neutral-900">{therapist.loc}, Warszawa</dd>
+                    </div>
+                    <div>
+                      <dt class="text-neutral-400 tracking-widest text-xs mb-1">STATUS</dt>
+                      <dd class="text-neutral-900">
+                        {therapist.avail ? 'Przyjmuje pacjentów' : 'Lista oczekujących'}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+              
+              <!-- Delikatny link powrotny -->
+              <div class="mt-24">
+                <a href="/#find" class="text-sm text-neutral-400 hover:text-neutral-600 transition-colors inline-flex items-center gap-2">
+                  ← Zobacz innych terapeutów
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Filozofia - zachowany styl -->
+    {sections.philosophy && (
+      <section id="philosophy" class="py-32 px-6">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6 mb-24">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">FILOZOFIA</p>
+            </div>
+            <div class="col-span-12 md:col-span-8">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
+                {sections.philosophy.title}
+              </h2>
+              <div class="space-y-6 text-lg leading-relaxed text-neutral-700">
+                {sections.philosophy.content.map((paragraph: string) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {sections.philosophy.quote && (
+            <div class="grid grid-cols-12 gap-6">
+              <div class="col-span-12 md:col-span-10 md:col-start-2 py-16 border-t border-b border-neutral-200">
+                <blockquote class="font-serif text-3xl md:text-4xl leading-snug text-center italic">
+                  „{sections.philosophy.quote.text}"
+                </blockquote>
+                <p class="text-center mt-6 text-neutral-500">— {sections.philosophy.quote.author}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Praktyka/Usługi - delikatnie dopasowane kolory -->
+    {sections.services && (
+      <section id="practice" class="py-32 px-6 bg-orange-50/30">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6 mb-16">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">PRAKTYKA</p>
+            </div>
+            <div class="col-span-12 md:col-span-6">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight">
+                Formy pracy terapeutycznej
+              </h2>
+            </div>
+          </div>
+
+          <div class="space-y-16">
+            {sections.services.map((service: any, index: number) => (
+              <div class="grid grid-cols-12 gap-6 py-12 border-t border-neutral-200">
+                <div class="col-span-12 md:col-span-1 text-2xl text-orange-600 font-light">
+                  {service.number}
+                </div>
+                <div class="col-span-12 md:col-span-4">
+                  <h3 class="text-2xl mb-4">{service.title}</h3>
+                  <p class="text-neutral-600 leading-relaxed">{service.description}</p>
+                  
+                  <!-- Specjalizacje dla tej usługi -->
+                  {index === 0 && therapist.spec && (
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      {therapist.spec.map((spec: string) => (
+                        <span class="text-xs bg-white px-3 py-1 rounded-full text-gray-600">
+                          {spec}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div class="col-span-12 md:col-span-2 md:col-start-11 text-sm text-neutral-500">
+                  {service.details}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="grid grid-cols-12 gap-6 mt-24">
+            <div class="col-span-12 md:col-span-6 md:col-start-4 text-center">
+              <p class="text-neutral-600 mb-6">
+                Pierwsza konsultacja jest bezpłatna. 
+                Wszystkie sesje mogą być prowadzone w języku polskim lub angielskim.
+              </p>
+              <a href="#contact" class="inline-block bg-gray-900 text-white px-12 py-4 text-sm tracking-widest hover:bg-gray-800 transition-colors rounded-full">
+                UMÓW SESJĘ
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- O mnie - zachowany styl -->
+    {sections.about && (
+      <section id="about" class="py-32 px-6">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">O MNIE</p>
+            </div>
+            <div class="col-span-12 md:col-span-5">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
+                {therapist.name}
+              </h2>
+              <div class="space-y-6 text-lg leading-relaxed text-neutral-700">
+                {sections.about.bio.map((paragraph: string) => (
+                  <p>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+            <div class="col-span-12 md:col-span-4 md:col-start-9">
+              <img 
+                src={`/images/therapists/${therapist.img}.webp`}
+                alt={therapist.name}
+                class="w-full grayscale hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
+              />
+              {sections.about.imageCaption && (
+                <p class="text-sm text-neutral-500 mt-4">
+                  {sections.about.imageCaption}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <!-- Kwalifikacje -->
+          {sections.about.credentials && (
+            <div class="grid grid-cols-12 gap-6 mt-24">
+              <div class="col-span-12 md:col-span-8 md:col-start-3">
+                <div class="grid grid-cols-3 gap-12 py-12 border-t border-neutral-200">
+                  <div>
+                    <p class="text-sm text-neutral-500 mb-2">Wykształcenie</p>
+                    <p class="text-sm" set:html={sections.about.credentials.education}></p>
+                  </div>
+                  <div>
+                    <p class="text-sm text-neutral-500 mb-2">Certyfikaty</p>
+                    <p class="text-sm" set:html={sections.about.credentials.certification}></p>
+                  </div>
+                  <div>
+                    <p class="text-sm text-neutral-500 mb-2">Specjalizacja</p>
+                    <p class="text-sm" set:html={sections.about.credentials.specialization}></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Gabinet -->
+    {sections.office && (
+      <section class="py-32 px-6 bg-gray-50">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-10 md:col-start-2">
+              <img 
+                src={`/images/office/${therapist.slug}-office.jpg`}
+                alt="Gabinet terapeutyczny"
+                class="w-full grayscale hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
+              />
+              <div class="grid gri  d-cols-12 gap-6 mt-8">
+                <div class="col-span-12 md:col-span-6">
+                  <p class="text-sm tracking-[0.2em] text-neutral-400 font-light mb-4">PRZESTRZEŃ</p>
+                  <p class="text-lg leading-[1.75] font-light">
+                    {sections.office.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Kontakt -->
+    {sections.contact && (
+      <section id="contact" class="py-32 px-6">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 md:col-span-2">
+              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">KONTAKT</p>
+            </div>
+            <div class="col-span-12 md:col-span-8">
+              <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-16">
+                {sections.contact.headline}
+              </h2>
+              
+              <div class="grid grid-cols-12 gap-6">
+                <div class="col-span-12 md:col-span-4">
+                  <p class="text-sm text-neutral-500 mb-2">Telefon</p>
+                  <p class="text-2xl mb-8">{sections.contact.phone}</p>
+                  
+                  <p class="text-sm text-neutral-500 mb-2">E-mail</p>
+                  <p class="text-lg mb-8">{sections.contact.email}</p>
+                </div>
+                
+                {sections.office && (
+                  <div class="col-span-12 md:col-span-4">
+                    <p class="text-sm text-neutral-500 mb-2">Gabinet</p>
+                    <p class="text-lg mb-1">{sections.office.address.street}</p>
+                    <p class="text-lg mb-1">{sections.office.address.city}</p>
+                    <p class="text-lg mb-8">{sections.office.address.country}</p>
+                  </div>
+                )}
+                
+                <div class="col-span-12 md:col-span-4">
+                  <p class="text-sm text-neutral-500 mb-2">Godziny przyjęć</p>
+                  <p class="text-lg mb-1">{sections.contact.hours.weekdays}</p>
+                  <p class="text-lg mb-1">{sections.contact.hours.time}</p>
+                  <p class="text-lg">{sections.contact.hours.note}</p>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="mt-16 p-8 bg-orange-50 rounded-2xl">
+                <p class="text-lg mb-4">
+                  {therapist.avail ? (
+                    <span>Obecnie przyjmuję nowych pacjentów. Zapraszam do kontaktu.</span>
+                  ) : (
+                    <span>Obecnie prowadzę listę oczekujących. Zachęcam do kontaktu w celu umówienia się na termin w przyszłości.</span>
+                  )}
+                </p>
+                <div class="flex flex-wrap gap-4">
+                  <a href={`tel:${sections.contact.phone.replace(/\s/g, '')}`} class="bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
+                    Zadzwoń teraz
+                  </a>
+                  <a href={`mailto:${sections.contact.email}`} class="bg-white text-gray-900 px-8 py-3 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors">
+                    Napisz e-mail
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Stopka - dopasowana do głównego serwisu -->
+    <footer class="bg-gray-50 border-t border-gray-100 px-6 py-16">
+      <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-12 gap-6 mb-12">
+          <div class="col-span-12 md:col-span-6">
+            <Logo size="s" class="mb-4" />
+            <p class="text-sm text-gray-600 mb-4">
+              Platforma łącząca osoby potrzebujące wsparcia psychologicznego z certyfikowanymi psychoterapeutami.
+            </p>
+            <p class="text-sm text-gray-500">
+              © 2024 Profesjonalna-psychoterapia.pl
+            </p>
+          </div>
+          <div class="col-span-12 md:col-span-3">
+            <h3 class="font-medium mb-4">Zobacz także</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="/#find" class="hover:text-gray-900">Inni terapeuci</a></li>
+              <li><a href="/jak-to-dziala" class="hover:text-gray-900">Jak to działa</a></li>
+              <li><a href="/faq" class="hover:text-gray-900">FAQ</a></li>
+              <li><a href="/#articles" class="hover:text-gray-900">Artykuły</a></li>
+            </ul>
+          </div>
+          <div class="col-span-12 md:col-span-3">
+            <h3 class="font-medium mb-4">Informacje</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li><a href="/polityka-prywatnosci" class="hover:text-gray-900">Polityka prywatności</a></li>
+              <li><a href="/regulamin" class="hover:text-gray-900">Regulamin</a></li>
+              <li><a href="/kontakt" class="hover:text-gray-900">Kontakt</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: 400;
+        letter-spacing: -0.011em;
+      }
+      
+      .font-serif {
+        font-family: 'EB Garamond', 'Georgia', serif;
+        font-weight: 400;
+      }
+
+      /* Emphasis - subtelny akcent */
+      em {
+        font-style: italic;
+        color: #a8a29e; /* stone-400 - bardzo subtelny */
+      }
+
+      p { line-height: 1.75; }
+      h1, h2, h3 { letter-spacing: -0.02em; }
+      
+      /* Selection - minimalne */
+      ::selection { 
+        background: #fafaf9; /* stone-50 */
+        color: #1c1917; /* stone-900 */
+      }
+      
+      html { scroll-behavior: smooth; }
+    </style>
+
+    <script>
+      // Smooth scroll with offset for fixed header
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+          if (href) {
+            const target = document.querySelector(href);
+            if (target) {
+              const offset = 100;
+              const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
