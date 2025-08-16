@@ -1,0 +1,46 @@
+[
+    {
+      "name": "Justyna Wrona",
+      "slug": "justyna-wrona",
+      "title": "Psychoterapeutka integracyjna",
+      "exp": 15,
+      "spec": ["Lęk i depresja", "Trauma", "Terapia par"],
+      "loc": "Mokotów",
+      "price": [200, 250],
+      "img": "justyna-wrona",
+      "avail": true
+    },
+    {
+      "name": "Ewelina Mastalerz",
+      "slug": "ewelina-mastalerz",
+      "title": "Terapeutka poznawczo-behawioralna",
+      "exp": 8,
+      "spec": ["Zaburzenia lękowe", "OCD", "Fobia społeczna"],
+      "loc": "Śródmieście",
+      "price": [180, 220],
+      "img": "ewelina-mastalerz",
+      "avail": false
+    },
+    {
+      "name": "Piotr Wiśniewski",
+      "slug": "piotr-wisniewski",
+      "title": "Psychoterapeuta psychodynamiczny",
+      "exp": 12,
+      "spec": ["Kryzys egzystencjalny", "Relacje", "Rozwój osobisty"],
+      "loc": "Żoliborz",
+      "price": [220, 280],
+      "img": "justyna-wrona",
+      "avail": true
+    },
+    {
+      "name": "Katarzyna Dąbrowska",
+      "slug": "katarzyna-dabrowska",
+      "title": "Terapeutka systemowa",
+      "exp": 10,
+      "spec": ["Terapia rodzin", "Nastolatki", "Konflikty rodzinne"],
+      "loc": "Ursynów",
+      "price": [200, 300],
+      "img": "justyna-wrona",
+      "avail": true
+    }
+  ]

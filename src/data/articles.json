@@ -1,0 +1,26 @@
+[
+    {
+      "cat": "PORADNIK",
+      "title": "Jak wybrać dobrego psychoterapeutę?",
+      "slug": "jak-wybrac-dobrego-psychoterapeute",
+      "excerpt": "Na co zwrócić uwagę przy wyborze terapeuty i jakie pytania zadać podczas pierwszego spotkania.",
+      "author": "dr Anna Kowalska",
+      "time": 7
+    },
+    {
+      "cat": "EDUKACJA",
+      "title": "Czym różni się psycholog od psychoterapeuty?",
+      "slug": "czym-rozni-sie-psycholog-od-psychoterapeuty",
+      "excerpt": "Wyjaśniamy różnice między profesjami związanymi ze zdrowiem psychicznym.",
+      "author": "Redakcja",
+      "time": 5
+    },
+    {
+      "cat": "PIERWSZA POMOC",
+      "title": "Kiedy warto pójść do terapeuty?",
+      "slug": "kiedy-warto-pojsc-do-terapeuty",
+      "excerpt": "Sygnały, które mogą wskazywać, że warto skorzystać z profesjonalnej pomocy.",
+      "author": "Maria Nowak",
+      "time": 6
+    }
+  ]

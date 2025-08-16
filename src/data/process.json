@@ -1,0 +1,22 @@
+[
+    {
+      "num": "01",
+      "title": "Wypełnij ankietę",
+      "desc": "Krótki formularz pomoże nam zrozumieć Twoje potrzeby i dopasować odpowiedniego terapeutę."
+    },
+    {
+      "num": "02",
+      "title": "Otrzymaj rekomendacje",
+      "desc": "Na podstawie Twoich odpowiedzi zaproponujemy 2-3 terapeutów najlepiej dopasowanych do Twoich potrzeb."
+    },
+    {
+      "num": "03",
+      "title": "Umów konsultację",
+      "desc": "Skontaktuj się z wybranym terapeutą. Pierwsza konsultacja jest często bezpłatna lub w obniżonej cenie."
+    },
+    {
+      "num": "04",
+      "title": "Rozpocznij terapię",
+      "desc": "Jeśli poczujesz, że to dobry wybór, rozpocznij regularną pracę terapeutyczną."
+    }
+  ]
