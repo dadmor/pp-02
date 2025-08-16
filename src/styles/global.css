@@ -23,24 +23,13 @@ html {
   border-width: 0;
 }
 
-/* Header shadow przy scrollu - czyste CSS */
-@supports (animation-timeline: scroll()) {
-  @keyframes header-shadow {
-    to { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-  }
-  
-  header {
-    animation: header-shadow linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
-  }
-}
-
-/* Fallback dla starszych przeglądarek */
-@supports not (animation-timeline: scroll()) {
-  body:not(:has(#main:target)) header {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
+/* Focus visible dla dostępności */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+label:focus-visible {
+  outline: 2px solid #ea580c;
+  outline-offset: 2px;
 }
 
 /* Animacja pulse */
