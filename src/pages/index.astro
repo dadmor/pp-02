@@ -36,7 +36,7 @@ const seo = {
         Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. Każdy zasługuje na profesjonalną pomoc.
       </p>
       <nav class="flex flex-wrap gap-4 justify-center">
-        <a href="#find" class="bg-orange-600 text-white px-8 py-4 hover:bg-orange-700 transition-colors rounded-full font-medium">
+        <a href="#find" class="bg-orange-700 text-white px-8 py-4 hover:bg-orange-800 transition-colors rounded-full font-medium">
           Zacznij szukać
         </a>
         <a href="#how" class="bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200">
@@ -61,7 +61,7 @@ const seo = {
   </section>
 
   <!-- How it works -->
-  <section id="how" class="py-24 px-6 md:px-8 bg-gray-50">
+  <section id="how" class="py-24 px-6 md:px-8 bg-white">
     <div class="max-w-6xl mx-auto">
       <header class="text-center mb-16">
         <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">Jak to działa</p>
@@ -76,7 +76,7 @@ const seo = {
       <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {processData.map((step) => (
           <li>
-            <strong class="text-6xl font-light text-orange-200 mb-6 block">{step.num}</strong>
+            <strong class="text-6xl font-light text-orange-600 mb-6 block">{step.num}</strong>
             <h3 class="text-xl font-medium mb-3">{step.title}</h3>
             <p class="text-sm text-gray-600">{step.desc}</p>
           </li>
