@@ -419,6 +419,11 @@ const seoProps = {
       p { line-height: 1.75; }
       h1, h2, h3 { letter-spacing: -0.02em; }
       
+      /* Explicit font-size dla h1 w sekcjach - fix dla Chrome warning */
+      section h1 {
+        font-size: inherit; /* Używa rozmiaru z klas Tailwind */
+      }
+      
       /* Selection - minimalne */
       ::selection { 
         background: #fafaf9; /* stone-50 */
