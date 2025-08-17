@@ -1,0 +1,706 @@
+---
+// src/pages/index.astro
+import '../../styles/global.css';
+
+const navigation = [
+  { id: "00", label: "序章", translation: "Introduction" },
+  { id: "01", label: "哲学", translation: "Philosophy" },
+  { id: "02", label: "実践", translation: "Practice" },
+  { id: "03", label: "空間", translation: "Space" },
+  { id: "04", label: "接触", translation: "Contact" }
+];
+
+const services = [
+  {
+    kanji: "個",
+    title: "Individual",
+    subtitle: "Terapia indywidualna",
+    description: "Przestrzeń tylko dla Ciebie. Praca z lękiem, depresją, traumą i kryzysami życiowymi.",
+    specs: ["50 min", "200-250 PLN", "In-person / Online"]
+  },
+  {
+    kanji: "対",
+    title: "Couples",
+    subtitle: "Terapia par",
+    description: "Odbudowa więzi i komunikacji. Praca nad intymnością i wspólną wizją.",
+    specs: ["80 min", "300-350 PLN", "In-person only"]
+  },
+  {
+    kanji: "群",
+    title: "Groups",
+    subtitle: "Grupy rozwojowe",
+    description: "Siła wspólnoty. Mindfulness, regulacja emocji, asertywność.",
+    specs: ["120 min", "80 PLN/session", "8-week cycles"]
+  }
+];
+
+const principles = [
+  { number: "一", concept: "Presence", meaning: "Całkowite bycie tu i teraz" },
+  { number: "二", concept: "Acceptance", meaning: "Przyjęcie tego, co jest" },
+  { number: "三", concept: "Integration", meaning: "Scalanie wszystkich części siebie" }
+];
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MARIA NOWAK — 心理療法</title>
+    <meta name="description" content="Psychoterapia łącząca wschodnią mądrość z zachodnią nauką. Warszawa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-black text-white overflow-x-hidden">
+    
+    <!-- Cyber Grid Background -->
+    <div class="fixed inset-0 opacity-10 pointer-events-none">
+      <div class="absolute inset-0" style="background-image: linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px); background-size: 50px 50px;"></div>
+    </div>
+
+    <!-- Brutalist Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-cyan-500/20">
+      <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 border-2 border-cyan-500 flex items-center justify-center font-japanese text-xl">
+              心
+            </div>
+            <div>
+              <h1 class="text-sm font-bold tracking-[0.2em]">MARIA NOWAK</h1>
+              <p class="text-[10px] tracking-[0.3em] text-cyan-500">PSYCHOTHERAPIST</p>
+            </div>
+          </div>
+
+          <!-- Menu -->
+          <div class="hidden lg:flex items-center gap-8">
+            {navigation.map((item) => (
+              <a href={`#section-${item.id}`} class="group">
+                <span class="block text-2xl font-japanese group-hover:text-cyan-500 transition-colors">
+                  {item.label}
+                </span>
+                <span class="block text-[10px] tracking-wider text-gray-500 text-center">
+                  {item.translation}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <!-- Status -->
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-xs text-gray-400">ONLINE</span>
+            </div>
+            <div class="text-xs font-mono text-cyan-500">
+              <span id="time">00:00:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section - Brutalist Style -->
+    <section id="section-00" class="min-h-screen flex items-center px-6 lg:px-12 pt-20">
+      <div class="max-w-screen-2xl mx-auto w-full">
+        <div class="grid grid-cols-12 gap-6">
+          <!-- Main Content -->
+          <div class="col-span-12 lg:col-span-8">
+            <!-- Glitch Text Effect -->
+            <div class="mb-8">
+              <h2 class="text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter">
+                <span class="block glitch" data-text="THERAPY">THERAPY</span>
+                <span class="block text-transparent" style="-webkit-text-stroke: 2px white;">FOR THE</span>
+                <span class="block text-cyan-500 glitch" data-text="FUTURE">FUTURE</span>
+              </h2>
+            </div>
+
+            <!-- Japanese Philosophy Quote -->
+            <div class="mb-12 max-w-2xl">
+              <p class="text-3xl font-japanese mb-4 text-gray-300">
+                心の静けさは、真の強さ
+              </p>
+              <p class="text-sm text-gray-500 tracking-wider">
+                "Spokój umysłu jest prawdziwą siłą"
+              </p>
+            </div>
+
+            <!-- Description -->
+            <p class="text-xl md:text-2xl font-light leading-relaxed max-w-3xl mb-12 text-gray-300">
+              Łączę wschodnią mądrość z zachodnią psychologią, tworząc przestrzeń 
+              dla głębokiej transformacji. W świecie chaosu, oferuję chwilę ciszy.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-wrap gap-4">
+              <a href="#section-04" class="group relative px-8 py-4 border-2 border-cyan-500 overflow-hidden">
+                <span class="relative z-10 text-cyan-500 font-bold tracking-wider group-hover:text-black transition-colors">
+                  INITIALIZE SESSION
+                </span>
+                <div class="absolute inset-0 bg-cyan-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+              </a>
+              <a href="#section-01" class="px-8 py-4 border border-gray-700 text-gray-400 hover:border-white hover:text-white transition-all">
+                EXPLORE SYSTEM
+              </a>
+            </div>
+          </div>
+
+          <!-- Stats Panel -->
+          <div class="col-span-12 lg:col-span-4">
+            <div class="bg-black/50 border border-cyan-500/30 p-6">
+              <h3 class="text-xs font-mono text-cyan-500 mb-6">SYSTEM STATUS</h3>
+              
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-gray-500">EXPERIENCE</span>
+                    <span class="font-mono">15 YEARS</span>
+                  </div>
+                  <div class="h-2 bg-gray-900 overflow-hidden">
+                    <div class="h-full bg-cyan-500 w-4/5"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-gray-500">SESSIONS COMPLETED</span>
+                    <span class="font-mono">500+</span>
+                  </div>
+                  <div class="h-2 bg-gray-900 overflow-hidden">
+                    <div class="h-full bg-green-500 w-full"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-gray-500">CLIENT SATISFACTION</span>
+                    <span class="font-mono">98%</span>
+                  </div>
+                  <div class="h-2 bg-gray-900 overflow-hidden">
+                    <div class="h-full bg-purple-500 w-[98%]"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-gray-800">
+                <p class="text-xs text-gray-500 font-mono">
+                  CERTIFICATIONS:<br/>
+                  [PTP] [CBT] [EMDR] [MBSR]
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy - Japanese Inspired -->
+    <section id="section-01" class="py-32 px-6 lg:px-12 border-t border-gray-900">
+      <div class="max-w-screen-2xl mx-auto">
+        <!-- Section Header -->
+        <div class="mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="text-6xl font-bold text-gray-900">01</span>
+            <div>
+              <h3 class="text-3xl font-japanese">哲学</h3>
+              <p class="text-xs tracking-[0.3em] text-gray-500">PHILOSOPHY</p>
+            </div>
+          </div>
+          <div class="w-full h-[1px] bg-gradient-to-r from-cyan-500 to-transparent"></div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-12 gap-8 lg:gap-16">
+          <div class="col-span-12 lg:col-span-6">
+            <h4 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+              Therapy is not<br/>
+              about <span class="text-cyan-500">fixing</span> you.<br/>
+              You are not <span class="line-through">broken</span>.
+            </h4>
+            
+            <p class="text-xl text-gray-400 leading-relaxed">
+              W mojej praktyce łączę współczesną psychoterapię z filozofią Wschodu. 
+              Wierzę, że prawdziwa zmiana przychodzi nie przez walkę z sobą, 
+              ale przez głęboką akceptację i zrozumienie.
+            </p>
+          </div>
+
+          <div class="col-span-12 lg:col-span-6">
+            <div class="space-y-8">
+              {principles.map((principle) => (
+                <div class="flex gap-6 items-start group">
+                  <div class="text-5xl font-japanese text-gray-700 group-hover:text-cyan-500 transition-colors">
+                    {principle.number}
+                  </div>
+                  <div>
+                    <h5 class="text-xl font-bold mb-1">{principle.concept}</h5>
+                    <p class="text-gray-400">{principle.meaning}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Zen Quote -->
+        <div class="mt-24 py-16 border-y border-gray-900">
+          <blockquote class="max-w-4xl mx-auto text-center">
+            <p class="text-3xl md:text-4xl font-light mb-6 text-gray-300">
+              "Before enlightenment, chop wood, carry water.<br/>
+              After enlightenment, chop wood, carry water."
+            </p>
+            <cite class="text-sm text-gray-500">— Zen Proverb</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services - Tech Cards -->
+    <section id="section-02" class="py-32 px-6 lg:px-12 bg-gray-950">
+      <div class="max-w-screen-2xl mx-auto">
+        <!-- Section Header -->
+        <div class="mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="text-6xl font-bold text-gray-900">02</span>
+            <div>
+              <h3 class="text-3xl font-japanese">実践</h3>
+              <p class="text-xs tracking-[0.3em] text-gray-500">PRACTICE MODES</p>
+            </div>
+          </div>
+          <div class="w-full h-[1px] bg-gradient-to-r from-purple-500 to-transparent"></div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <div class="group relative">
+              {/* Card */}
+              <div class="relative bg-black border border-gray-800 p-8 h-full overflow-hidden transition-all duration-300 group-hover:border-cyan-500">
+                {/* Background Kanji */}
+                <div class="absolute top-0 right-0 text-[200px] font-japanese text-gray-900/20 leading-none select-none">
+                  {service.kanji}
+                </div>
+                
+                {/* Content */}
+                <div class="relative z-10">
+                  <div class="mb-6">
+                    <h4 class="text-2xl font-bold mb-1">{service.title}</h4>
+                    <p class="text-sm text-cyan-500">{service.subtitle}</p>
+                  </div>
+                  
+                  <p class="text-gray-400 mb-8">
+                    {service.description}
+                  </p>
+                  
+                  <div class="space-y-2 text-xs font-mono">
+                    {service.specs.map((spec) => (
+                      <div class="flex items-center gap-2">
+                        <span class="text-cyan-500">▸</span>
+                        <span class="text-gray-500">{spec}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div class="mt-8">
+                    <a href="#section-04" class="inline-flex items-center gap-2 text-sm font-bold tracking-wider text-gray-600 group-hover:text-cyan-500 transition-colors">
+                      ACCESS MODULE
+                      <span class="text-xl">→</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Hover Effect */}
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- System Message -->
+        <div class="mt-16 p-6 bg-black/50 border border-cyan-500/20">
+          <p class="text-xs font-mono text-cyan-500 mb-2">SYSTEM MESSAGE:</p>
+          <p class="text-sm text-gray-400">
+            First consultation session is complimentary. All therapy modules can be executed 
+            in Polish or English language protocols. Remote sessions available via secure connection.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About/Space - Minimalist -->
+    <section id="section-03" class="py-32 px-6 lg:px-12 border-t border-gray-900">
+      <div class="max-w-screen-2xl mx-auto">
+        <!-- Section Header -->
+        <div class="mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="text-6xl font-bold text-gray-900">03</span>
+            <div>
+              <h3 class="text-3xl font-japanese">空間</h3>
+              <p class="text-xs tracking-[0.3em] text-gray-500">SPACE & PRACTITIONER</p>
+            </div>
+          </div>
+          <div class="w-full h-[1px] bg-gradient-to-r from-green-500 to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-8 lg:gap-16">
+          <!-- Bio -->
+          <div class="col-span-12 lg:col-span-5">
+            <h4 class="text-3xl font-bold mb-8">Maria Nowak</h4>
+            
+            <div class="space-y-6 text-gray-400">
+              <p>
+                Od 15 lat pracuję jako psychoterapeutka, łącząc zachodnią 
+                psychologię z wschodnią filozofią mindfulness.
+              </p>
+              <p>
+                Ukończyłam psychologię kliniczną na Uniwersytecie Warszawskim 
+                oraz 4-letnie szkolenie w nurcie CBT. Regularnie pogłębiam 
+                swoją praktykę poprzez medytację i superwizję.
+              </p>
+              <p>
+                Wierzę, że każdy człowiek posiada wewnętrzną mądrość. 
+                Moją rolą jest pomóc Ci ją odkryć.
+              </p>
+            </div>
+
+            <!-- Credentials Grid -->
+            <div class="mt-12 grid grid-cols-2 gap-6">
+              <div class="text-xs">
+                <p class="text-gray-600 mb-2">EDUCATION</p>
+                <p class="font-mono">UW Clinical Psychology</p>
+                <p class="font-mono">PTP Certification</p>
+              </div>
+              <div class="text-xs">
+                <p class="text-gray-600 mb-2">METHODS</p>
+                <p class="font-mono">CBT / EMDR</p>
+                <p class="font-mono">Mindfulness / Somatic</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Space Images -->
+          <div class="col-span-12 lg:col-span-7">
+            <div class="grid grid-cols-2 gap-4">
+              <img 
+                src="https://images.unsplash.com/photo-1609743522653-52354461eb27?w=600&h=400&fit=crop"
+                alt="Therapy space"
+                class="w-full h-full object-cover filter grayscale contrast-125"
+              />
+              <img 
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop"
+                alt="Meditation room"
+                class="w-full h-full object-cover filter grayscale contrast-125"
+              />
+            </div>
+            
+            <!-- Location -->
+            <div class="mt-8 p-6 bg-black/50 border border-gray-800">
+              <h5 class="text-xs font-mono text-green-500 mb-4">LOCATION DATA</h5>
+              <div class="grid grid-cols-2 gap-6 text-sm">
+                <div>
+                  <p class="text-gray-600">Address:</p>
+                  <p class="font-mono">Mokotowska 27/3</p>
+                  <p class="font-mono">00-560 Warsaw</p>
+                </div>
+                <div>
+                  <p class="text-gray-600">Coordinates:</p>
+                  <p class="font-mono">52.2297° N</p>
+                  <p class="font-mono">21.0122° E</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact - Terminal Style -->
+    <section id="section-04" class="py-32 px-6 lg:px-12 bg-black border-t border-gray-900">
+      <div class="max-w-screen-2xl mx-auto">
+        <!-- Section Header -->
+        <div class="mb-16">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="text-6xl font-bold text-gray-900">04</span>
+            <div>
+              <h3 class="text-3xl font-japanese">接触</h3>
+              <p class="text-xs tracking-[0.3em] text-gray-500">ESTABLISH CONNECTION</p>
+            </div>
+          </div>
+          <div class="w-full h-[1px] bg-gradient-to-r from-yellow-500 to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-8 lg:gap-16">
+          <!-- Terminal -->
+          <div class="col-span-12 lg:col-span-8">
+            <div class="bg-black border border-green-500/30 p-8 font-mono">
+              <div class="flex items-center gap-2 mb-6">
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span class="text-xs text-gray-600 ml-4">therapy-session-init.exe</span>
+              </div>
+              
+              <div class="space-y-4 text-green-500">
+                <p class="text-sm">
+                  <span class="text-gray-600">$</span> Initializing therapy connection...
+                </p>
+                <p class="text-sm">
+                  <span class="text-gray-600">$</span> Free consultation: <span class="text-cyan-500">AVAILABLE</span>
+                </p>
+                <p class="text-sm">
+                  <span class="text-gray-600">$</span> Session duration: <span class="text-yellow-500">20 minutes</span>
+                </p>
+                <p class="text-sm">
+                  <span class="text-gray-600">$</span> Purpose: <span class="text-white">Compatibility check</span>
+                </p>
+                
+                <div class="pt-4">
+                  <p class="text-sm mb-4">
+                    <span class="text-gray-600">$</span> Enter contact method:
+                  </p>
+                  
+                  <div class="space-y-2 pl-4">
+                    <p class="text-sm">
+                      [1] Phone: <span class="text-cyan-500">+48 123 456 789</span>
+                    </p>
+                    <p class="text-sm">
+                      [2] Email: <span class="text-cyan-500">maria@nowak-therapy.pl</span>
+                    </p>
+                    <p class="text-sm">
+                      [3] Form: <span class="text-yellow-500">See interface →</span>
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="pt-4">
+                  <p class="text-sm">
+                    <span class="text-gray-600">$</span> Response time: <span class="text-green-500">< 24h</span>
+                  </p>
+                  <p class="text-sm">
+                    <span class="text-gray-600">$</span> Available slots: <span class="text-green-500">CHECKING...</span>
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mt-8 flex items-center gap-2">
+                <span class="text-green-500 animate-pulse">▊</span>
+                <input 
+                  type="text" 
+                  placeholder="Type 'START' to begin..."
+                  class="bg-transparent border-none outline-none text-green-500 flex-grow"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Access -->
+          <div class="col-span-12 lg:col-span-4">
+            <div class="space-y-6">
+              <div class="p-6 border border-gray-800">
+                <h5 class="text-xs font-mono text-yellow-500 mb-4">OFFICE HOURS</h5>
+                <div class="space-y-2 text-sm">
+                  <p class="font-mono text-gray-400">MON-FRI: 09:00-19:00</p>
+                  <p class="font-mono text-gray-400">SAT: 10:00-14:00</p>
+                  <p class="font-mono text-gray-400">SUN: CLOSED</p>
+                </div>
+              </div>
+              
+              <div class="p-6 border border-gray-800">
+                <h5 class="text-xs font-mono text-purple-500 mb-4">QUICK ACCESS</h5>
+                <a href="tel:+48123456789" class="block w-full py-3 border border-purple-500 text-center text-purple-500 hover:bg-purple-500 hover:text-black transition-all font-bold">
+                  CALL NOW
+                </a>
+              </div>
+              
+              <div class="p-6 border border-gray-800">
+                <h5 class="text-xs font-mono text-cyan-500 mb-4">LANGUAGES</h5>
+                <div class="flex gap-4">
+                  <span class="px-4 py-2 border border-cyan-500/50 text-xs">Polski</span>
+                  <span class="px-4 py-2 border border-cyan-500/50 text-xs">English</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - Minimal Tech -->
+    <footer class="border-t border-gray-900 px-6 lg:px-12 py-16">
+      <div class="max-w-screen-2xl mx-auto">
+        <div class="grid grid-cols-12 gap-8 mb-12">
+          <div class="col-span-12 lg:col-span-6">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-8 h-8 border border-cyan-500 flex items-center justify-center font-japanese text-sm">
+                心
+              </div>
+              <div>
+                <p class="font-bold tracking-wider">MARIA NOWAK</p>
+                <p class="text-xs text-gray-600">Psychotherapy System v15.0</p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-600 max-w-md">
+              Advanced therapeutic protocols combining Eastern wisdom with Western psychology. 
+              Certified by Polish Psychotherapy Association. System continuously updated.
+            </p>
+          </div>
+          
+          <div class="col-span-12 lg:col-span-3">
+            <p class="text-xs font-mono text-gray-600 mb-4">SITEMAP</p>
+            <div class="space-y-2 text-xs">
+              <a href="#section-01" class="block text-gray-500 hover:text-cyan-500">Philosophy.exe</a>
+              <a href="#section-02" class="block text-gray-500 hover:text-cyan-500">Practice.dll</a>
+              <a href="#section-03" class="block text-gray-500 hover:text-cyan-500">Space.ini</a>
+              <a href="#" class="block text-gray-500 hover:text-cyan-500">Privacy.txt</a>
+            </div>
+          </div>
+          
+          <div class="col-span-12 lg:col-span-3">
+            <p class="text-xs font-mono text-gray-600 mb-4">SYSTEM STATUS</p>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-xs">
+                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span class="text-gray-500">All systems operational</span>
+              </div>
+              <div class="flex items-center gap-2 text-xs">
+                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                <span class="text-gray-500">Updates available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="pt-8 border-t border-gray-900 flex justify-between items-center">
+          <p class="text-xs text-gray-600 font-mono">
+            © 2024 MARIA NOWAK. BUILD 15.0.3. ALL RIGHTS RESERVED.
+          </p>
+          <p class="text-xs text-gray-600 font-mono">
+            DESIGNED FOR HUMANS
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      body {
+        font-family: 'Space Grotesk', -apple-system, sans-serif;
+      }
+      
+      .font-japanese {
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+
+      /* Glitch effect */
+      .glitch {
+        position: relative;
+      }
+      
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .glitch::before {
+        animation: glitch-1 0.5s infinite;
+        color: #00ffff;
+        z-index: -1;
+      }
+      
+      .glitch::after {
+        animation: glitch-2 0.5s infinite;
+        color: #ff00ff;
+        z-index: -2;
+      }
+      
+      @keyframes glitch-1 {
+        0% {
+          clip: rect(44px, 450px, 56px, 0);
+          transform: translate(0);
+        }
+        5% {
+          clip: rect(15px, 450px, 78px, 0);
+          transform: translate(-2px, -1px);
+        }
+        10% {
+          clip: rect(90px, 450px, 12px, 0);
+          transform: translate(1px, 1px);
+        }
+        /* ... more keyframes */
+        100% {
+          clip: rect(44px, 450px, 56px, 0);
+          transform: translate(0);
+        }
+      }
+      
+      @keyframes glitch-2 {
+        0% {
+          clip: rect(65px, 450px, 119px, 0);
+          transform: translate(0);
+        }
+        5% {
+          clip: rect(32px, 450px, 90px, 0);
+          transform: translate(2px, 1px);
+        }
+        /* ... more keyframes */
+        100% {
+          clip: rect(65px, 450px, 119px, 0);
+          transform: translate(0);
+        }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #00ffff;
+      }
+    </style>
+
+    <script>
+      // Time display
+      function updateTime() {
+        const now = new Date();
+        const time = now.toTimeString().split(' ')[0];
+        document.getElementById('time').textContent = time;
+      }
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Terminal typing effect
+      const terminal = document.querySelector('input[placeholder="Type \'START\' to begin..."]');
+      if (terminal) {
+        terminal.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter' && this.value.toUpperCase() === 'START') {
+            window.location.href = '#section-04';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
