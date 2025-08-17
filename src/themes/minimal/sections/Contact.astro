@@ -1,0 +1,87 @@
+---
+// ŚCIEŻKA: src/themes/minimal/sections/Contact.astro
+export interface Props {
+  data: {
+    headline: string;
+    phone: string;
+    email: string;
+    hours: {
+      weekdays: string;
+      time: string;
+      note?: string;
+    };
+    availability?: boolean;
+    buttons?: Array<{
+      text: string;
+      href: string;
+      primary?: boolean;
+    }>;
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section id="contact" class="py-32 px-6">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-2">
+        <p class="text-sm tracking-[0.2em] text-slate-800 font-light">KONTAKT</p>
+      </div>
+      <div class="col-span-12 md:col-span-8">
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-16">
+          {data.headline}
+        </h2>
+        
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 md:col-span-4">
+            <p class="text-sm text-neutral-500 mb-2">Telefon</p>
+            <p class="text-2xl mb-8">{data.phone}</p>
+            
+            <p class="text-sm text-neutral-500 mb-2">E-mail</p>
+            <p class="text-lg mb-8">{data.email}</p>
+          </div>
+          
+          <div class="col-span-12 md:col-span-4">
+            <p class="text-sm text-neutral-500 mb-2">Godziny przyjęć</p>
+            <p class="text-lg mb-1">{data.hours.weekdays}</p>
+            <p class="text-lg mb-1">{data.hours.time}</p>
+            {data.hours.note && (
+              <p class="text-lg">{data.hours.note}</p>
+            )}
+          </div>
+        </div>
+
+        {(data.availability !== undefined || data.buttons) && (
+          <div class="mt-16 p-8 bg-orange-50 rounded-2xl">
+            {data.availability !== undefined && (
+              <p class="text-lg mb-4">
+                {data.availability ? (
+                  <span>Obecnie przyjmuję nowych pacjentów. Zapraszam do kontaktu.</span>
+                ) : (
+                  <span>Obecnie prowadzę listę oczekujących. Zachęcam do kontaktu w celu umówienia się na termin w przyszłości.</span>
+                )}
+              </p>
+            )}
+            
+            {data.buttons && (
+              <div class="flex flex-wrap gap-4">
+                {data.buttons.map((btn) => (
+                  <a 
+                    href={btn.href} 
+                    class={btn.primary 
+                      ? "bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors"
+                      : "bg-white text-gray-900 px-8 py-3 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+                    }
+                  >
+                    {btn.text}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

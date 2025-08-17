@@ -1,0 +1,80 @@
+---
+// ŚCIEŻKA: src/themes/minimal/sections/Hero.astro
+export interface Props {
+  data: {
+    headline: string;
+    intro: string;
+    experience?: string;
+    location?: string;
+    availability?: boolean;
+    backLink?: {
+      text: string;
+      href: string;
+    };
+  };
+  settings?: {
+    layout?: 'centered' | 'split';
+    typography?: 'serif' | 'sans';
+  };
+}
+
+const { data, settings = {} } = Astro.props;
+const { layout = 'centered', typography = 'serif' } = settings;
+
+const headlineClass = typography === 'serif' 
+  ? 'font-serif text-6xl md:text-7xl lg:text-8xl' 
+  : 'font-sans text-5xl md:text-6xl lg:text-7xl font-light tracking-tight';
+---
+
+<section class="min-h-screen flex items-center px-6 pt-24">
+  <div class="max-w-screen-xl mx-auto w-full">
+    <div class="grid grid-cols-12 gap-6">
+      <div class={layout === 'centered' ? 'col-span-12 md:col-span-10 md:col-start-2' : 'col-span-12'}>
+        <h1 class={`${headlineClass} leading-[0.9] mb-16`} set:html={data.headline} />
+        
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 md:col-span-6">
+            <p class="text-lg leading-[1.75] text-neutral-700 font-light">
+              {data.intro}
+            </p>
+          </div>
+          
+          {(data.experience || data.location || data.availability !== undefined) && (
+            <div class="col-span-12 md:col-span-4 md:col-start-9">
+              <dl class="space-y-6 text-sm">
+                {data.experience && (
+                  <div>
+                    <dt class="text-neutral-500 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
+                    <dd class="text-neutral-900">{data.experience}</dd>
+                  </div>
+                )}
+                {data.location && (
+                  <div>
+                    <dt class="text-neutral-500 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
+                    <dd class="text-neutral-900">{data.location}</dd>
+                  </div>
+                )}
+                {data.availability !== undefined && (
+                  <div>
+                    <dt class="text-neutral-500 tracking-widest text-xs mb-1">STATUS</dt>
+                    <dd class="text-neutral-900">
+                      {data.availability ? 'Przyjmuje pacjentów' : 'Lista oczekujących'}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </div>
+          )}
+        </div>
+        
+        {data.backLink && (
+          <div class="mt-24">
+            <a href={data.backLink.href} class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors inline-flex items-center gap-2">
+              ← {data.backLink.text}
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

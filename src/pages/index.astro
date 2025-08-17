@@ -1,33 +1,16 @@
 ---
-// src/pages/index.astro
-import HomeTemplate from '../components/templates/HomeTemplate.astro';
-import therapistsData from '../data/therapists.json';
-import processData from '../data/process.json';
-import articlesData from '../data/articles.json';
-import faqData from '../data/faq.json';
+// ŚCIEŻKA: src/pages/index.astro
+import ThemeRenderer from '../components/ThemeRenderer.astro';
+import { getContent } from '../lib/content';
 
-const homeData = {
-  hero: {
-    badge: "Dostępni terapeuci online i stacjonarnie",
-    titleLine1: "Znajdź terapeutę,",
-    titleLine2: "który Cię zrozumie",
-    subtitle: "Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. Każdy zasługuje na profesjonalną pomoc.",
-    buttons: [
-      { text: "Zacznij szukać", href: "#find", primary: true },
-      { text: "Jak to działa?", href: "#how", primary: false }
-    ],
-    stats: [
-      { value: "50+", label: "sprawdzonych terapeutów" },
-      { value: "1000+", label: "przeprowadzonych sesji" },
-      { value: "95%", label: "zadowolonych klientów" },
-      { value: "24h", label: "średni czas odpowiedzi" }
-    ]
-  },
-  process: processData,
-  therapists: therapistsData.slice(0, 4),
-  articles: articlesData,
-  faqs: faqData
-};
+const content = await getContent('pages/index');
+
+// Jeśli content nie istnieje, użyj zapasowych danych
+if (!content) {
+  console.error('Failed to load content for index page');
+  // Możesz przekierować na 404 lub pokazać błąd
+  return Astro.redirect('/404');
+}
 ---
 
-<HomeTemplate data={homeData} />
+<ThemeRenderer content={content} />

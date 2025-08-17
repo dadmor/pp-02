@@ -1,0 +1,223 @@
+{
+    "// ŚCIEŻKA": "src/content/pages/index.json",
+    "theme": "default",
+    "meta": {
+      "title": "Profesjonalna Psychoterapia Warszawa - Znajdź Psychoterapeutę | 50+ Specjalistów",
+      "description": "Znajdź psychoterapeutę w Warszawie. ✓ 50+ sprawdzonych specjalistów ✓ Terapia indywidualna, par, rodzin ✓ CBT, psychodynamiczna, systemowa ✓ Ceny 150-350 PLN"
+    },
+    "sections": [
+      {
+        "type": "hero",
+        "data": {
+          "badge": "Dostępni terapeuci online i stacjonarnie",
+          "titleLine1": "Znajdź terapeutę,",
+          "titleLine2": "który Cię zrozumie",
+          "subtitle": "Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. Każdy zasługuje na profesjonalną pomoc.",
+          "buttons": [
+            {
+              "text": "Zacznij szukać",
+              "href": "#find",
+              "primary": true
+            },
+            {
+              "text": "Jak to działa?",
+              "href": "#how",
+              "primary": false
+            }
+          ],
+          "stats": [
+            {
+              "value": "50+",
+              "label": "sprawdzonych terapeutów"
+            },
+            {
+              "value": "1000+",
+              "label": "przeprowadzonych sesji"
+            },
+            {
+              "value": "95%",
+              "label": "zadowolonych klientów"
+            },
+            {
+              "value": "24h",
+              "label": "średni czas odpowiedzi"
+            }
+          ]
+        }
+      },
+      {
+        "type": "process",
+        "data": {
+          "eyebrow": "Jak to działa",
+          "title": "Cztery proste kroki do",
+          "titleHighlight": "lepszego samopoczucia",
+          "subtitle": "Proces doboru terapeuty jest prosty i przemyślany, aby zapewnić Ci najlepsze dopasowanie.",
+          "steps": [
+            {
+              "num": "01",
+              "title": "Wypełnij ankietę",
+              "desc": "Krótki formularz pomoże nam zrozumieć Twoje potrzeby i dopasować odpowiedniego terapeutę."
+            },
+            {
+              "num": "02",
+              "title": "Otrzymaj rekomendacje",
+              "desc": "Na podstawie Twoich odpowiedzi zaproponujemy 2-3 terapeutów najlepiej dopasowanych do Twoich potrzeb."
+            },
+            {
+              "num": "03",
+              "title": "Umów konsultację",
+              "desc": "Skontaktuj się z wybranym terapeutą. Pierwsza konsultacja jest często bezpłatna lub w obniżonej cenie."
+            },
+            {
+              "num": "04",
+              "title": "Rozpocznij terapię",
+              "desc": "Jeśli poczujesz, że to dobry wybór, rozpocznij regularną pracę terapeutyczną."
+            }
+          ],
+          "cta": {
+            "text": "Rozpocznij teraz",
+            "href": "#find"
+          }
+        }
+      },
+      {
+        "type": "therapists",
+        "data": {
+          "eyebrow": "Nasi terapeuci",
+          "title": "Wybrani specjaliści",
+          "titleHighlight": "gotowi Ci pomóc",
+          "subtitle": "Wszyscy nasi terapeuci są certyfikowani i posiadają wieloletnie doświadczenie. Wybierz kogoś, kto najlepiej odpowiada Twoim potrzebom.",
+          "filters": [
+            "Wszyscy",
+            "Terapia indywidualna",
+            "Terapia par",
+            "Online"
+          ],
+          "therapistIds": [
+            "justyna-wrona",
+            "ewelina-mastalerz", 
+            "olga-puczynska",
+            "anna-grabinska"
+          ],
+          "cta": {
+            "text": "Zobacz wszystkich terapeutów (50+)",
+            "href": "/terapeuci"
+          }
+        }
+      },
+      {
+        "type": "about",
+        "data": {
+          "eyebrow": "O psychoterapii",
+          "title": "Czym jest psychoterapia i komu może pomóc?",
+          "content": [
+            "Psychoterapia to proces leczenia problemów emocjonalnych i psychicznych poprzez rozmowę z wykwalifikowanym specjalistą. To przestrzeń, gdzie możesz bezpiecznie eksplorować swoje myśli, uczucia i zachowania.",
+            "Wbrew powszechnym mitom, nie musisz mieć poważnych problemów, aby skorzystać z terapii. Może ona pomóc w radzeniu sobie ze stresem, poprawie relacji, rozwoju osobistym czy po prostu w lepszym zrozumieniu siebie."
+          ],
+          "lists": {
+            "whenToConsider": {
+              "title": "Kiedy warto rozważyć terapię?",
+              "items": [
+                "Długotrwały smutek lub przygnębienie",
+                "Problemy w relacjach",
+                "Trudności z radzeniem sobie ze stresem",
+                "Chęć rozwoju osobistego"
+              ]
+            },
+            "therapyTypes": {
+              "title": "Rodzaje terapii",
+              "items": [
+                "Terapia poznawczo-behawioralna (CBT)",
+                "Terapia psychodynamiczna",
+                "Terapia systemowa",
+                "Terapia humanistyczna"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "type": "faq",
+        "data": {
+          "title": "Często zadawane pytania",
+          "questions": [
+            {
+              "q": "Ile kosztuje psychoterapia?",
+              "a": "Ceny sesji wahają się od 150 do 350 PLN, w zależności od doświadczenia terapeuty i lokalizacji. Niektórzy terapeuci oferują zniżki dla studentów lub osób w trudnej sytuacji finansowej."
+            },
+            {
+              "q": "Jak długo trwa terapia?",
+              "a": "Długość terapii zależy od indywidualnych potrzeb. Terapia krótkoterminowa może trwać 3-6 miesięcy, podczas gdy praca nad głębszymi wzorcami może wymagać roku lub więcej."
+            },
+            {
+              "q": "Czy mogę zmienić terapeutę?",
+              "a": "Oczywiście. Relacja terapeutyczna jest kluczowa dla sukcesu terapii. Jeśli nie czujesz się komfortowo, warto porozmawiać o tym z terapeutą lub poszukać kogoś innego."
+            }
+          ],
+          "cta": {
+            "text": "Zobacz więcej pytań",
+            "href": "/faq"
+          }
+        }
+      },
+      {
+        "type": "articles",
+        "data": {
+          "eyebrow": "Wiedza",
+          "title": "Artykuły o zdrowiu",
+          "titleHighlight": "psychicznym",
+          "subtitle": "Przygotowaliśmy dla Ciebie wartościowe treści, które pomogą lepiej zrozumieć psychoterapię i zadbać o swoje zdrowie psychiczne.",
+          "articles": [
+            {
+              "cat": "PORADNIK",
+              "title": "Jak wybrać dobrego psychoterapeutę?",
+              "slug": "jak-wybrac-dobrego-psychoterapeute",
+              "excerpt": "Na co zwrócić uwagę przy wyborze terapeuty i jakie pytania zadać podczas pierwszego spotkania.",
+              "author": "dr Anna Kowalska",
+              "time": 7
+            },
+            {
+              "cat": "EDUKACJA",
+              "title": "Czym różni się psycholog od psychoterapeuty?",
+              "slug": "czym-rozni-sie-psycholog-od-psychoterapeuty",
+              "excerpt": "Wyjaśniamy różnice między profesjami związanymi ze zdrowiem psychicznym.",
+              "author": "Redakcja",
+              "time": 5
+            },
+            {
+              "cat": "PIERWSZA POMOC",
+              "title": "Kiedy warto pójść do terapeuty?",
+              "slug": "kiedy-warto-pojsc-do-terapeuty",
+              "excerpt": "Sygnały, które mogą wskazywać, że warto skorzystać z profesjonalnej pomocy.",
+              "author": "Maria Nowak",
+              "time": 6
+            }
+          ],
+          "cta": {
+            "text": "Przejdź do bloga",
+            "href": "/blog"
+          }
+        }
+      },
+      {
+        "type": "cta",
+        "data": {
+          "badge": "Bezpłatna pierwsza konsultacja u wybranych terapeutów",
+          "title": "Gotowy na pierwszy krok?",
+          "subtitle": "Pamiętaj, że szukanie pomocy to oznaka siły, nie słabości. Jesteśmy tu, aby ułatwić Ci znalezienie odpowiedniego wsparcia.",
+          "buttons": [
+            {
+              "text": "Znajdź swojego terapeutę",
+              "href": "#find",
+              "primary": true
+            },
+            {
+              "text": "Masz pytania? Napisz do nas",
+              "href": "#contact",
+              "primary": false
+            }
+          ]
+        }
+      }
+    ]
+  }

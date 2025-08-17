@@ -1,0 +1,20 @@
+{
+    "// ŚCIEŻKA": "src/content/terapeuci/olga-puczynska.json",
+    "theme": "default",
+    "meta": {
+      "title": "Olga Puczyńska - Psychoterapeuta psychodynamiczny | Profesjonalna Psychoterapia",
+      "description": "Olga Puczyńska - Psychoterapeuta psychodynamiczny. Doświadczenie: 12 lat. Specjalizacje: Kryzys egzystencjalny, Relacje, Rozwój osobisty. Lokalizacja: Żoliborz."
+    },
+    "therapist": {
+      "name": "Olga Puczyńska",
+      "slug": "olga-puczynska",
+      "title": "Psychoterapeuta psychodynamiczny",
+      "exp": 12,
+      "spec": ["Kryzys egzystencjalny", "Relacje", "Rozwój osobisty"],
+      "loc": "Żoliborz",
+      "price": [220, 280],
+      "img": "olga-puczynska",
+      "avail": true
+    },
+    "sections": []
+  }

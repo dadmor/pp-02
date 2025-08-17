@@ -1,0 +1,98 @@
+---
+// src/themes/default/sections/Hero.astro
+export interface Props {
+  data: {
+    badge?: string;
+    titleLine1: string;
+    titleLine2: string;
+    subtitle: string;
+    buttons: Array<{
+      text: string;
+      href: string;
+      primary?: boolean;
+    }>;
+    stats?: Array<{
+      value: string;
+      label: string;
+    }>;
+  };
+  settings?: {
+    background?: 'gradient' | 'solid' | 'pattern';
+    spacing?: 'default' | 'compact' | 'spacious';
+  };
+}
+
+const { data, settings = {} } = Astro.props;
+const { background = 'gradient', spacing = 'default' } = settings;
+
+const spacingClasses = {
+  default: 'pt-32 pb-20 md:pt-40 md:pb-32',
+  compact: 'pt-24 pb-16 md:pt-32 md:pb-24',
+  spacious: 'pt-40 pb-28 md:pt-48 md:pb-40'
+};
+
+const backgroundClasses = {
+  gradient: 'bg-gradient-to-b from-orange-50 via-white to-white',
+  solid: 'bg-white',
+  pattern: 'bg-white relative'
+};
+---
+
+<section class={`hero-section px-6 md:px-8 ${spacingClasses[spacing]} ${backgroundClasses[background]}`}>
+  {background === 'pattern' && (
+    <div class="absolute inset-0 opacity-[0.02] pointer-events-none">
+      <svg width="100%" height="100%">
+        <defs>
+          <pattern id="hero-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hero-grid)" />
+      </svg>
+    </div>
+  )}
+  
+  <div class="max-w-4xl mx-auto text-center relative">
+    {data.badge && (
+      <p class="inline-flex items-center gap-2 text-sm text-orange-700 mb-6 bg-orange-100 px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></span>
+        {data.badge}
+      </p>
+    )}
+    
+    <h1 class="font-serif text-5xl md:text-7xl mb-6 text-gray-900" style="font-size: clamp(2.5rem, 5vw, 4.375rem);">
+      {data.titleLine1}<br>{data.titleLine2}
+    </h1>
+    
+    <p class="text-xl md:text-2xl mb-10 text-gray-600 max-w-3xl mx-auto">
+      {data.subtitle}
+    </p>
+    
+    {data.buttons && data.buttons.length > 0 && (
+      <nav class="flex flex-wrap gap-4 justify-center">
+        {data.buttons.map((btn) => (
+          <a 
+            href={btn.href} 
+            class={btn.primary ? 
+              "bg-orange-700 text-white px-8 py-4 hover:bg-orange-800 transition-colors rounded-full font-medium" :
+              "bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200"
+            }
+          >
+            {btn.text}
+          </a>
+        ))}
+      </nav>
+    )}
+    
+    {data.stats && data.stats.length > 0 && (
+      <dl class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 max-w-3xl mx-auto">
+        {data.stats.map((stat) => (
+          <div class="text-center">
+            <dt class="text-4xl font-light text-gray-900 mb-2 block">{stat.value}</dt>
+            <dd class="text-sm text-gray-500">{stat.label}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</section>

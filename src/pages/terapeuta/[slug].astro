@@ -1,29 +1,28 @@
 ---
-// src/pages/terapeuta/[slug].astro
-import therapistsData from '../../data/therapists.json';
-import MinimalTemplate from '../../components/templates/MinimalTemplate.astro';
-import WarmTemplate from '../../components/templates/WarmTemplate.astro';
-import IntegrativeTemplate from '../../components/templates/IntegrativeTemplate.astro';
-import MuseumTemplate from '../../components/templates/MuseumTemplate.astro';
+// ŚCIEŻKA: src/pages/terapeuta/[slug].astro
+import ThemeRenderer from '../../components/ThemeRenderer.astro';
+import { getContent } from '../../lib/content';
 
 export async function getStaticPaths() {
-  return therapistsData.map((therapist) => ({
-    params: { slug: therapist.slug },
-    props: { therapist },
+  // Lista wszystkich terapeutów - w przyszłości można to zautomatyzować
+  const therapists = [
+    'justyna-wrona',
+    'ewelina-mastalerz', 
+    'olga-puczynska',
+    'anna-grabinska'
+  ];
+  
+  return therapists.map((slug) => ({
+    params: { slug },
   }));
 }
 
-const { therapist } = Astro.props;
+const { slug } = Astro.params;
+const content = await getContent(`terapeuci/${slug}`);
 
-const templates: Record<string, any> = {
-  minimal: MinimalTemplate,
-  warm: WarmTemplate,
-  integrative: IntegrativeTemplate,
-  museum: MuseumTemplate
-};
-
-const SelectedTemplate = templates[therapist.template] || MinimalTemplate;
-const data = { therapist };
+if (!content) {
+  return Astro.redirect('/404');
+}
 ---
 
-<SelectedTemplate data={data} />
+<ThemeRenderer content={content} />

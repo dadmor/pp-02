@@ -1,0 +1,72 @@
+---
+// ŚCIEŻKA: src/themes/default/sections/Therapists.astro
+import TherapistCard from '../components/TherapistCard.astro';
+import { getTherapists } from '../../../lib/content';
+
+export interface Props {
+  data: {
+    eyebrow?: string;
+    title: string;
+    titleHighlight?: string;
+    subtitle?: string;
+    filters?: string[];
+    therapistIds?: string[];
+    limit?: number;
+    cta?: {
+      text: string;
+      href: string;
+    };
+  };
+}
+
+const { data } = Astro.props;
+const therapists = await getTherapists(data.therapistIds || [], data.limit || 4);
+---
+
+<section id="find" class="py-24 px-6 md:px-8">
+  <div class="max-w-7xl mx-auto">
+    <header class="text-center mb-16">
+      {data.eyebrow && (
+        <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">{data.eyebrow}</p>
+      )}
+      <h2 class="font-serif text-4xl md:text-5xl mb-4">
+        {data.title}{data.titleHighlight && (<><br/><span>{data.titleHighlight}</span></>)}
+      </h2>
+      {data.subtitle && (
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+          {data.subtitle}
+        </p>
+      )}
+      
+      {data.filters && data.filters.length > 0 && (
+        <nav class="flex flex-wrap gap-3 justify-center">
+          {data.filters.map((label, i) => (
+            <button class={`px-6 py-2.5 text-sm rounded-full ${
+              i === 0 
+                ? 'bg-gray-900 text-white' 
+                : 'bg-white border border-gray-200 hover:bg-gray-50'
+            }`}>
+              {label}
+            </button>
+          ))}
+        </nav>
+      )}
+    </header>
+    
+    <ul class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {therapists.map((t) => (
+        <li>
+          <TherapistCard therapist={t} />
+        </li>
+      ))}
+    </ul>
+    
+    {data.cta && (
+      <nav class="text-center mt-16">
+        <a href={data.cta.href} class="text-orange-700 font-medium">
+          {data.cta.text} →
+        </a>
+      </nav>
+    )}
+  </div>
+</section>

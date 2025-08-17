@@ -1,0 +1,41 @@
+---
+// ŚCIEŻKA: src/themes/minimal/components/Header.astro
+export interface Props {
+  therapistName: string;
+  navigation?: Array<{
+    href: string;
+    label: string;
+    labelEn?: string;
+  }>;
+}
+
+const { therapistName, navigation = [] } = Astro.props;
+
+const defaultNav = [
+  { href: "#philosophy", label: "Filozofia", labelEn: "Philosophy" },
+  { href: "#practice", label: "Praktyka", labelEn: "Practice" },
+  { href: "#about", label: "O mnie", labelEn: "About" },
+  { href: "#contact", label: "Kontakt", labelEn: "Contact" }
+];
+
+const nav = navigation.length > 0 ? navigation : defaultNav;
+---
+
+<header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md">
+  <div class="max-w-screen-xl mx-auto px-6 py-6">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-3">
+        <a href="/" class="text-sm tracking-[0.2em] text-neutral-900 hover:text-neutral-600 transition-colors font-light">
+          {therapistName.toUpperCase()}
+        </a>
+      </div>
+      <nav class="col-span-9 flex justify-end items-center gap-12">
+        {nav.map((item) => (
+          <a href={item.href} class="text-sm tracking-[0.05em] hover:text-neutral-600 transition-colors font-light">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</header>

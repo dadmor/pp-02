@@ -1,0 +1,80 @@
+---
+// ŚCIEŻKA: src/themes/minimal/sections/About.astro
+export interface Props {
+  data: {
+    title: string;
+    bio: string[];
+    credentials?: {
+      education?: string;
+      certification?: string;
+      specialization?: string;
+    };
+    image: string;
+    imageCaption?: string;
+  };
+}
+
+const { data } = Astro.props;
+---
+
+<section id="about" class="py-32 px-6">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-2">
+        <p class="text-sm tracking-[0.2em] text-slate-800 font-light">O MNIE</p>
+      </div>
+      <div class="col-span-12 md:col-span-5">
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
+          {data.title}
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-neutral-700">
+          {data.bio.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-4 md:col-start-9">
+        <img 
+          src={`/images/therapists/${data.image}.webp`}
+          alt={data.title}
+          class="w-full grayscale hover:grayscale-0 transition-all duration-700"
+          width="400"
+          height="600"
+          loading="lazy"
+        />
+        {data.imageCaption && (
+          <p class="text-sm text-neutral-500 mt-4">
+            {data.imageCaption}
+          </p>
+        )}
+      </div>
+    </div>
+
+    {data.credentials && (
+      <div class="grid grid-cols-12 gap-6 mt-24">
+        <div class="col-span-12 md:col-span-8 md:col-start-3">
+          <div class="grid grid-cols-3 gap-12 py-12 border-t border-neutral-200">
+            {data.credentials.education && (
+              <div>
+                <p class="text-sm text-neutral-500 mb-2">Wykształcenie</p>
+                <p class="text-sm" set:html={data.credentials.education}></p>
+              </div>
+            )}
+            {data.credentials.certification && (
+              <div>
+                <p class="text-sm text-neutral-500 mb-2">Certyfikaty</p>
+                <p class="text-sm" set:html={data.credentials.certification}></p>
+              </div>
+            )}
+            {data.credentials.specialization && (
+              <div>
+                <p class="text-sm text-neutral-500 mb-2">Specjalizacja</p>
+                <p class="text-sm" set:html={data.credentials.specialization}></p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

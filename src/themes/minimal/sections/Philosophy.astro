@@ -1,0 +1,50 @@
+---
+// ŚCIEŻKA: src/themes/minimal/sections/Philosophy.astro
+export interface Props {
+  data: {
+    title: string;
+    content: string[];
+    quote?: {
+      text: string;
+      author: string;
+    };
+  };
+  settings?: {
+    layout?: 'default' | 'centered';
+  };
+}
+
+const { data, settings = {} } = Astro.props;
+const { layout = 'default' } = settings;
+---
+
+<section id="philosophy" class="py-32 px-6">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid grid-cols-12 gap-6 mb-24">
+      <div class="col-span-12 md:col-span-2">
+        <p class="text-sm tracking-[0.2em] text-slate-800 font-light">FILOZOFIA</p>
+      </div>
+      <div class="col-span-12 md:col-span-8">
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
+          {data.title}
+        </h2>
+        <div class="space-y-6 text-lg leading-relaxed text-neutral-700">
+          {data.content.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {data.quote && (
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 md:col-span-10 md:col-start-2 py-16 border-t border-b border-neutral-200">
+          <blockquote class="font-serif text-3xl md:text-4xl leading-snug text-center italic">
+            „{data.quote.text}"
+          </blockquote>
+          <p class="text-center mt-6 text-neutral-500">— {data.quote.author}</p>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,20 @@
+{
+    "// ŚCIEŻKA": "src/content/terapeuci/anna-grabinska.json",
+    "theme": "default",
+    "meta": {
+      "title": "Anna Grabińska - Psychoterapeutka | Profesjonalna Psychoterapia",
+      "description": "Anna Grabińska - Psychoterapeutka. Doświadczenie: 15 lat. Specjalizacje: Terapia rodzin, Nastolatki, Konflikty rodzinne. Lokalizacja: Ursynów."
+    },
+    "therapist": {
+      "name": "Anna Grabińska",
+      "slug": "anna-grabinska",
+      "title": "Psychoterapeutka",
+      "exp": 15,
+      "spec": ["Terapia rodzin", "Nastolatki", "Konflikty rodzinne"],
+      "loc": "Ursynów",
+      "price": [200, 300],
+      "img": "anna-grabinska",
+      "avail": true
+    },
+    "sections": []
+  }

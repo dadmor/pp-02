@@ -1,7 +1,47 @@
-/* src/styles/global.css */
+/* ŚCIEŻKA: src/styles/global.css */
 @import "tailwindcss";
 
-/* Smooth scroll bez JS */
+/* Theme system with CSS custom properties */
+@layer base {
+  :root {
+    /* Default theme colors */
+    --color-primary: 194 65 12; /* orange-700 */
+    --color-secondary: 17 24 39; /* gray-900 */
+    --color-accent: 234 88 12; /* orange-600 */
+    
+    /* Spacing */
+    --spacing-section: 6rem;
+    --spacing-container: 1.5rem;
+  }
+  
+  [data-theme="minimal"] {
+    --color-primary: 23 23 23; /* neutral-900 */
+    --color-secondary: 64 64 64; /* neutral-700 */
+    --color-accent: 82 82 82; /* neutral-600 */
+  }
+  
+  [data-theme="warm"] {
+    --color-primary: 245 158 11; /* amber-600 */
+    --color-secondary: 41 37 36; /* stone-800 */
+    --color-accent: 251 191 36; /* amber-400 */
+  }
+}
+
+@layer utilities {
+  .text-theme-primary {
+    color: rgb(var(--color-primary));
+  }
+  
+  .bg-theme-primary {
+    background-color: rgb(var(--color-primary));
+  }
+  
+  .border-theme-primary {
+    border-color: rgb(var(--color-primary));
+  }
+}
+
+/* Smooth scroll */
 html { 
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -24,11 +64,8 @@ html {
 }
 
 /* Focus visible dla dostępności */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-label:focus-visible {
-  outline: 2px solid #ea580c;
+:focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
   outline-offset: 2px;
 }
 
@@ -38,4 +75,6 @@ label:focus-visible {
   50% { opacity: .5; }
 }
 
-.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-pulse { 
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+}
