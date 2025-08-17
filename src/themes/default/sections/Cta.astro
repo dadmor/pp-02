@@ -1,0 +1,58 @@
+---
+// ŚCIEŻKA: src/themes/default/sections/Cta.astro
+export interface Props {
+  data: {
+    badge?: string;
+    title: string;
+    subtitle?: string;
+    buttons?: Array<{
+      text: string;
+      href: string;
+      primary?: boolean;
+    }>;
+  };
+  settings?: {
+    background?: 'gradient' | 'solid';
+  };
+}
+
+const { data, settings = {} } = Astro.props;
+const { background = 'gradient' } = settings;
+
+const bgClass = background === 'gradient' 
+  ? 'bg-gradient-to-br from-orange-50 to-orange-100' 
+  : 'bg-orange-50';
+---
+
+<section class={`py-24 px-6 md:px-8 ${bgClass}`}>
+  <div class="max-w-4xl mx-auto text-center">
+    {data.badge && (
+      <p class="inline-flex items-center gap-2 text-sm text-orange-700 mb-6 bg-white px-4 py-2 rounded-full">
+        <span class="w-2 h-2 bg-orange-600 rounded-full animate-pulse"></span>
+        {data.badge}
+      </p>
+    )}
+    <h2 class="font-serif text-4xl md:text-5xl mb-6">{data.title}</h2>
+    {data.subtitle && (
+      <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+        {data.subtitle}
+      </p>
+    )}
+    
+    {data.buttons && data.buttons.length > 0 && (
+      <nav class="flex flex-col sm:flex-row gap-4 justify-center">
+        {data.buttons.map((btn) => (
+          <a 
+            href={btn.href} 
+            class={btn.primary 
+              ? "bg-gray-900 text-white px-8 py-4 hover:bg-gray-800 transition-colors rounded-full font-medium"
+              : "bg-white text-gray-900 px-8 py-4 hover:bg-gray-50 transition-colors rounded-full border border-gray-200"
+            }
+          >
+            {btn.text}
+          </a>
+        ))}
+      </nav>
+    )}
+  </div>
+</section>

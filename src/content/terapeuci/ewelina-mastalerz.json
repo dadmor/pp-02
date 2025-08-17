@@ -32,7 +32,7 @@
             },
             {
               "text": "Dowiedz się więcej",
-              "href": "#philosophy"
+              "href": "#about"
             }
           ],
           "stats": [
@@ -40,6 +40,57 @@
             { "value": "4", "label": "nurty terapeutyczne" },
             { "value": "300+", "label": "ukończonych terapii" },
             { "value": "PTP", "label": "certyfikat" }
+          ]
+        }
+      },
+      {
+        "type": "about",
+        "data": {
+          "eyebrow": "O mnie",
+          "title": "Ewelina Mastalerz",
+          "content": [
+            "Jestem certyfikowaną psychoterapeutką z 8-letnim doświadczeniem. Ukończyłam czteroletnie szkolenie w Instytucie Psychoterapii Integracyjnej, a także liczne kursy z zakresu różnych modalności terapeutycznych.",
+            "W swojej pracy kieruję się głębokim szacunkiem dla unikalności każdego człowieka. Wierzę, że relacja terapeutyczna oparta na autentyczności i zaufaniu jest podstawą każdej zmiany.",
+            "Regularnie uczestniczę w superwizjach i szkoleniach, aby móc oferować najwyższą jakość wsparcia. Pracuję w języku polskim i angielskim."
+          ],
+          "lists": {
+            "whenToConsider": {
+              "title": "Obszary pracy",
+              "items": [
+                "Zaburzenia lękowe i ataki paniki",
+                "Zaburzenia obsesyjno-kompulsyjne (OCD)",
+                "Fobia społeczna i lęk przed wystąpieniami",
+                "Depresja i obniżony nastrój"
+              ]
+            },
+            "therapyTypes": {
+              "title": "Metody pracy",
+              "items": [
+                "Terapia poznawczo-behawioralna (CBT)",
+                "Terapia schematu",
+                "EMDR przy traumie",
+                "Mindfulness i techniki relaksacyjne"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "type": "cta",
+        "data": {
+          "badge": "Lista oczekujących - średni czas 2-3 tygodnie",
+          "title": "Zacznijmy Twoją podróż",
+          "subtitle": "Pierwsza konsultacja jest bezpłatna i niezobowiązująca. To okazja, aby się poznać i zobaczyć, czy dobrze czujesz się w mojej obecności.",
+          "buttons": [
+            {
+              "text": "Zapisz się na listę",
+              "href": "tel:+48123456788",
+              "primary": true
+            },
+            {
+              "text": "Napisz do mnie",
+              "href": "mailto:ewelina@mastalerz-terapia.pl"
+            }
           ]
         }
       }

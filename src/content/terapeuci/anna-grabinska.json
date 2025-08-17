@@ -16,5 +16,83 @@
       "img": "anna-grabinska",
       "avail": true
     },
-    "sections": []
+    "sections": [
+      {
+        "type": "hero",
+        "data": {
+          "badge": "Terapia systemowa i rodzinna",
+          "titleLine1": "Wsparcie dla rodzin",
+          "titleLine2": "w trudnych chwilach",
+          "subtitle": "Od piętnastu lat towarzyszę rodzinom w procesie zmiany. Wierzę, że każdy system rodzinny ma w sobie potencjał do uzdrowienia i wzrostu.",
+          "buttons": [
+            {
+              "text": "Umów konsultację rodzinną",
+              "href": "#contact",
+              "primary": true
+            },
+            {
+              "text": "Jak pracuję z rodzinami",
+              "href": "#about"
+            }
+          ],
+          "stats": [
+            { "value": "15", "label": "lat doświadczenia" },
+            { "value": "500+", "label": "rodzin" },
+            { "value": "200+", "label": "nastolatków" },
+            { "value": "98%", "label": "poleca dalej" }
+          ]
+        }
+      },
+      {
+        "type": "about",
+        "data": {
+          "eyebrow": "O mnie",
+          "title": "Anna Grabińska",
+          "content": [
+            "Ukończyłam psychologię kliniczną na Uniwersytecie Warszawskim, następnie odbyłam czteroletnie szkolenie psychoterapeutyczne w nurcie systemowym. Regularnie uczestniczę w superwizjach i szkoleniach, wierząc że terapeuta nigdy nie przestaje się uczyć.",
+            "Specjalizuję się w pracy z rodzinami przechodząjącymi kryzysy, rodzicami borykającymi się z trudnościami wychowawczymi oraz nastolatkami w okresie buntu i poszukiwania tożsamości.",
+            "Prywatnie jestem mamą dwójki dzieci, co daje mi nie tylko teoretyczne, ale i praktyczne zrozumienie wyzwań rodzicielstwa."
+          ],
+          "lists": {
+            "whenToConsider": {
+              "title": "Kiedy szukać wsparcia",
+              "items": [
+                "Konflikty rodzinne i problemy komunikacyjne",
+                "Trudności wychowawcze z dziećmi",
+                "Kryzys nastolatka (bunt, depresja, lęki)",
+                "Rozwód, separacja, rodziny patchworkowe"
+              ]
+            },
+            "therapyTypes": {
+              "title": "Formy wsparcia",
+              "items": [
+                "Terapia rodzinna",
+                "Terapia par",
+                "Terapia indywidualna nastolatków",
+                "Konsultacje wychowawcze"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "type": "cta",
+        "data": {
+          "badge": "Pierwsza konsultacja rodzinna - 50% zniżki",
+          "title": "Zadbajmy o Waszą rodzinę",
+          "subtitle": "Każda rodzina zasługuje na wsparcie w trudnych momentach. Pierwszy krok jest najtrudniejszy, ale też najważniejszy.",
+          "buttons": [
+            {
+              "text": "Umów rodzinę",
+              "href": "tel:+48123456789",
+              "primary": true
+            },
+            {
+              "text": "Zadaj pytanie",
+              "href": "mailto:anna@grabinska-terapia.pl"
+            }
+          ]
+        }
+      }
+    ]
   }

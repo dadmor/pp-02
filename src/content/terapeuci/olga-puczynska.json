@@ -16,5 +16,83 @@
       "img": "olga-puczynska",
       "avail": true
     },
-    "sections": []
+    "sections": [
+      {
+        "type": "hero",
+        "data": {
+          "badge": "Psychoterapia psychodynamiczna",
+          "titleLine1": "Odkryj swoją",
+          "titleLine2": "wewnętrzną mądrość",
+          "subtitle": "Od dwunastu lat towarzyszę ludziom w ich wewnętrznych podróżach. Każde spotkanie to dla mnie przywilej bycia świadkiem ludzkiej odwagi i transformacji.",
+          "buttons": [
+            {
+              "text": "Umów się na rozmowę",
+              "href": "#contact",
+              "primary": true
+            },
+            {
+              "text": "Poznaj moje podejście",
+              "href": "#about"
+            }
+          ],
+          "stats": [
+            { "value": "12+", "label": "lat doświadczenia" },
+            { "value": "400+", "label": "ukończonych terapii" },
+            { "value": "97%", "label": "satysfakcja pacjentów" },
+            { "value": "PTP", "label": "certyfikat" }
+          ]
+        }
+      },
+      {
+        "type": "about",
+        "data": {
+          "eyebrow": "O mnie",
+          "title": "Olga Puczyńska",
+          "content": [
+            "Ukończyłam psychologię kliniczną na Uniwersytecie Warszawskim, następnie odbyłam czteroletnie szkolenie w Szkole Psychoterapii PTP. Regularnie uczestniczę w superwizjach i warsztatach, wierząc że rozwój terapeuty nigdy się nie kończy.",
+            "W mojej pracy łączę współczesne metody psychoterapeutyczne z głębokim szacunkiem dla mądrości, którą każdy człowiek nosi w sobie. Wierzę, że prawdziwe uzdrowienie przychodzi poprzez zrozumienie, nie osąd.",
+            "Poza gabinetem znajduję inspirację w sztuce, literaturze i kontakcie z naturą. Te pasje uczą mnie pokory wobec złożoności ludzkiego doświadczenia."
+          ],
+          "lists": {
+            "whenToConsider": {
+              "title": "Obszary wsparcia",
+              "items": [
+                "Kryzysy egzystencjalne i poszukiwanie sensu",
+                "Trudności w relacjach i więziach",
+                "Rozwój osobisty i samopoznanie",
+                "Praca z nieświadomością i snami"
+              ]
+            },
+            "therapyTypes": {
+              "title": "Moje podejście",
+              "items": [
+                "Psychoterapia psychodynamiczna",
+                "Praca z przeniesieniem",
+                "Analiza marzeń sennych",
+                "Integracja doświadczeń"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "type": "cta",
+        "data": {
+          "badge": "Obecnie przyjmuję nowych pacjentów",
+          "title": "Zróbmy pierwszy krok razem",
+          "subtitle": "Oferuję bezpłatną 20-minutową konsultację telefoniczną, podczas której możemy porozmawiać o Twoich potrzebach i zobaczyć, czy dobrze się ze sobą czujemy.",
+          "buttons": [
+            {
+              "text": "Zadzwoń teraz",
+              "href": "tel:+48123456787",
+              "primary": true
+            },
+            {
+              "text": "Napisz wiadomość",
+              "href": "mailto:olga@puczynska-psychoterapia.pl"
+            }
+          ]
+        }
+      }
+    ]
   }

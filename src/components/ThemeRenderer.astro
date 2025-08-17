@@ -1,6 +1,7 @@
 ---
 // ŚCIEŻKA: src/components/ThemeRenderer.astro
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSection } from '../lib/sectionRegistry';
 
 export interface Props {
   content: {
@@ -29,7 +30,7 @@ const { content } = Astro.props;
 
 // Sprawdź czy content istnieje
 if (!content) {
-  throw new Error("No content provided to ThemeRenderer");
+  throw new Error('No content provided to ThemeRenderer');
 }
 
 const { theme, meta, sections, therapist } = content;
@@ -39,41 +40,26 @@ let hasCustomHeader = false;
 let HeaderComponent = null;
 
 try {
-  const headerModule = await import(
-    `../themes/${theme}/components/Header.astro`
-  );
-  HeaderComponent = headerModule.default;
-  hasCustomHeader = true;
+  // TODO: Dodać header do registry jeśli potrzebny
+  hasCustomHeader = false;
 } catch (e) {
   // Theme nie ma własnego headera, użyjemy domyślnego
 }
 
-// Dynamicznie importuj sekcje z odpowiedniego theme'u
-const sectionModules = await Promise.all(
-  sections.map(async (section) => {
-    try {
-      const sectionName =
-        section.type.charAt(0).toUpperCase() + section.type.slice(1);
-      const module = await import(
-        `../themes/${theme}/sections/${sectionName}.astro`
-      );
-      return { ...section, Component: module.default };
-    } catch (e) {
-      console.error(
-        `Failed to load section ${section.type} from theme ${theme}:`,
-        e
-      );
-      return null;
-    }
-  })
-);
+// Pobierz komponenty sekcji z registry
+const sectionComponents = sections.map(section => {
+  const Component = getSection(theme, section.type);
+  if (!Component) {
+    console.error(`Failed to load section ${section.type} from theme ${theme}`);
+    return null;
+  }
+  return { ...section, Component };
+});
 
-const validSections = sectionModules.filter(
-  (section): section is NonNullable<typeof section> => section !== null
-);
+const validSections = sectionComponents.filter((section): section is NonNullable<typeof section> => section !== null);
 ---
 
-<BaseLayout
+<BaseLayout 
   title={meta.title}
   description={meta.description}
   canonical={meta.canonical}
@@ -81,21 +67,17 @@ const validSections = sectionModules.filter(
   noindex={meta.noindex}
   structuredData={meta.structuredData}
   showHeader={!hasCustomHeader}
-  headerVariant={hasCustomHeader ? "custom" : "default"}
+  headerVariant={hasCustomHeader ? 'custom' : 'default'}
 >
-  {
-    hasCustomHeader && HeaderComponent && therapist && (
-      <HeaderComponent slot="header" therapistName={therapist.name} />
-    )
-  }
-
-  {
-    validSections.map((section) => {
-      if (!section) return null;
-      const { Component, data, settings } = section;
-      return <Component data={data} settings={settings} />;
-    })
-  }
+  {hasCustomHeader && HeaderComponent && therapist && (
+    <HeaderComponent slot="header" therapistName={therapist.name} />
+  )}
+  
+  {validSections.map((section) => {
+    if (!section) return null;
+    const { Component, data, settings } = section;
+    return <Component data={data} settings={settings} />;
+  })}
 </BaseLayout>
 
 <style>
@@ -105,7 +87,7 @@ const validSections = sectionModules.filter(
     --theme-secondary: #111827; /* gray-900 */
     --theme-accent: #ea580c; /* orange-600 */
   }
-
+  
   [data-theme="minimal"] {
     --theme-primary: #171717; /* neutral-900 */
     --theme-secondary: #404040; /* neutral-700 */
