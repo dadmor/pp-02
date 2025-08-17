@@ -1,28 +1,54 @@
 ---
-// src/components/MinimalTherapistProfile.astro
+// src/components/templates/MinimalTemplate.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-
 export interface Props {
-  therapist: any;
+  data: any;
 }
 
-const { therapist } = Astro.props;
+const { data } = Astro.props;
+const { therapist } = data;
 const sections = therapist.sections;
 
-// SEO props dla BaseLayout
 const layoutProps = {
   title: `${therapist.name} - Psychoterapeuta Warszawa | Profesjonalna Psychoterapia`,
   description: sections.hero?.intro || `${therapist.name} - ${therapist.title}. Doświadczenie: ${therapist.exp} lat. Specjalizacje: ${therapist.spec.join(', ')}. Lokalizacja: ${therapist.loc}.`,
   canonical: `https://profesjonalna-psychoterapia.pl/terapeuta/${therapist.slug}`,
   image: `/images/therapists/${therapist.img}.webp`,
-  showHeader: false, // wyłączamy domyślny header
-  headerVariant: 'custom' as const // używamy własnego headera
+  showHeader: false,
+  headerVariant: 'custom' as const
 };
 ---
 
 <BaseLayout {...layoutProps}>
-  <!-- Własny nagłówek dla profilu terapeuty -->
+  <style slot="head">
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.011em;
+    }
+    
+    .font-serif {
+      font-family: 'Crimson Text', 'Georgia', serif;
+      font-weight: 400;
+    }
+
+    em {
+      font-style: italic;
+      color: #78716c;
+    }
+
+    p { line-height: 1.75; }
+    h1, h2, h3 { letter-spacing: -0.02em; }
+    
+    ::selection { 
+      background: #fafaf9;
+      color: #1c1917;
+    }
+    
+    html { scroll-behavior: smooth; }
+  </style>
+
   <header slot="header" class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md">
     <div class="max-w-screen-xl mx-auto px-6 py-6">
       <div class="grid grid-cols-12 gap-6">
@@ -55,85 +81,53 @@ const layoutProps = {
     </div>
   </header>
 
-  <!-- Style specyficzne dla profilu terapeuty -->
-  <style slot="head">
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-weight: 400;
-      letter-spacing: -0.011em;
-    }
-    
-    .font-serif {
-      font-family: 'Crimson Text', 'Georgia', serif;
-      font-weight: 400;
-    }
-
-    /* Emphasis - subtelny akcent */
-    em {
-      font-style: italic;
-      color: #78716c;
-    }
-
-    p { line-height: 1.75; }
-    h1, h2, h3 { letter-spacing: -0.02em; }
-    
-    /* Selection - minimalne */
-    ::selection { 
-      background: #fafaf9;
-      color: #1c1917;
-    }
-    
-    html { scroll-behavior: smooth; }
-  </style>
-
-<!-- Hero - czysty swiss design -->
-{sections.hero && (
-  <section class="min-h-screen flex items-center px-6 pt-24">
-    <div class="max-w-screen-xl mx-auto w-full">
-      <div class="grid grid-cols-12 gap-6">
-        <div class="col-span-12 md:col-span-10 md:col-start-2">
-          <h1 class="font-serif text-6xl md:text-7xl lg:text-8xl leading-[0.9] mb-16" set:html={sections.hero.headline} />
-          
-          <div class="grid grid-cols-12 gap-6">
-            <div class="col-span-12 md:col-span-6">
-              <p class="text-lg leading-[1.75] text-neutral-700 font-light">
-                {sections.hero.intro}
-              </p>
+  {/* Hero */}
+  {sections.hero && (
+    <section class="min-h-screen flex items-center px-6 pt-24">
+      <div class="max-w-screen-xl mx-auto w-full">
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-12 md:col-span-10 md:col-start-2">
+            <h1 class="font-serif text-6xl md:text-7xl lg:text-8xl leading-[0.9] mb-16" set:html={sections.hero.headline} />
+            
+            <div class="grid grid-cols-12 gap-6">
+              <div class="col-span-12 md:col-span-6">
+                <p class="text-lg leading-[1.75] text-neutral-700 font-light">
+                  {sections.hero.intro}
+                </p>
+              </div>
+              
+              <div class="col-span-12 md:col-span-4 md:col-start-9">
+                <dl class="space-y-6 text-sm">
+                  <div>
+                    <dt class="text-neutral-500 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
+                    <dd class="text-neutral-900">{therapist.exp} lat praktyki</dd>
+                  </div>
+                  <div>
+                    <dt class="text-neutral-500 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
+                    <dd class="text-neutral-900">{therapist.loc}, Warszawa</dd>
+                  </div>
+                  <div>
+                    <dt class="text-neutral-500 tracking-widest text-xs mb-1">STATUS</dt>
+                    <dd class="text-neutral-900">
+                      {therapist.avail ? 'Przyjmuje pacjentów' : 'Lista oczekujących'}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </div>
             
-            <!-- Minimalne info -->
-            <div class="col-span-12 md:col-span-4 md:col-start-9">
-              <dl class="space-y-6 text-sm">
-                <div>
-                  <dt class="text-neutral-500 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
-                  <dd class="text-neutral-900">{therapist.exp} lat praktyki</dd>
-                </div>
-                <div>
-                  <dt class="text-neutral-500 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
-                  <dd class="text-neutral-900">{therapist.loc}, Warszawa</dd>
-                </div>
-                <div>
-                  <dt class="text-neutral-500 tracking-widest text-xs mb-1">STATUS</dt>
-                  <dd class="text-neutral-900">
-                    {therapist.avail ? 'Przyjmuje pacjentów' : 'Lista oczekujących'}
-                  </dd>
-                </div>
-              </dl>
+            <div class="mt-24">
+              <a href="/#find" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors inline-flex items-center gap-2">
+                ← Zobacz innych terapeutów
+              </a>
             </div>
-          </div>
-          
-          <!-- Delikatny link powrotny -->
-          <div class="mt-24">
-            <a href="/#find" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors inline-flex items-center gap-2">
-              ← Zobacz innych terapeutów
-            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-)}
-  <!-- Filozofia - zachowany styl -->
+    </section>
+  )}
+
+  {/* Philosophy */}
   {sections.philosophy && (
     <section id="philosophy" class="py-32 px-6">
       <div class="max-w-screen-xl mx-auto">
@@ -167,7 +161,7 @@ const layoutProps = {
     </section>
   )}
 
-  <!-- Praktyka/Usługi - delikatnie dopasowane kolory -->
+  {/* Services */}
   {sections.services && (
     <section id="practice" class="py-32 px-6 bg-orange-50/30">
       <div class="max-w-screen-xl mx-auto">
@@ -192,7 +186,6 @@ const layoutProps = {
                 <h3 class="text-2xl mb-4">{service.title}</h3>
                 <p class="text-neutral-600 leading-relaxed">{service.description}</p>
                 
-                <!-- Specjalizacje dla tej usługi -->
                 {index === 0 && therapist.spec && (
                   <div class="mt-4 flex flex-wrap gap-2">
                     {therapist.spec.map((spec: string) => (
@@ -225,7 +218,7 @@ const layoutProps = {
     </section>
   )}
 
-  <!-- O mnie - zachowany styl -->
+  {/* About */}
   {sections.about && (
     <section id="about" class="py-32 px-6">
       <div class="max-w-screen-xl mx-auto">
@@ -260,7 +253,6 @@ const layoutProps = {
           </div>
         </div>
 
-        <!-- Kwalifikacje -->
         {sections.about.credentials && (
           <div class="grid grid-cols-12 gap-6 mt-24">
             <div class="col-span-12 md:col-span-8 md:col-start-3">
@@ -285,7 +277,7 @@ const layoutProps = {
     </section>
   )}
 
-  <!-- Gabinet -->
+  {/* Office */}
   {sections.office && (
     <section class="py-32 px-6 bg-gray-50">
       <div class="max-w-screen-xl mx-auto">
@@ -313,7 +305,7 @@ const layoutProps = {
     </section>
   )}
 
-  <!-- Kontakt -->
+  {/* Contact */}
   {sections.contact && (
     <section id="contact" class="py-32 px-6">
       <div class="max-w-screen-xl mx-auto">
@@ -352,7 +344,6 @@ const layoutProps = {
               </div>
             </div>
 
-            <!-- CTA -->
             <div class="mt-16 p-8 bg-orange-50 rounded-2xl">
               <p class="text-lg mb-4">
                 {therapist.avail ? (
@@ -377,7 +368,6 @@ const layoutProps = {
   )}
 
   <script slot="scripts">
-    // Smooth scroll with offset for fixed header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();

@@ -1,13 +1,13 @@
 ---
-// src/components/therapist-templates/WarmTemplate.astro
+// src/components/templates/WarmTemplate.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Logo from '../Logo.astro';
 
 export interface Props {
-  therapist: any;
+  data: any;
 }
 
-const { therapist } = Astro.props;
+const { data } = Astro.props;
+const { therapist } = data;
 const sections = therapist.sections;
 
 const navigation = [
@@ -120,7 +120,6 @@ const layoutProps = {
               </div>
             )}
             
-            <!-- Link powrotny -->
             <div class="mt-24">
               <a href="/#find" class="text-sm text-stone-400 hover:text-stone-600 transition-colors inline-flex items-center gap-2">
                 ← Zobacz innych terapeutów
@@ -290,7 +289,6 @@ const layoutProps = {
               ))}
             </div>
             
-            <!-- Specjalizacje -->
             {therapist.spec && (
               <div class="mt-8">
                 <p class="text-xs tracking-[0.3em] text-stone-500 mb-4">SPECJALIZACJE</p>
@@ -451,7 +449,9 @@ const layoutProps = {
                   <h3 class="font-medium mb-6">Godziny przyjęć</h3>
                   <div class="space-y-2 text-stone-600">
                     <p>{sections.contact.hours.weekdays}</p>
-                    <p>{sections.contact.hours.saturday}</p>
+                    {sections.contact.hours.saturday && (
+                      <p>{sections.contact.hours.saturday}</p>
+                    )}
                     <p class="text-sm pt-4 text-stone-500">
                       * {sections.contact.hours.note}
                     </p>
@@ -468,7 +468,6 @@ const layoutProps = {
                 </a>
               </div>
               
-              <!-- Status dostępności -->
               <div class="mt-8 p-4 bg-stone-50 rounded">
                 <p class="text-sm">
                   {therapist.avail ? (
