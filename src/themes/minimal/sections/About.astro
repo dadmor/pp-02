@@ -1,15 +1,20 @@
+
 ---
-// ŚCIEŻKA: src/themes/minimal/sections/About.astro
+// Ta sama struktura danych co default!
 export interface Props {
   data: {
     title: string;
-    bio: string[];
+    paragraphs: string[];
+    highlights?: {
+      title: string;
+      items: string[];
+    }[];
     credentials?: {
       education?: string;
       certification?: string;
       specialization?: string;
     };
-    image: string;
+    image?: string;
     imageCaption?: string;
   };
 }
@@ -28,26 +33,26 @@ const { data } = Astro.props;
           {data.title}
         </h2>
         <div class="space-y-6 text-lg leading-relaxed text-neutral-700">
-          {data.bio.map((paragraph) => (
+          {data.paragraphs.map((paragraph) => (
             <p>{paragraph}</p>
           ))}
         </div>
       </div>
-      <div class="col-span-12 md:col-span-4 md:col-start-9">
-        <img 
-          src={`/images/therapists/${data.image}.webp`}
-          alt={data.title}
-          class="w-full grayscale hover:grayscale-0 transition-all duration-700"
-          width="400"
-          height="600"
-          loading="lazy"
-        />
-        {data.imageCaption && (
-          <p class="text-sm text-neutral-500 mt-4">
-            {data.imageCaption}
-          </p>
-        )}
-      </div>
+      {data.image && (
+        <div class="col-span-12 md:col-span-4 md:col-start-9">
+          <img 
+            src={`/images/therapists/${data.image}.webp`}
+            alt={data.title}
+            class="w-full grayscale hover:grayscale-0 transition-all duration-700"
+            width="400"
+            height="600"
+            loading="lazy"
+          />
+          {data.imageCaption && (
+            <p class="text-sm text-neutral-500 mt-4">{data.imageCaption}</p>
+          )}
+        </div>
+      )}
     </div>
 
     {data.credentials && (

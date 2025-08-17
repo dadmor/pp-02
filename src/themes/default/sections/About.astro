@@ -1,20 +1,21 @@
+
 ---
-// ŚCIEŻKA: src/themes/default/sections/About.astro
+// Ujednolicona struktura danych dla wszystkich theme'ów
 export interface Props {
   data: {
-    eyebrow?: string;
     title: string;
-    content: string[];
-    lists?: {
-      whenToConsider?: {
-        title: string;
-        items: string[];
-      };
-      therapyTypes?: {
-        title: string;
-        items: string[];
-      };
+    paragraphs: string[];
+    highlights?: {
+      title: string;
+      items: string[];
+    }[];
+    credentials?: {
+      education?: string;
+      certification?: string;
+      specialization?: string;
     };
+    image?: string;
+    imageCaption?: string;
   };
 }
 
@@ -25,26 +26,23 @@ const { data } = Astro.props;
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
     <article>
       <header>
-        {data.eyebrow && (
-          <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">{data.eyebrow}</p>
-        )}
-        <h2 class="font-serif text-4xl md:text-5xl mb-6">
-          {data.title}
-        </h2>
+        <p class="text-orange-700 font-medium mb-4 text-sm tracking-wide uppercase">O mnie</p>
+        <h2 class="font-serif text-4xl md:text-5xl mb-6">{data.title}</h2>
       </header>
+      
       <div class="space-y-4 text-gray-600">
-        {data.content.map((paragraph) => (
+        {data.paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
       </div>
       
-      {data.lists && (
+      {data.highlights && data.highlights.length > 0 && (
         <div class="grid grid-cols-2 gap-8 mt-10">
-          {data.lists.whenToConsider && (
+          {data.highlights.map((section) => (
             <section>
-              <h3 class="font-medium mb-4 text-gray-900">{data.lists.whenToConsider.title}</h3>
+              <h3 class="font-medium mb-4 text-gray-900">{section.title}</h3>
               <ul class="space-y-3 text-sm text-gray-600">
-                {data.lists.whenToConsider.items.map(item => (
+                {section.items.map(item => (
                   <li class="flex items-start gap-3">
                     <span class="w-1.5 h-1.5 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></span>
                     <span>{item}</span>
@@ -52,21 +50,7 @@ const { data } = Astro.props;
                 ))}
               </ul>
             </section>
-          )}
-          
-          {data.lists.therapyTypes && (
-            <section>
-              <h3 class="font-medium mb-4 text-gray-900">{data.lists.therapyTypes.title}</h3>
-              <ul class="space-y-3 text-sm text-gray-600">
-                {data.lists.therapyTypes.items.map(item => (
-                  <li class="flex items-start gap-3">
-                    <span class="w-1.5 h-1.5 bg-orange-600 rounded-full mt-1.5 flex-shrink-0"></span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          ))}
         </div>
       )}
     </article>

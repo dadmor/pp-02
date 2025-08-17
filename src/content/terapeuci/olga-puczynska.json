@@ -48,13 +48,13 @@
         "data": {
           "eyebrow": "O mnie",
           "title": "Olga Puczyńska",
-          "content": [
+          "paragraphs": [
             "Ukończyłam psychologię kliniczną na Uniwersytecie Warszawskim, następnie odbyłam czteroletnie szkolenie w Szkole Psychoterapii PTP. Regularnie uczestniczę w superwizjach i warsztatach, wierząc że rozwój terapeuty nigdy się nie kończy.",
             "W mojej pracy łączę współczesne metody psychoterapeutyczne z głębokim szacunkiem dla mądrości, którą każdy człowiek nosi w sobie. Wierzę, że prawdziwe uzdrowienie przychodzi poprzez zrozumienie, nie osąd.",
             "Poza gabinetem znajduję inspirację w sztuce, literaturze i kontakcie z naturą. Te pasje uczą mnie pokory wobec złożoności ludzkiego doświadczenia."
           ],
-          "lists": {
-            "whenToConsider": {
+          "highlights": [
+            {
               "title": "Obszary wsparcia",
               "items": [
                 "Kryzysy egzystencjalne i poszukiwanie sensu",
@@ -63,7 +63,7 @@
                 "Praca z nieświadomością i snami"
               ]
             },
-            "therapyTypes": {
+            {
               "title": "Moje podejście",
               "items": [
                 "Psychoterapia psychodynamiczna",
@@ -72,7 +72,7 @@
                 "Integracja doświadczeń"
               ]
             }
-          }
+          ]
         }
       },
       {

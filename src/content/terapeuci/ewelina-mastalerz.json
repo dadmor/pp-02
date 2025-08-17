@@ -48,13 +48,13 @@
         "data": {
           "eyebrow": "O mnie",
           "title": "Ewelina Mastalerz",
-          "content": [
+          "paragraphs": [
             "Jestem certyfikowaną psychoterapeutką z 8-letnim doświadczeniem. Ukończyłam czteroletnie szkolenie w Instytucie Psychoterapii Integracyjnej, a także liczne kursy z zakresu różnych modalności terapeutycznych.",
             "W swojej pracy kieruję się głębokim szacunkiem dla unikalności każdego człowieka. Wierzę, że relacja terapeutyczna oparta na autentyczności i zaufaniu jest podstawą każdej zmiany.",
             "Regularnie uczestniczę w superwizjach i szkoleniach, aby móc oferować najwyższą jakość wsparcia. Pracuję w języku polskim i angielskim."
           ],
-          "lists": {
-            "whenToConsider": {
+          "highlights": [
+            {
               "title": "Obszary pracy",
               "items": [
                 "Zaburzenia lękowe i ataki paniki",
@@ -63,7 +63,7 @@
                 "Depresja i obniżony nastrój"
               ]
             },
-            "therapyTypes": {
+            {
               "title": "Metody pracy",
               "items": [
                 "Terapia poznawczo-behawioralna (CBT)",
@@ -72,7 +72,7 @@
                 "Mindfulness i techniki relaksacyjne"
               ]
             }
-          }
+          ]
         }
       },
       {
@@ -96,3 +96,4 @@
       }
     ]
   }
+  

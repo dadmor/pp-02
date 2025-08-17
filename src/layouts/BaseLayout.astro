@@ -1,3 +1,4 @@
+
 ---
 // src/layouts/BaseLayout.astro
 import SEO from "../components/SEO.astro";
@@ -14,14 +15,12 @@ export interface Props {
   structuredData?: object;
   showHeader?: boolean;
   showFooter?: boolean;
-  headerVariant?: 'default' | 'custom';
   mainClass?: string;
 }
 
 const { 
   showHeader = true, 
   showFooter = true,
-  headerVariant = 'default',
   mainClass = '',
   ...seoProps 
 } = Astro.props;
@@ -38,22 +37,16 @@ const currentPath = Astro.url.pathname;
 <body>
   <a href="#main" class="sr-only focus:not-sr-only">Przejdź do treści</a>
   
-  {showHeader && headerVariant === 'default' && (
+  {showHeader && (
     <Header currentPath={currentPath} />
   )}
   
-  {headerVariant === 'custom' && (
-    <slot name="header" />
-  )}
-  
-  <main id="main" class={`${showHeader && headerVariant === 'default' ? 'pt-20' : ''} ${mainClass}`}>
+  <main id="main" class={`${showHeader ? 'pt-20' : ''} ${mainClass}`}>
     <slot />
   </main>
   
   {showFooter && (
-    <slot name="footer">
-      <Footer />
-    </slot>
+    <Footer />
   )}
   
   <slot name="scripts" />

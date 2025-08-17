@@ -110,12 +110,12 @@
         "data": {
           "eyebrow": "O psychoterapii",
           "title": "Czym jest psychoterapia i komu może pomóc?",
-          "content": [
+          "paragraphs": [
             "Psychoterapia to proces leczenia problemów emocjonalnych i psychicznych poprzez rozmowę z wykwalifikowanym specjalistą. To przestrzeń, gdzie możesz bezpiecznie eksplorować swoje myśli, uczucia i zachowania.",
             "Wbrew powszechnym mitom, nie musisz mieć poważnych problemów, aby skorzystać z terapii. Może ona pomóc w radzeniu sobie ze stresem, poprawie relacji, rozwoju osobistym czy po prostu w lepszym zrozumieniu siebie."
           ],
-          "lists": {
-            "whenToConsider": {
+          "highlights": [
+            {
               "title": "Kiedy warto rozważyć terapię?",
               "items": [
                 "Długotrwały smutek lub przygnębienie",
@@ -124,7 +124,7 @@
                 "Chęć rozwoju osobistego"
               ]
             },
-            "therapyTypes": {
+            {
               "title": "Rodzaje terapii",
               "items": [
                 "Terapia poznawczo-behawioralna (CBT)",
@@ -133,7 +133,7 @@
                 "Terapia humanistyczna"
               ]
             }
-          }
+          ]
         }
       },
       {

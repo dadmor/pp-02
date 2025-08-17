@@ -1,5 +1,4 @@
 {
-    "// ŚCIEŻKA": "src/content/terapeuci/anna-grabinska.json",
     "theme": "default",
     "meta": {
       "title": "Anna Grabińska - Psychoterapeutka | Profesjonalna Psychoterapia",
@@ -46,15 +45,14 @@
       {
         "type": "about",
         "data": {
-          "eyebrow": "O mnie",
           "title": "Anna Grabińska",
-          "content": [
+          "paragraphs": [
             "Ukończyłam psychologię kliniczną na Uniwersytecie Warszawskim, następnie odbyłam czteroletnie szkolenie psychoterapeutyczne w nurcie systemowym. Regularnie uczestniczę w superwizjach i szkoleniach, wierząc że terapeuta nigdy nie przestaje się uczyć.",
             "Specjalizuję się w pracy z rodzinami przechodząjącymi kryzysy, rodzicami borykającymi się z trudnościami wychowawczymi oraz nastolatkami w okresie buntu i poszukiwania tożsamości.",
             "Prywatnie jestem mamą dwójki dzieci, co daje mi nie tylko teoretyczne, ale i praktyczne zrozumienie wyzwań rodzicielstwa."
           ],
-          "lists": {
-            "whenToConsider": {
+          "highlights": [
+            {
               "title": "Kiedy szukać wsparcia",
               "items": [
                 "Konflikty rodzinne i problemy komunikacyjne",
@@ -63,7 +61,7 @@
                 "Rozwód, separacja, rodziny patchworkowe"
               ]
             },
-            "therapyTypes": {
+            {
               "title": "Formy wsparcia",
               "items": [
                 "Terapia rodzinna",
@@ -72,7 +70,8 @@
                 "Konsultacje wychowawcze"
               ]
             }
-          }
+          ],
+          "image": "anna-grabinska"
         }
       },
       {

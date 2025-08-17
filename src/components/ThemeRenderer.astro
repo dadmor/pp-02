@@ -1,3 +1,4 @@
+
 ---
 // ŚCIEŻKA: src/components/ThemeRenderer.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -35,17 +36,6 @@ if (!content) {
 
 const { theme, meta, sections, therapist } = content;
 
-// Sprawdź czy theme ma własny header
-let hasCustomHeader = false;
-let HeaderComponent = null;
-
-try {
-  // TODO: Dodać header do registry jeśli potrzebny
-  hasCustomHeader = false;
-} catch (e) {
-  // Theme nie ma własnego headera, użyjemy domyślnego
-}
-
 // Pobierz komponenty sekcji z registry
 const sectionComponents = sections.map(section => {
   const Component = getSection(theme, section.type);
@@ -66,13 +56,7 @@ const validSections = sectionComponents.filter((section): section is NonNullable
   image={meta.image}
   noindex={meta.noindex}
   structuredData={meta.structuredData}
-  showHeader={!hasCustomHeader}
-  headerVariant={hasCustomHeader ? 'custom' : 'default'}
 >
-  {hasCustomHeader && HeaderComponent && therapist && (
-    <HeaderComponent slot="header" therapistName={therapist.name} />
-  )}
-  
   {validSections.map((section) => {
     if (!section) return null;
     const { Component, data, settings } = section;
