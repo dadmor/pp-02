@@ -65,7 +65,8 @@
           "street": "Mokotowska 27/3",
           "city": "00-560 Warszawa",
           "country": "Polska"
-        }
+        },
+        "image": "/images/office/przykladowy-gabinet-1.webp"
       },
       "contact": {
         "headline": "Rozpocznij swoją podróż",
@@ -191,7 +192,8 @@
           "street": "ul. Nowy Świat 45/3",
           "city": "00-042 Warszawa",
           "metro": "Metro Nowy Świat-Uniwersytet (3 min)"
-        }
+        },
+        "image": "/images/office/przykladowy-gabinet-1.webp"
       },
       "contact": {
         "title": "Zróbmy pierwszy krok",
@@ -276,7 +278,8 @@
               "Depresja",
               "Trauma",
               "Kryzys życiowy"
-            ]
+            ],
+            "image": "/images/office/przykladowy-gabinet-1.webp"
           },
           {
             "roman": "II",
@@ -293,7 +296,8 @@
               "Odbudowa zaufania",
               "Intymność",
               "Wspólna wizja"
-            ]
+            ],
+            "image": "/images/office/przykladowy-gabinet-1.webp"
           },
           {
             "roman": "III",
@@ -310,7 +314,8 @@
               "Grupa wsparcia",
               "Warsztat asertywności",
               "Regulacja emocji"
-            ]
+            ],
+            "image": "/images/office/przykladowy-gabinet-1.webp"
           }
         ]
       },
@@ -333,7 +338,11 @@
             "metro": "Metro Plac Wilsona (7 min)"
           },
           "note": "Przestrzeń zaprojektowana dla Twojego komfortu i prywatności"
-        }
+        },
+        "images": [
+          "/images/office/przykladowy-gabinet-1.webp",
+          "/images/office/przykladowy-gabinet-1.webp"
+        ]
       },
       "wisdom": {
         "sectionNumber": "04",
@@ -531,12 +540,13 @@
       ],
       "space": {
         "title": "Miejsce stworzone dla spokoju",
-        "description": "Gabinet znajduje się w cichej części Ursynowa, w nowoczesnym budynku z dużymi oknami. Przestrzeń została zaprojektowana tak, aby sprzyjać wyciszeniu i refleksji.",
+        "description": "Gabinet znajduje się w cichej części Ursynowa, w nowoczesnym budynku z dużymi oknami. Przestrzeń została zaprojektowana tak, aby sprzyjała wyciszeniu i refleksji.",
         "address": {
           "street": "ul. Belgradzka 12/3",
           "city": "02-793 Warszawa",
           "metro": "(10 min od metra Kabaty)"
-        }
+        },
+        "image": "/images/office/przykladowy-gabinet-1.webp"
       },
       "contact": {
         "title": "Zacznijmy rozmowę",

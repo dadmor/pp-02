@@ -252,11 +252,12 @@ const menuItems = [
                 <div class={`col-span-12 lg:col-span-5 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div class="relative">
                     <img 
-                      src="/images/office/therapy-session.jpg"
+                      src="/images/terapia-par.webp"
                       alt={path.title}
                       class="w-full aspect-[4/5] object-cover"
                       loading="lazy"
                     />
+                    Anna Keibalo
                     <div class="absolute top-8 left-8 bg-white/90 backdrop-blur-sm px-4 py-2">
                       <p class="text-3xl font-light">{path.roman}</p>
                     </div>
@@ -382,18 +383,29 @@ const menuItems = [
             <!-- Space Images -->
             <div class="col-span-12 lg:col-span-6">
               <div class="grid grid-cols-2 gap-4">
-                <img 
-                  src="/images/office/przykladowy-gabinet-1.webp"
-                  alt="Gabinet"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                />
-                <img 
-                  src="/images/office/przykladowy-gabinet-1.webp"
-                  alt="Przestrzeń terapeutyczna"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                />
+                {sections.space.images?.map((img: string) => (
+  <img 
+    src={img}
+    alt="Gabinet"
+    class="w-full h-full object-cover"
+    loading="lazy"
+  />
+)) || (
+  <>
+    <img 
+      src="/images/office/przykladowy-gabinet-1.webp"
+      alt="Gabinet"
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+    <img 
+      src="/images/office/przykladowy-gabinet-1.webp"
+      alt="Przestrzeń terapeutyczna"
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+  </>
+)}
               </div>
               {sections.space.credentials?.location && (
                 <div class="mt-8 p-6 bg-neutral-50">
