@@ -1,0 +1,67 @@
+---
+// src/components/Footer.astro
+import Logo from "./Logo.astro";
+---
+
+<footer class="bg-gray-50 border-t border-gray-100 py-16">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 grid md:grid-cols-4 gap-8 mb-12">
+    <div class="md:col-span-2">
+      <Logo size="s" class="mb-6" />
+      <p class="text-sm text-gray-600 mb-6 max-w-sm">
+        Platforma łącząca osoby potrzebujące wsparcia psychologicznego z certyfikowanymi psychoterapeutami.
+      </p>
+      <nav class="flex gap-4">
+        {['facebook', 'instagram', 'linkedin'].map(social => (
+          <a
+            href={`https://${social}.com/profesjonalnapsychoterapia`}
+            class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
+            aria-label={social}
+          >
+            <svg class="w-5 h-5"><use href={`/icons.svg#icon-${social}`}></use></svg>
+          </a>
+        ))}
+      </nav>
+    </div>
+    
+    <nav>
+      <h3 class="font-medium mb-4">Dla pacjentów</h3>
+      <ul class="space-y-3 text-sm text-gray-600">
+        {[
+          ['Znajdź terapeutę', '/terapeuci'],
+          ['Jak to działa', '/jak-to-dziala'],
+          ['Cennik', '/cennik'],
+          ['FAQ', '/faq']
+        ].map(([label, href]) => (
+          <li><a href={href} class="hover:text-gray-900">{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    
+    <nav>
+      <h3 class="font-medium mb-4">Dla terapeutów</h3>
+      <ul class="space-y-3 text-sm text-gray-600">
+        {[
+          ['Dołącz do nas', '/dolacz'],
+          ['Jak weryfikujemy', '/weryfikacja'],
+          ['Korzyści', '/korzysci'],
+          ['Panel terapeuty', '/panel']
+        ].map(([label, href]) => (
+          <li><a href={href} class="hover:text-gray-900">{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  
+  <nav class="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-sm text-gray-500">© 2024 Profesjonalna-psychoterapia.pl .0.18</p>
+    <div class="flex gap-6 text-sm text-gray-500">
+      {[
+        ['Polityka prywatności', '/polityka-prywatnosci'],
+        ['Regulamin', '/regulamin'],
+        ['Kontakt', '/kontakt']
+      ].map(([label, href]) => (
+        <a href={href} class="hover:text-gray-700">{label}</a>
+      ))}
+    </div>
+  </nav>
+</footer>

@@ -1,7 +1,8 @@
 ---
 // src/layouts/BaseLayout.astro
 import SEO from "../components/SEO.astro";
-import Logo from "../components/Logo.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -11,123 +12,50 @@ export interface Props {
   image?: string;
   noindex?: boolean;
   structuredData?: object;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  headerVariant?: 'default' | 'custom';
+  mainClass?: string;
 }
 
-const props = Astro.props;
-const nav = [
-  { label: "Znajdź terapeutę", href: "/#find" },
-  { label: "Jak to działa", href: "/jak-to-dziala" },
-  { label: "O psychoterapii", href: "/#about" },
-  { label: "Artykuły", href: "/#articles" },
-  { label: "Kontakt", href: "/#contact" },
-];
+const { 
+  showHeader = true, 
+  showFooter = true,
+  headerVariant = 'default',
+  mainClass = '',
+  ...seoProps 
+} = Astro.props;
+
 const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="pl">
 <head>
-  <SEO {...props} />
+  <SEO {...seoProps} />
+  <slot name="head" />
 </head>
 <body>
   <a href="#main" class="sr-only focus:not-sr-only">Przejdź do treści</a>
   
-  <header class="fixed w-full top-0 z-50 bg-white backdrop-blur-md border-b border-gray-100">
-    <nav class="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center h-20">
-      <Logo size="l" />
-      
-      <input type="checkbox" id="menu-toggle" class="hidden peer" />
-      <label for="menu-toggle" class="md:hidden p-2 cursor-pointer">
-        <svg class="w-6 h-6"><use href="/icons.svg#menu"></use></svg>
-      </label>
-      
-      <ul class="hidden md:flex items-center gap-8 peer-checked:flex peer-checked:absolute peer-checked:top-20 peer-checked:left-0 peer-checked:w-full peer-checked:bg-white peer-checked:flex-col peer-checked:p-6 peer-checked:shadow-lg">
-        {nav.map((item) => (
-          <li class="w-full md:w-auto">
-            <a
-              href={item.href}
-              class={`block md:inline text-sm transition-colors ${
-                currentPath === item.href.split('#')[0]
-                  ? "text-orange-700 font-medium"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-        <li class="w-full md:w-auto mt-4 md:mt-0">
-          <a href="/#find" class="bg-gray-900 text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition-colors rounded-full block md:inline text-center">
-            Znajdź terapeutę
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  {showHeader && headerVariant === 'default' && (
+    <Header currentPath={currentPath} />
+  )}
   
-  <main id="main" class="pt-20"><slot /></main>
+  {headerVariant === 'custom' && (
+    <slot name="header" />
+  )}
   
-  <footer class="bg-gray-50 border-t border-gray-100 py-16">
-    <div class="max-w-7xl mx-auto px-6 md:px-8 grid md:grid-cols-4 gap-8 mb-12">
-      <div class="md:col-span-2">
-        <Logo size="s" class="mb-6" />
-        <p class="text-sm text-gray-600 mb-6 max-w-sm">
-          Platforma łącząca osoby potrzebujące wsparcia psychologicznego z certyfikowanymi psychoterapeutami.
-        </p>
-        <nav class="flex gap-4">
-          {['facebook', 'instagram', 'linkedin'].map(social => (
-            <a
-              href={`https://${social}.com/profesjonalnapsychoterapia`}
-              class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label={social}
-            >
-              <svg class="w-5 h-5"><use href={`/icons.svg#icon-${social}`}></use></svg>
-            </a>
-          ))}
-        </nav>
-      </div>
-      
-      <nav>
-        <h3 class="font-medium mb-4">Dla pacjentów</h3>
-        <ul class="space-y-3 text-sm text-gray-600">
-          {[
-            ['Znajdź terapeutę', '/terapeuci'],
-            ['Jak to działa', '/jak-to-dziala'],
-            ['Cennik', '/cennik'],
-            ['FAQ', '/faq']
-          ].map(([label, href]) => (
-            <li><a href={href} class="hover:text-gray-900">{label}</a></li>
-          ))}
-        </ul>
-      </nav>
-      
-      <nav>
-        <h3 class="font-medium mb-4">Dla terapeutów</h3>
-        <ul class="space-y-3 text-sm text-gray-600">
-          {[
-            ['Dołącz do nas', '/dolacz'],
-            ['Jak weryfikujemy', '/weryfikacja'],
-            ['Korzyści', '/korzysci'],
-            ['Panel terapeuty', '/panel']
-          ].map(([label, href]) => (
-            <li><a href={href} class="hover:text-gray-900">{label}</a></li>
-          ))}
-        </ul>
-      </nav>
-    </div>
-    
-    <nav class="max-w-7xl mx-auto px-6 md:px-8 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-sm text-gray-500">© 2024 Profesjonalna-psychoterapia.pl .0.16</p>
-      <div class="flex gap-6 text-sm text-gray-500">
-        {[
-          ['Polityka prywatności', '/polityka-prywatnosci'],
-          ['Regulamin', '/regulamin'],
-          ['Kontakt', '/kontakt']
-        ].map(([label, href]) => (
-          <a href={href} class="hover:text-gray-700">{label}</a>
-        ))}
-      </div>
-    </nav>
-  </footer>
+  <main id="main" class={`${showHeader && headerVariant === 'default' ? 'pt-20' : ''} ${mainClass}`}>
+    <slot />
+  </main>
+  
+  {showFooter && (
+    <slot name="footer">
+      <Footer />
+    </slot>
+  )}
+  
+  <slot name="scripts" />
 </body>
 </html>
