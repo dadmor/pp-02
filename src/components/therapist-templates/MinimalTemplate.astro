@@ -92,15 +92,15 @@ const seoProps = {
                 <div class="col-span-12 md:col-span-4 md:col-start-9">
                   <dl class="space-y-6 text-sm">
                     <div>
-                      <dt class="text-neutral-500 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
+                      <dt class="text-slate-700 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
                       <dd class="text-neutral-900">{therapist.exp} lat praktyki</dd>
                     </div>
                     <div>
-                      <dt class="text-neutral-500 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
+                      <dt class="text-slate-700 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
                       <dd class="text-neutral-900">{therapist.loc}, Warszawa</dd>
                     </div>
                     <div>
-                      <dt class="text-neutral-500 tracking-widest text-xs mb-1">STATUS</dt>
+                      <dt class="text-slate-700 tracking-widest text-xs mb-1">STATUS</dt>
                       <dd class="text-neutral-900">
                         {therapist.avail ? 'Przyjmuje pacjentów' : 'Lista oczekujących'}
                       </dd>
@@ -127,7 +127,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6 mb-24">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">FILOZOFIA</p>
+              <p class="text-sm tracking-[0.2em] text-slate-800 font-light">FILOZOFIA</p>
             </div>
             <div class="col-span-12 md:col-span-8">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
@@ -161,7 +161,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6 mb-16">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">PRAKTYKA</p>
+              <p class="text-sm tracking-[0.2em] text-slate-800 font-light">PRAKTYKA</p>
             </div>
             <div class="col-span-12 md:col-span-6">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight">
@@ -219,7 +219,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">O MNIE</p>
+              <p class="text-sm tracking-[0.2em] text-slate-800 font-light">O MNIE</p>
             </div>
             <div class="col-span-12 md:col-span-5">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
@@ -289,7 +289,7 @@ const seoProps = {
               />
               <div class="grid grid-cols-12 gap-6 mt-8">
                 <div class="col-span-12 md:col-span-6">
-                  <p class="text-sm tracking-[0.2em] text-neutral-600 font-light mb-4">PRZESTRZEŃ</p>
+                  <p class="text-sm tracking-[0.2em] text-slate-800 font-light mb-4">PRZESTRZEŃ</p>
                   <p class="text-lg leading-[1.75] font-light">
                     {sections.office.description}
                   </p>
@@ -307,7 +307,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">KONTAKT</p>
+              <p class="text-sm tracking-[0.2em] text-slate-800 font-light">KONTAKT</p>
             </div>
             <div class="col-span-12 md:col-span-8">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-16">
@@ -418,11 +418,6 @@ const seoProps = {
 
       p { line-height: 1.75; }
       h1, h2, h3 { letter-spacing: -0.02em; }
-      
-      /* Explicit font-size dla h1 w sekcjach - fix dla Chrome warning */
-      section h1 {
-        font-size: inherit; /* Używa rozmiaru z klas Tailwind */
-      }
       
       /* Selection - minimalne */
       ::selection { 
