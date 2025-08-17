@@ -23,9 +23,7 @@ const seoProps = {
 <html lang="pl">
   <head>
     <SEO {...seoProps} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- USUNIĘTE: Google Fonts - używamy lokalnych fontów z SEO.astro -->
   </head>
   <body class="bg-white text-neutral-900 antialiased">
     
@@ -72,6 +70,9 @@ const seoProps = {
             alt={therapist.name}
             class="w-full h-full object-cover grayscale opacity-10"
             style="mask-image: linear-gradient(to right, transparent, black 50%);"
+            width="384"
+            height="1080"
+            loading="eager"
           />
         </div>
         
@@ -91,15 +92,15 @@ const seoProps = {
                 <div class="col-span-12 md:col-span-4 md:col-start-9">
                   <dl class="space-y-6 text-sm">
                     <div>
-                      <dt class="text-neutral-400 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
+                      <dt class="text-neutral-500 tracking-widest text-xs mb-1">DOŚWIADCZENIE</dt>
                       <dd class="text-neutral-900">{therapist.exp} lat praktyki</dd>
                     </div>
                     <div>
-                      <dt class="text-neutral-400 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
+                      <dt class="text-neutral-500 tracking-widest text-xs mb-1">LOKALIZACJA</dt>
                       <dd class="text-neutral-900">{therapist.loc}, Warszawa</dd>
                     </div>
                     <div>
-                      <dt class="text-neutral-400 tracking-widest text-xs mb-1">STATUS</dt>
+                      <dt class="text-neutral-500 tracking-widest text-xs mb-1">STATUS</dt>
                       <dd class="text-neutral-900">
                         {therapist.avail ? 'Przyjmuje pacjentów' : 'Lista oczekujących'}
                       </dd>
@@ -110,7 +111,7 @@ const seoProps = {
               
               <!-- Delikatny link powrotny -->
               <div class="mt-24">
-                <a href="/#find" class="text-sm text-neutral-400 hover:text-neutral-600 transition-colors inline-flex items-center gap-2">
+                <a href="/#find" class="text-sm text-neutral-600 hover:text-neutral-800 transition-colors inline-flex items-center gap-2">
                   ← Zobacz innych terapeutów
                 </a>
               </div>
@@ -126,7 +127,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6 mb-24">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">FILOZOFIA</p>
+              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">FILOZOFIA</p>
             </div>
             <div class="col-span-12 md:col-span-8">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
@@ -160,7 +161,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6 mb-16">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">PRAKTYKA</p>
+              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">PRAKTYKA</p>
             </div>
             <div class="col-span-12 md:col-span-6">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight">
@@ -218,7 +219,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">O MNIE</p>
+              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">O MNIE</p>
             </div>
             <div class="col-span-12 md:col-span-5">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-8">
@@ -235,6 +236,8 @@ const seoProps = {
                 src={`/images/therapists/${therapist.img}.webp`}
                 alt={therapist.name}
                 class="w-full grayscale hover:grayscale-0 transition-all duration-700"
+                width="400"
+                height="600"
                 loading="lazy"
               />
               {sections.about.imageCaption && (
@@ -277,14 +280,16 @@ const seoProps = {
           <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 md:col-span-10 md:col-start-2">
               <img 
-  src={sections.office?.image || "/images/office/przykladowy-gabinet-1.webp"}
-  alt="Gabinet terapeutyczny"
-  class="w-full grayscale hover:grayscale-0 transition-all duration-700"
-  loading="lazy"
-/>
-              <div class="grid gri  d-cols-12 gap-6 mt-8">
+                src={sections.office?.image || "/images/office/przykladowy-gabinet-1.webp"}
+                alt="Gabinet terapeutyczny"
+                class="w-full grayscale hover:grayscale-0 transition-all duration-700"
+                width="1200"
+                height="800"
+                loading="lazy"
+              />
+              <div class="grid grid-cols-12 gap-6 mt-8">
                 <div class="col-span-12 md:col-span-6">
-                  <p class="text-sm tracking-[0.2em] text-neutral-400 font-light mb-4">PRZESTRZEŃ</p>
+                  <p class="text-sm tracking-[0.2em] text-neutral-600 font-light mb-4">PRZESTRZEŃ</p>
                   <p class="text-lg leading-[1.75] font-light">
                     {sections.office.description}
                   </p>
@@ -302,7 +307,7 @@ const seoProps = {
         <div class="max-w-screen-xl mx-auto">
           <div class="grid grid-cols-12 gap-6">
             <div class="col-span-12 md:col-span-2">
-              <p class="text-sm tracking-[0.2em] text-neutral-400 font-light">KONTAKT</p>
+              <p class="text-sm tracking-[0.2em] text-neutral-600 font-light">KONTAKT</p>
             </div>
             <div class="col-span-12 md:col-span-8">
               <h2 class="font-serif text-4xl md:text-5xl leading-tight mb-16">
@@ -401,14 +406,14 @@ const seoProps = {
       }
       
       .font-serif {
-        font-family: 'EB Garamond', 'Georgia', serif;
+        font-family: 'Crimson Text', 'Georgia', serif;
         font-weight: 400;
       }
 
       /* Emphasis - subtelny akcent */
       em {
         font-style: italic;
-        color: #a8a29e; /* stone-400 - bardzo subtelny */
+        color: #78716c; /* neutral-500 - lepszy kontrast niż stone-400 */
       }
 
       p { line-height: 1.75; }
