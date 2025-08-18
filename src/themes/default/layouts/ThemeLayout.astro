@@ -1,6 +1,6 @@
 ---
 import HelmetLayout from '@layouts/HelmetLayout.astro';
-import MinimalHeader from '../components/Header.astro';
+import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
 export interface Props {
@@ -14,15 +14,12 @@ export interface Props {
 }
 
 const { content, ...layoutProps } = Astro.props;
-
-// Extract therapist name if available
-const therapistName = content?.therapist?.name || 'Profesjonalna Psychoterapia';
 ---
 
-<HelmetLayout {...layoutProps} theme="minimal">
-  <MinimalHeader therapistName={therapistName} />
+<HelmetLayout {...layoutProps} theme="default">
+  <Header />
   
-  <main id="main" class="pt-24">
+  <main id="main" class="pt-20">
     <slot />
   </main>
   

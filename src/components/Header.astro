@@ -1,0 +1,52 @@
+---
+import Logo from "./Logo.astro";
+
+const currentPath = Astro.url.pathname;
+
+const nav = [
+  { label: "Znajdź terapeutę", href: "/#find" },
+  { label: "Jak to działa", href: "/jak-to-dziala" },
+  { label: "O psychoterapii", href: "/#about" },
+  { label: "Kontakt", href: "/#contact" },
+];
+---
+
+<header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+  <nav class="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center h-20">
+    <Logo size="l" />
+    
+    <!-- Mobile menu toggle -->
+    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+    <label for="menu-toggle" class="md:hidden p-2 cursor-pointer">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+    
+    <!-- Navigation -->
+    <ul class="hidden md:flex items-center gap-8 
+                peer-checked:flex peer-checked:absolute peer-checked:top-20 peer-checked:left-0 
+                peer-checked:w-full peer-checked:bg-white peer-checked:flex-col peer-checked:p-6 
+                peer-checked:shadow-lg peer-checked:gap-4">
+      {nav.map((item) => (
+        <li class="w-full md:w-auto">
+          <a
+            href={item.href}
+            class={`block md:inline text-sm transition-colors py-2 md:py-0 ${
+              currentPath === item.href.split('#')[0]
+                ? "text-orange-700 font-medium"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="w-full md:w-auto mt-4 md:mt-0">
+        <a href="/#find" class="bg-gray-900 text-white px-6 py-3 text-sm font-medium hover:bg-gray-800 transition-colors rounded-full block md:inline text-center">
+          Znajdź terapeutę
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

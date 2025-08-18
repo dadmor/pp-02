@@ -1,5 +1,7 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import HelmetLayout from '@layouts/HelmetLayout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 
 const seo = {
   title: 'Strona nie znaleziona - 404 | Profesjonalna Psychoterapia',
@@ -8,8 +10,10 @@ const seo = {
 };
 ---
 
-<BaseLayout {...seo}>
-  <section class="min-h-screen flex items-center justify-center px-6">
+<HelmetLayout {...seo}>
+  <Header />
+  
+  <main class="min-h-screen flex items-center justify-center px-6 pt-20">
     <div class="text-center">
       <h1 class="text-9xl font-light text-gray-200 mb-4">404</h1>
       <h2 class="text-2xl font-serif mb-4">Strona nie znaleziona</h2>
@@ -25,5 +29,7 @@ const seo = {
         </a>
       </nav>
     </div>
-  </section>
-</BaseLayout>
+  </main>
+  
+  <Footer />
+</HelmetLayout>

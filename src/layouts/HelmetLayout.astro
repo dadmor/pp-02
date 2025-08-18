@@ -10,18 +10,9 @@ export interface Props {
   noindex?: boolean;
   structuredData?: object;
   theme?: string;
-  showHeader?: boolean;
-  showFooter?: boolean;
-  mainClass?: string;
 }
 
-const { 
-  theme = 'default',
-  showHeader = true, 
-  showFooter = true,
-  mainClass = '',
-  ...seoProps 
-} = Astro.props;
+const { theme = 'default', ...seoProps } = Astro.props;
 ---
 
 <!doctype html>
@@ -33,13 +24,7 @@ const {
 <body>
   <a href="#main" class="sr-only focus:not-sr-only">Przejdź do treści</a>
   
-  <slot name="header" />
-  
-  <main id="main" class={mainClass}>
-    <slot />
-  </main>
-  
-  <slot name="footer" />
+  <slot />
   
   <slot name="scripts" />
 </body>
