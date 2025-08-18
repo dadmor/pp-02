@@ -1,0 +1,50 @@
+{
+    "theme": "minimal",
+    "meta": {
+      "title": "Justyna Wrona - Psychoterapeutka Warszawa | Profesjonalna Psychoterapia",
+      "description": "Justyna Wrona - Psychoterapeutka integracyjna. Doświadczenie: 15 lat. Specjalizacje: Lęk i depresja, Trauma, Terapia par. Lokalizacja: Mokotów.",
+      "canonical": "https://profesjonalna-psychoterapia.pl/terapeuta/justyna-wrona",
+      "image": "/images/therapists/justyna-wrona.webp"
+    },
+    "therapist": {
+      "name": "Justyna Wrona",
+      "slug": "justyna-wrona",
+      "title": "Psychoterapeutka integracyjna",
+      "exp": 15,
+      "spec": ["Lęk i depresja", "Trauma", "Terapia par"],
+      "loc": "Mokotów",
+      "price": [200, 250],
+      "img": "justyna-wrona",
+      "avail": true
+    },
+    "sections": [
+      {
+        "type": "hero",
+        "data": {
+          "headline": "Przestrzeń dla<br><em>zrozumienia</em>",
+          "intro": "Jestem psychoterapeutką pracującą w Warszawie. Moja praktyka koncentruje się na tworzeniu bezpiecznego środowiska, w którym możesz odkrywać swój wewnętrzny świat i znaleźć własną drogę do uzdrowienia.",
+          "experience": "15 lat praktyki",
+          "location": "Mokotów, Warszawa",
+          "availability": true,
+          "backLink": {
+            "text": "Zobacz innych terapeutów",
+            "href": "/#find"
+          }
+        }
+      },
+      {
+        "type": "philosophy",
+        "data": {
+          "title": "Terapia nie polega na naprawianiu tego, co zepsute, ale na odkrywaniu tego, co zawsze było całe.",
+          "content": [
+            "W mojej praktyce łączę współczesne metody psychoterapeutyczne z głębokim szacunkiem dla mądrości, którą każdy człowiek nosi w sobie. Wierzę, że prawdziwe uzdrowienie przychodzi poprzez zrozumienie, a nie osąd.",
+            "Moje podejście jest zakorzenione w terapii poznawczo-behawioralnej, wzbogaconej o elementy mindfulness i doświadczenia somatycznego. Każda podróż terapeutyczna jest wyjątkowa, kształtowana przez Twoje potrzeby i tempo."
+          ],
+          "quote": {
+            "text": "Ciekawy paradoks polega na tym, że kiedy akceptuję siebie takiego, jakim jestem, wtedy mogę się zmienić.",
+            "author": "Carl Rogers"
+          }
+        }
+      }
+    ]
+  }

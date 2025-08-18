@@ -1,0 +1,26 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-16 px-6 border-t border-neutral-200">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid grid-cols-12 gap-6">
+      <div class="col-span-12 md:col-span-6">
+        <p class="text-sm text-neutral-500">
+          © {currentYear} Profesjonalna Psychoterapia. Wszelkie prawa zastrzeżone.
+        </p>
+      </div>
+      <nav class="col-span-12 md:col-span-6 flex justify-start md:justify-end gap-8">
+        <a href="/polityka-prywatnosci" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+          Polityka prywatności
+        </a>
+        <a href="/regulamin" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+          Regulamin
+        </a>
+        <a href="/kontakt" class="text-sm text-neutral-500 hover:text-neutral-900 transition-colors">
+          Kontakt
+        </a>
+      </nav>
+    </div>
+  </div>
+</footer>

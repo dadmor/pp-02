@@ -1,21 +1,19 @@
 ---
-// ŚCIEŻKA: src/themes/minimal/components/Header.astro
 export interface Props {
   therapistName: string;
   navigation?: Array<{
     href: string;
     label: string;
-    labelEn?: string;
   }>;
 }
 
 const { therapistName, navigation = [] } = Astro.props;
 
 const defaultNav = [
-  { href: "#philosophy", label: "Filozofia", labelEn: "Philosophy" },
-  { href: "#practice", label: "Praktyka", labelEn: "Practice" },
-  { href: "#about", label: "O mnie", labelEn: "About" },
-  { href: "#contact", label: "Kontakt", labelEn: "Contact" }
+  { href: "#philosophy", label: "Filozofia" },
+  { href: "#practice", label: "Praktyka" },
+  { href: "#about", label: "O mnie" },
+  { href: "#contact", label: "Kontakt" }
 ];
 
 const nav = navigation.length > 0 ? navigation : defaultNav;

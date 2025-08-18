@@ -1,0 +1,124 @@
+{
+    "theme": "default",
+    "meta": {
+      "title": "Profesjonalna Psychoterapia Warszawa - Znajdź Psychoterapeutę | 50+ Specjalistów",
+      "description": "Znajdź psychoterapeutę w Warszawie. ✓ 50+ sprawdzonych specjalistów ✓ Terapia indywidualna, par, rodzin ✓ CBT, psychodynamiczna, systemowa ✓ Ceny 150-350 PLN"
+    },
+    "sections": [
+      {
+        "type": "hero",
+        "data": {
+          "badge": "Dostępni terapeuci online i stacjonarnie",
+          "title": "Znajdź terapeutę,",
+          "titleHighlight": "który Cię zrozumie",
+          "subtitle": "Łączymy osoby potrzebujące wsparcia z doświadczonymi psychoterapeutami. Każdy zasługuje na profesjonalną pomoc.",
+          "buttons": [
+            {
+              "text": "Zacznij szukać",
+              "href": "#find",
+              "primary": true
+            },
+            {
+              "text": "Jak to działa?",
+              "href": "/jak-to-dziala",
+              "primary": false
+            }
+          ],
+          "stats": [
+            {
+              "value": "50+",
+              "label": "sprawdzonych terapeutów"
+            },
+            {
+              "value": "1000+",
+              "label": "przeprowadzonych sesji"
+            },
+            {
+              "value": "95%",
+              "label": "zadowolonych klientów"
+            },
+            {
+              "value": "24h",
+              "label": "średni czas odpowiedzi"
+            }
+          ]
+        }
+      },
+      {
+        "type": "therapists",
+        "data": {
+          "eyebrow": "Nasi terapeuci",
+          "title": "Wybrani specjaliści",
+          "titleHighlight": "gotowi Ci pomóc",
+          "subtitle": "Wszyscy nasi terapeuci są certyfikowani i posiadają wieloletnie doświadczenie. Wybierz kogoś, kto najlepiej odpowiada Twoim potrzebom.",
+          "filters": [
+            "Wszyscy",
+            "Terapia indywidualna",
+            "Terapia par",
+            "Online"
+          ],
+          "therapistIds": [
+            "justyna-wrona",
+            "anna-kowalska",
+            "piotr-nowak"
+          ],
+          "limit": 4,
+          "cta": {
+            "text": "Zobacz wszystkich terapeutów (50+)",
+            "href": "/terapeuci"
+          }
+        }
+      },
+      {
+        "type": "about",
+        "data": {
+          "eyebrow": "O psychoterapii",
+          "title": "Czym jest psychoterapia i komu może pomóc?",
+          "paragraphs": [
+            "Psychoterapia to proces leczenia problemów emocjonalnych i psychicznych poprzez rozmowę z wykwalifikowanym specjalistą. To przestrzeń, gdzie możesz bezpiecznie eksplorować swoje myśli, uczucia i zachowania.",
+            "Wbrew powszechnym mitom, nie musisz mieć poważnych problemów, aby skorzystać z terapii. Może ona pomóc w radzeniu sobie ze stresem, poprawie relacji, rozwoju osobistym czy po prostu w lepszym zrozumieniu siebie."
+          ],
+          "highlights": [
+            {
+              "title": "Kiedy warto rozważyć terapię?",
+              "items": [
+                "Długotrwały smutek lub przygnębienie",
+                "Problemy w relacjach",
+                "Trudności z radzeniem sobie ze stresem",
+                "Chęć rozwoju osobistego"
+              ]
+            },
+            {
+              "title": "Rodzaje terapii",
+              "items": [
+                "Terapia poznawczo-behawioralna (CBT)",
+                "Terapia psychodynamiczna",
+                "Terapia systemowa",
+                "Terapia humanistyczna"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "cta",
+        "data": {
+          "badge": "Bezpłatna pierwsza konsultacja u wybranych terapeutów",
+          "title": "Gotowy na pierwszy krok?",
+          "subtitle": "Pamiętaj, że szukanie pomocy to oznaka siły, nie słabości. Jesteśmy tu, aby ułatwić Ci znalezienie odpowiedniego wsparcia.",
+          "buttons": [
+            {
+              "text": "Znajdź swojego terapeutę",
+              "href": "#find",
+              "primary": true
+            },
+            {
+              "text": "Masz pytania? Napisz do nas",
+              "href": "#contact",
+              "primary": false
+            }
+          ]
+        }
+      }
+    ]
+  }

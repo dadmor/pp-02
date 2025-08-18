@@ -1,0 +1,22 @@
+---
+import PageRenderer from '@components/PageRenderer.astro';
+import { getContent, getAllContentPaths } from '@lib/content';
+
+export async function getStaticPaths() {
+  const paths = await getAllContentPaths();
+  
+  return paths.map(path => ({
+    params: { slug: path === 'index' ? undefined : path },
+    props: { contentPath: path }
+  }));
+}
+
+const { contentPath } = Astro.props;
+const content = await getContent(contentPath);
+
+if (!content) {
+  return Astro.redirect('/404');
+}
+---
+
+<PageRenderer content={content} />

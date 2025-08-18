@@ -1,12 +1,11 @@
 ---
-// src/themes/default/sections/Hero.astro
 export interface Props {
   data: {
     badge?: string;
-    titleLine1: string;
-    titleLine2: string;
+    title: string;
+    titleHighlight?: string;
     subtitle: string;
-    buttons: Array<{
+    buttons?: Array<{
       text: string;
       href: string;
       primary?: boolean;
@@ -38,7 +37,7 @@ const backgroundClasses = {
 };
 ---
 
-<section class={`hero-section px-6 md:px-8 ${spacingClasses[spacing]} ${backgroundClasses[background]}`}>
+<section class={`px-6 md:px-8 ${spacingClasses[spacing]} ${backgroundClasses[background]}`}>
   {background === 'pattern' && (
     <div class="absolute inset-0 opacity-[0.02] pointer-events-none">
       <svg width="100%" height="100%">
@@ -60,8 +59,11 @@ const backgroundClasses = {
       </p>
     )}
     
-    <h1 class="font-serif text-5xl md:text-7xl mb-6 text-gray-900" style="font-size: clamp(2.5rem, 5vw, 4.375rem);">
-      {data.titleLine1}<br>{data.titleLine2}
+    <h1 class="font-serif text-5xl md:text-7xl mb-6 text-gray-900">
+      {data.title}
+      {data.titleHighlight && (
+        <><br/><span class="text-orange-700">{data.titleHighlight}</span></>
+      )}
     </h1>
     
     <p class="text-xl md:text-2xl mb-10 text-gray-600 max-w-3xl mx-auto">
@@ -88,7 +90,7 @@ const backgroundClasses = {
       <dl class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 max-w-3xl mx-auto">
         {data.stats.map((stat) => (
           <div class="text-center">
-            <dt class="text-4xl font-light text-gray-900 mb-2 block">{stat.value}</dt>
+            <dt class="text-4xl font-light text-gray-900 mb-2">{stat.value}</dt>
             <dd class="text-sm text-gray-500">{stat.label}</dd>
           </div>
         ))}

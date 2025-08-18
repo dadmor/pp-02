@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import MinimalHeader from '../components/Header.astro';
+import MinimalFooter from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  noindex?: boolean;
+  structuredData?: object;
+  content?: any;
+}
+
+const { content, ...layoutProps } = Astro.props;
+
+// Extract therapist name if available
+const therapistName = content?.therapist?.name || 'Profesjonalna Psychoterapia';
+---
+
+<BaseLayout {...layoutProps} theme="minimal" showHeader={false} showFooter={false}>
+  <MinimalHeader slot="header" therapistName={therapistName} />
+  
+  <slot />
+  
+  <MinimalFooter slot="footer" />
+</BaseLayout>

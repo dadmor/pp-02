@@ -1,4 +1,3 @@
-/* ŚCIEŻKA: src/styles/global.css */
 @import "tailwindcss";
 
 /* Theme system with CSS custom properties */
@@ -8,26 +7,27 @@
     --color-primary: 194 65 12; /* orange-700 */
     --color-secondary: 17 24 39; /* gray-900 */
     --color-accent: 234 88 12; /* orange-600 */
+    --color-muted: 249 250 251; /* gray-50 */
     
     /* Spacing */
     --spacing-section: 6rem;
     --spacing-container: 1.5rem;
+    
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Crimson Text', Georgia, serif;
   }
   
   [data-theme="minimal"] {
     --color-primary: 23 23 23; /* neutral-900 */
     --color-secondary: 64 64 64; /* neutral-700 */
     --color-accent: 82 82 82; /* neutral-600 */
-  }
-  
-  [data-theme="warm"] {
-    --color-primary: 245 158 11; /* amber-600 */
-    --color-secondary: 41 37 36; /* stone-800 */
-    --color-accent: 251 191 36; /* amber-400 */
+    --color-muted: 250 250 250; /* neutral-50 */
   }
 }
 
 @layer utilities {
+  /* Theme colors */
   .text-theme-primary {
     color: rgb(var(--color-primary));
   }
@@ -39,16 +39,43 @@
   .border-theme-primary {
     border-color: rgb(var(--color-primary));
   }
+  
+  .text-theme-secondary {
+    color: rgb(var(--color-secondary));
+  }
+  
+  .bg-theme-secondary {
+    background-color: rgb(var(--color-secondary));
+  }
+  
+  .text-theme-accent {
+    color: rgb(var(--color-accent));
+  }
+  
+  .bg-theme-accent {
+    background-color: rgb(var(--color-accent));
+  }
+  
+  .bg-theme-muted {
+    background-color: rgb(var(--color-muted));
+  }
 }
 
-/* Smooth scroll */
+/* Base styles */
 html { 
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 
-/* Font rodziny */
-.font-serif { font-family: "Crimson Text", serif; }
+body {
+  font-family: var(--font-sans);
+  @apply text-gray-900;
+}
+
+/* Typography */
+.font-serif { 
+  font-family: var(--font-serif); 
+}
 
 /* Screen reader utility */
 .sr-only {
@@ -63,13 +90,24 @@ html {
   border-width: 0;
 }
 
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 /* Focus visible dla dostępności */
 :focus-visible {
   outline: 2px solid rgb(var(--color-accent));
   outline-offset: 2px;
 }
 
-/* Animacja pulse */
+/* Animations */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: .5; }
@@ -77,4 +115,22 @@ html {
 
 .animate-pulse { 
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; 
+}
+
+/* Container queries support */
+@container (min-width: 768px) {
+  .container\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Theme-specific adjustments */
+[data-theme="minimal"] {
+  body {
+    @apply font-light;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-normal;
+  }
 }

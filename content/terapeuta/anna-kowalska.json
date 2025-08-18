@@ -1,0 +1,61 @@
+{
+    "theme": "default",
+    "meta": {
+      "title": "Anna Kowalska - Psychoterapeutka CBT | Profesjonalna Psychoterapia",
+      "description": "Anna Kowalska - Psychoterapeutka poznawczo-behawioralna. Doświadczenie: 10 lat. Specjalizacje: Zaburzenia lękowe, Depresja, Fobie. Lokalizacja: Śródmieście."
+    },
+    "therapist": {
+      "name": "Anna Kowalska",
+      "slug": "anna-kowalska",
+      "title": "Psychoterapeutka CBT",
+      "exp": 10,
+      "spec": ["Zaburzenia lękowe", "Depresja", "Fobie"],
+      "loc": "Śródmieście",
+      "price": [180, 220],
+      "img": "olga-puczynska",
+      "avail": true
+    },
+    "sections": [
+      {
+        "type": "hero",
+        "data": {
+          "badge": "Terapia poznawczo-behawioralna",
+          "title": "Pracujemy nad tym,",
+          "titleHighlight": "co możesz zmienić",
+          "subtitle": "Specjalizuję się w terapii poznawczo-behawioralnej, pomagając klientom w identyfikowaniu i zmianie negatywnych wzorców myślenia.",
+          "buttons": [
+            {
+              "text": "Umów konsultację",
+              "href": "#contact",
+              "primary": true
+            }
+          ]
+        }
+      },
+      {
+        "type": "about",
+        "data": {
+          "eyebrow": "O mnie",
+          "title": "Anna Kowalska",
+          "paragraphs": [
+            "Jestem certyfikowaną psychoterapeutką poznawczo-behawioralną z 10-letnim doświadczeniem. Ukończyłam psychologię na Uniwersytecie Warszawskim oraz 4-letnie szkolenie w Szkole Psychoterapii CBT.",
+            "W swojej pracy koncentruję się na praktycznych strategiach radzenia sobie z trudnościami. Wierzę, że każdy ma w sobie zasoby potrzebne do zmiany."
+          ]
+        }
+      },
+      {
+        "type": "cta",
+        "data": {
+          "title": "Zacznijmy pracować razem",
+          "subtitle": "Pierwsza konsultacja trwa 30 minut i jest bezpłatna.",
+          "buttons": [
+            {
+              "text": "Umów się",
+              "href": "tel:+48123456789",
+              "primary": true
+            }
+          ]
+        }
+      }
+    ]
+  }

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getSection, initializeThemes } from '@lib/themeRegistry';
+
+export interface Props {
+  content: {
+    theme: string;
+    meta: {
+      title: string;
+      description: string;
+      canonical?: string;
+      image?: string;
+      noindex?: boolean;
+      structuredData?: object;
+    };
+    sections: Array<{
+      type: string;
+      data: any;
+      settings?: any;
+    }>;
+    [key: string]: any;
+  };
+}
+
+// Initialize themes on component load
+await initializeThemes();
+
+const { content } = Astro.props;
+const { theme, meta, sections } = content;
+
+// Load theme-specific layout if exists
+let ThemeLayout: any = null;
+try {
+  const layoutModule = await import(`../themes/${theme}/layouts/ThemeLayout.astro`);
+  ThemeLayout = layoutModule.default;
+} catch (e) {
+  // Theme doesn't have custom layout, use BaseLayout
+}
+
+// Get all section components
+const sectionComponents = sections.map(section => {
+  const Component = getSection(theme, section.type);
+  if (!Component) {
+    console.error(`Failed to load section ${section.type} from theme ${theme}`);
+    return null;
+  }
+  return { ...section, Component };
+}).filter(Boolean);
+
+// Props to pass to layout
+const layoutProps = {
+  ...meta,
+  theme,
+  content
+};
+---
+
+{ThemeLayout ? (
+  <ThemeLayout {...layoutProps}>
+    {sectionComponents.map((section) => {
+      const { Component, data, settings } = section;
+      return <Component data={data} settings={settings} />;
+    })}
+  </ThemeLayout>
+) : (
+  <BaseLayout {...layoutProps}>
+    {sectionComponents.map((section) => {
+      const { Component, data, settings } = section;
+      return <Component data={data} settings={settings} />;
+    })}
+  </BaseLayout>
+)}

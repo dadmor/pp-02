@@ -1,5 +1,4 @@
 ---
-// ŚCIEŻKA: src/themes/default/sections/Cta.astro
 export interface Props {
   data: {
     badge?: string;
@@ -13,18 +12,21 @@ export interface Props {
   };
   settings?: {
     background?: 'gradient' | 'solid';
+    size?: 'default' | 'compact';
   };
 }
 
 const { data, settings = {} } = Astro.props;
-const { background = 'gradient' } = settings;
+const { background = 'gradient', size = 'default' } = settings;
 
 const bgClass = background === 'gradient' 
   ? 'bg-gradient-to-br from-orange-50 to-orange-100' 
   : 'bg-orange-50';
+
+const paddingClass = size === 'compact' ? 'py-16' : 'py-24';
 ---
 
-<section class={`py-24 px-6 md:px-8 ${bgClass}`}>
+<section class={`${paddingClass} px-6 md:px-8 ${bgClass}`}>
   <div class="max-w-4xl mx-auto text-center">
     {data.badge && (
       <p class="inline-flex items-center gap-2 text-sm text-orange-700 mb-6 bg-white px-4 py-2 rounded-full">

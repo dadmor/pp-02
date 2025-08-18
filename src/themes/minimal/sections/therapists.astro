@@ -1,0 +1,69 @@
+---
+import { getTherapists } from '@lib/therapists';
+
+export interface Props {
+  data: {
+    title: string;
+    therapistIds?: string[];
+    limit?: number;
+    showAll?: boolean;
+  };
+}
+
+const { data } = Astro.props;
+const therapists = await getTherapists({
+  ids: data.therapistIds,
+  limit: data.limit,
+  showAll: data.showAll
+});
+---
+
+<section id="therapists" class="py-32 px-6">
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid grid-cols-12 gap-6 mb-16">
+      <div class="col-span-12 md:col-span-2">
+        <p class="text-sm tracking-[0.2em] text-slate-800 font-light">TERAPEUCI</p>
+      </div>
+      <div class="col-span-12 md:col-span-6">
+        <h2 class="font-serif text-4xl md:text-5xl leading-tight">
+          {data.title}
+        </h2>
+      </div>
+    </div>
+
+    <div class="space-y-px">
+      {therapists.map((t, index) => (
+        <a 
+          href={`/terapeuta/${t.slug}`} 
+          class="group block py-12 border-t border-neutral-200 hover:pl-4 transition-all duration-300"
+        >
+          <div class="grid grid-cols-12 gap-6 items-start">
+            <div class="col-span-12 md:col-span-1 text-2xl text-neutral-300 font-light">
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            <div class="col-span-12 md:col-span-4">
+              <h3 class="text-2xl mb-2 group-hover:text-neutral-600 transition-colors">{t.name}</h3>
+              <p class="text-neutral-600">{t.title}</p>
+              <p class="text-sm text-neutral-500 mt-1">{t.exp} lat doświadczenia</p>
+            </div>
+            <div class="col-span-12 md:col-span-4">
+              <p class="text-sm text-neutral-500 mb-2">Specjalizacje:</p>
+              <p class="text-sm">{t.spec.join(' • ')}</p>
+            </div>
+            <div class="col-span-12 md:col-span-2 text-sm">
+              <p class="text-neutral-500">Warszawa, {t.loc}</p>
+              <p class="font-medium mt-1">{t.price[0]}-{t.price[1]} PLN</p>
+            </div>
+            <div class="col-span-12 md:col-span-1 text-right">
+              <span class={`inline-block text-xs px-3 py-1 rounded-full ${
+                t.avail ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'
+              }`}>
+                {t.avail ? 'Dostępny' : 'Oczekiwanie'}
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
